@@ -17,6 +17,7 @@ const spots = [
     tag: "撮影スポット",
     note: "撮影可能。トイレもお借りできます。",
     detail: "境内での撮影が可能です。トイレ利用もOK。参拝者への配慮をお願いします。",
+    map: "https://maps.app.goo.gl/WyXJqtBiWors2EfA6",
   },
   {
     id: 3,
@@ -25,6 +26,7 @@ const spots = [
     tag: "撮影・乗車",
     note: "乗車・撮影可能。利用者の邪魔にならない配慮でお願いします。",
     detail: "コスプレ乗車可能区間：流山駅〜馬橋駅（流鉄流山線全区間）。全駅降車可能ですが、改札外に出られるのは流山駅と平和台駅のみ。乗車可能時間は後日発表。",
+    map: "https://maps.app.goo.gl/4XHTUziQm3Ewwzrx5",
   },
   {
     id: 4,
@@ -34,6 +36,7 @@ const spots = [
     note: "フレンチレストラン。詳細は追って告知します。",
     detail: "流山本町エリアの創作フレンチレストラン。当日は撮影スポットとして利用可能です。",
     image: "/ChatErrant.jpeg",
+    map: "https://maps.app.goo.gl/XPWSuMm8fijJqLkt6",
   },
   {
     id: 5,
