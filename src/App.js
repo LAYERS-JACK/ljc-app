@@ -299,6 +299,7 @@ export default function App() {
                   "一般市民・観光客への配慮を忘れずに",
                   "私有地・立入禁止区域には入らないこと",
                 ],
+                warning: false,
               },
               {
                 title: "🚃 流鉄乗車ルール",
@@ -307,6 +308,34 @@ export default function App() {
                   "車内での大声・迷惑行為は禁止",
                   "乗車マナーを守り楽しく利用してください",
                 ],
+                warning: false,
+              },
+              {
+                title: "👘 衣装・更衣について",
+                items: [
+                  "更衣は男女それぞれのイベント専用更衣室内にて行ってください",
+                  "イベント専用更衣室以外での更衣が発覚した場合は、退場していただきます",
+                  "緊急非常時は異性スタッフが更衣室に立ち入ることがあります",
+                  "一般の方が不愉快な思いをする衣装と判断した場合は、更衣室にて着替えていただきます",
+                  "武器や小道具は長さや形状に関わらず、撮影時以外には袋等に入れて移動・保管してください",
+                ],
+                warning: false,
+              },
+              {
+                title: "🚫 禁止行為",
+                items: [
+                  "更衣室以外での着替えやメイク",
+                  "屋内でのスプレー類の使用",
+                  "コスプレをしたままの来退場",
+                  "現行の国家機関衣装の着用",
+                  "下着に間違われやすい衣装",
+                  "会場内でのウィッグカット",
+                  "実際に音を出す行為",
+                  "スピーカー等による過度な音出し",
+                  "着ぐるみ・大型衣装での1人移動（アテンド同行必須、アテンド1人につき2体まで）",
+                  "他の方に怪我をさせる危険のある物や、周囲を汚す・破損させる恐れのある物の持ち込み",
+                ],
+                warning: true,
               },
               {
                 title: "📱 SNS投稿について",
@@ -315,6 +344,7 @@ export default function App() {
                   "他の参加者を映した写真は同意を得てから投稿",
                   "イベント公式の動画撮影にご協力ください",
                 ],
+                warning: false,
               },
               {
                 title: "⚠️ 全般的な注意",
@@ -323,20 +353,21 @@ export default function App() {
                   "スタッフの指示に従ってください",
                   "体調不良の場合はスタッフへ申し出てください",
                 ],
+                warning: false,
               },
             ].map(section => (
               <div key={section.title} style={{
                 background: "#fff",
-                border: "1px solid #ddd",
+                border: `1px solid ${section.warning ? "#c00" : "#ddd"}`,
                 borderRadius: 10,
                 padding: 16,
                 marginBottom: 12,
               }}>
-                <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10 }}>{section.title}</div>
+                <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10, color: section.warning ? "#c00" : "#111" }}>{section.title}</div>
                 {section.items.map((item, i) => (
                   <div key={i} style={{
                     fontSize: 13,
-                    color: "#444",
+                    color: section.warning ? "#c00" : "#444",
                     padding: "6px 0",
                     borderBottom: i < section.items.length - 1 ? "1px solid #f0f0f0" : "none",
                     lineHeight: 1.6,
