@@ -3,11 +3,12 @@ import { useState } from "react";
 const spots = [
   {
     id: 1,
-    name: "流山陣屋跡",
+    name: "近藤勇陣屋跡",
     icon: "🏯",
     tag: "撮影スポット",
     note: "室内撮影も可能になりました。",
     detail: "近藤勇ゆかりの歴史的スポット。屋外・室内ともに撮影OK。",
+    map: "https://maps.app.goo.gl/mA4rqrb5vQbQ4FKVA",
   },
   {
     id: 2,
@@ -229,6 +230,20 @@ export default function App() {
                       <img src={spot.image} alt={spot.name} style={{ width: "100%", borderRadius: 8, marginBottom: 10 }} />
                     )}
                     <div style={{ marginBottom: 6 }}>{spot.detail}</div>
+                    {spot.map && (
+                      <a href={spot.map} target="_blank" rel="noreferrer" style={{
+                        display: "inline-block",
+                        background: "#fff",
+                        color: "#111",
+                        border: "1px solid #111",
+                        borderRadius: 6,
+                        padding: "6px 14px",
+                        fontSize: 12,
+                        fontWeight: 600,
+                        marginBottom: 8,
+                        textDecoration: "none",
+                      }}>🗺 Google マップで見る</a>
+                    )}
                     <div style={{
                       background: "#111",
                       color: "#fff",
