@@ -63,6 +63,9 @@ const spots = [
     tag: "撮影スポット",
     note: "全域で撮影可能です。",
     detail: "広大な土手エリアを自由に使えます。自然光を活かした撮影に最適。",
+    map: "https://maps.app.goo.gl/n85F3pgeVYoRADuN6",
+    map2: "https://maps.app.goo.gl/99h5UiiE3TyGNwvv7",
+    map3: "https://maps.app.goo.gl/YqpCRJ7d3aC6hpVs7",
   },
 ];
 
@@ -235,7 +238,7 @@ export default function App() {
                       <img src={spot.image} alt={spot.name} style={{ width: "100%", borderRadius: 8, marginBottom: 10 }} />
                     )}
                     <div style={{ marginBottom: 6 }}>{spot.detail}</div>
-                    {spot.map && (
+                    {spot.map && !spot.map2 && (
                       <a href={spot.map} target="_blank" rel="noreferrer" style={{
                         display: "inline-block",
                         background: "#fff",
@@ -248,6 +251,48 @@ export default function App() {
                         marginBottom: 8,
                         textDecoration: "none",
                       }}>🗺 Google マップで見る</a>
+                    )}
+                    {spot.map && spot.map2 && (
+                      <div style={{ display: "flex", gap: 8, marginBottom: 8, flexWrap: "wrap" }}>
+                        <a href={spot.map} target="_blank" rel="noreferrer" style={{
+                          flex: 1,
+                          textAlign: "center",
+                          background: "#fff",
+                          color: "#111",
+                          border: "1px solid #111",
+                          borderRadius: 6,
+                          padding: "6px 8px",
+                          fontSize: 12,
+                          fontWeight: 600,
+                          textDecoration: "none",
+                        }}>🗺 階段①</a>
+                        <a href={spot.map2} target="_blank" rel="noreferrer" style={{
+                          flex: 1,
+                          textAlign: "center",
+                          background: "#fff",
+                          color: "#111",
+                          border: "1px solid #111",
+                          borderRadius: 6,
+                          padding: "6px 8px",
+                          fontSize: 12,
+                          fontWeight: 600,
+                          textDecoration: "none",
+                        }}>🗺 階段②</a>
+                        {spot.map3 && (
+                          <a href={spot.map3} target="_blank" rel="noreferrer" style={{
+                            flex: 1,
+                            textAlign: "center",
+                            background: "#fff",
+                            color: "#111",
+                            border: "1px solid #111",
+                            borderRadius: 6,
+                            padding: "6px 8px",
+                            fontSize: 12,
+                            fontWeight: 600,
+                            textDecoration: "none",
+                          }}>🗺 階段③</a>
+                        )}
+                      </div>
                     )}
                     <div style={{
                       background: "#111",
