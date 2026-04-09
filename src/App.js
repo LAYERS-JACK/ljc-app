@@ -92,9 +92,9 @@ export default function App() {
               <img src="/ljc_vo1.jpeg" alt="LAYERS JACK CONVENTION" style={{ width: "100%", borderRadius: 8, marginBottom: 12 }} />
               <div style={{ fontSize: 22, fontWeight: 700, letterSpacing: 2, marginBottom: 4 }}>LAYERS JACK</div>
               <div style={{ fontSize: 13, color: "#aaa", letterSpacing: 3 }}>CONVENTION</div>
-              <div style={{ marginTop: 20, padding: "10px 0", borderTop: "1px solid #333" }}>
-                <div style={{ fontSize: 12, color: "#bbb", marginBottom: 4 }}>📍 千葉県流山市 流山本町エリア</div>
-                <div style={{ fontSize: 12, color: "#bbb" }}>🎟 参加費：3,500円（予定）</div>
+              <div style={{ marginTop: 20, padding: "16px 0", borderTop: "1px solid #333" }}>
+                <div style={{ fontSize: 16, color: "#fff", fontWeight: 700, marginBottom: 8 }}>📍 千葉県流山市 流山本町エリア</div>
+                <div style={{ fontSize: 16, color: "#fff", fontWeight: 700 }}>🎟 参加費：3,500円（予定）</div>
               </div>
             </div>
             <div style={{ marginBottom: 16 }}>
