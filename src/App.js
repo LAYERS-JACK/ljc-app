@@ -193,8 +193,26 @@ export default function App() {
               textAlign: "center",
             }}>
               <div style={{ fontSize: 12, color: "#aaa", marginBottom: 8, letterSpacing: 1 }}>📣 公式ハッシュタグ</div>
-              <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1 }}>#流山本町</div>
-              <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1 }}>#レイヤーズジャック</div>
+              <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>#流山本町</div>
+              <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1, marginBottom: 12 }}>#レイヤーズジャック</div>
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText("#流山本町 #レイヤーズジャック");
+                  alert("ハッシュタグをコピーしました！");
+                }}
+                style={{
+                  background: "#333",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: 6,
+                  padding: "8px 20px",
+                  fontSize: 12,
+                  cursor: "pointer",
+                  fontWeight: 600,
+                }}>📋 まとめてコピー</button>
+              <div style={{ marginTop: 12, borderTop: "1px solid #333", paddingTop: 12, fontSize: 12, color: "#aaa", lineHeight: 1.8 }}>
+                投稿時は公式ハッシュタグをつけてシェアしてください。他の参加者を映した写真は必ず同意を得てから投稿しましょう。
+              </div>
             </div>
           </div>
         )}
