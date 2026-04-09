@@ -27,11 +27,12 @@ const spots = [
   },
   {
     id: 4,
-    name: "丁字屋",
-    icon: "🏠",
+    name: "CHAT ERRANT",
+    icon: "🍽️",
     tag: "協賛店",
-    note: "改装中のため、店前撮影のみ可能です。",
-    detail: "店舗前でのフォトスポットとしてご利用ください。",
+    note: "フレンチレストラン。詳細は追って告知します。",
+    detail: "流山本町エリアの創作フレンチレストラン。当日は撮影スポットとして利用可能です。",
+    image: "/ChatErrant.jpeg",
   },
   {
     id: 5,
@@ -224,6 +225,9 @@ export default function App() {
                     lineHeight: 1.8,
                     color: "#333",
                   }}>
+                    {spot.image && (
+                      <img src={spot.image} alt={spot.name} style={{ width: "100%", borderRadius: 8, marginBottom: 10 }} />
+                    )}
                     <div style={{ marginBottom: 6 }}>{spot.detail}</div>
                     <div style={{
                       background: "#111",
