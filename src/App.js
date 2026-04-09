@@ -211,7 +211,8 @@ export default function App() {
                   fontWeight: 600,
                 }}>📋 まとめてコピー</button>
               <div style={{ marginTop: 12, borderTop: "1px solid #333", paddingTop: 12, fontSize: 12, color: "#aaa", lineHeight: 1.8 }}>
-                投稿時は公式ハッシュタグをつけてシェアしてください。他の参加者を映した写真は必ず同意を得てから投稿しましょう。
+                <div>SNS投稿時は公式ハッシュタグをつけてシェアしよう！</div>
+                <div>他の参加者を映した写真は必ず同意を得てから投稿しましょう。</div>
               </div>
             </div>
           </div>
