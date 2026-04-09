@@ -129,9 +129,11 @@ export default function App() {
               marginBottom: 20,
               textAlign: "center",
             }}>
-              <div style={{ fontSize: 36, marginBottom: 8 }}>🎭</div>
-              <div style={{ fontSize: 22, fontWeight: 700, letterSpacing: 2, marginBottom: 4 }}>LAYERS JACK</div>
-              <div style={{ fontSize: 13, color: "#aaa", letterSpacing: 3 }}>CONVENTION</div>
+              <img
+                src="/ljc_vo1.jpeg"
+                alt="LAYERS JACK CONVENTION"
+                style={{ width: "100%", borderRadius: 8, marginBottom: 12 }}
+              />
               <div style={{ marginTop: 20, padding: "10px 0", borderTop: "1px solid #333" }}>
                 <div style={{ fontSize: 12, color: "#bbb", marginBottom: 4 }}>📍 千葉県流山市 流山本町エリア</div>
                 <div style={{ fontSize: 12, color: "#bbb" }}>🎟 参加費：3,000〜4,000円</div>
