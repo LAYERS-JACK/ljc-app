@@ -180,8 +180,21 @@ export default function App() {
               fontSize: 12,
               color: "#555",
               lineHeight: 1.8,
+              marginBottom: 12,
             }}>
               💡 流山市の歴史ある街並みを舞台にしたコスプレイベントです。近藤勇ゆかりの地や流鉄流山線など、唯一無二のロケーションをお楽しみください。
+            </div>
+
+            <div style={{
+              background: "#111",
+              color: "#fff",
+              borderRadius: 10,
+              padding: 16,
+              textAlign: "center",
+            }}>
+              <div style={{ fontSize: 12, color: "#aaa", marginBottom: 8, letterSpacing: 1 }}>📣 公式ハッシュタグ</div>
+              <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1 }}>#流山本町</div>
+              <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1 }}>#レイヤーズジャック</div>
             </div>
           </div>
         )}
