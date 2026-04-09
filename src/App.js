@@ -1,115 +1,41 @@
 import { useState } from "react";
 
 const spots = [
-  {
-    id: 1,
-    name: "近藤勇陣屋跡",
-    icon: "🏯",
-    tag: "撮影スポット",
-    note: "室内撮影も可能になりました。",
-    detail: "近藤勇ゆかりの歴史的スポット。屋外・室内ともに撮影OK。",
-    map: "https://maps.app.goo.gl/mA4rqrb5vQbQ4FKVA",
-  },
-  {
-    id: 2,
-    name: "浅間神社",
-    icon: "⛩️",
-    tag: "撮影スポット",
-    note: "撮影可能。トイレもお借りできます。",
-    detail: "境内での撮影が可能です。トイレ利用もOK。参拝者への配慮をお願いします。",
-    map: "https://maps.app.goo.gl/WyXJqtBiWors2EfA6",
-  },
-  {
-    id: 3,
-    name: "流山駅（流鉄流山線）",
-    icon: "🚃",
-    tag: "撮影・乗車",
-    note: "乗車・撮影可能。利用者の邪魔にならない配慮でお願いします。",
-    detail: "コスプレ乗車可能区間：流山駅〜馬橋駅（流鉄流山線全区間）。全駅降車可能ですが、改札外に出られるのは流山駅と平和台駅のみ。乗車可能時間は後日発表。",
-    map: "https://maps.app.goo.gl/4XHTUziQm3Ewwzrx5",
-  },
-  {
-    id: 4,
-    name: "CHAT ERRANT",
-    icon: "🍽️",
-    tag: "協賛店",
-    note: "フレンチレストラン。詳細は追って告知します。",
-    detail: "流山本町エリアの創作フレンチレストラン。当日は撮影スポットとして利用可能です。",
-    image: "/ChatErrant.jpeg",
-    map: "https://maps.app.goo.gl/XPWSuMm8fijJqLkt6",
-  },
-  {
-    id: 5,
-    name: "万華鏡ミュージアム",
-    icon: "🔮",
-    tag: "撮影スポット",
-    note: "狭いため、建物前のみでの撮影が良いと思います。",
-    detail: "建物外観が撮影スポットです。館内は一般見学者への配慮をお願いします。",
-    map: "https://maps.app.goo.gl/C1GoXzKYEUd7JiLx9",
-  },
-  {
-    id: 6,
-    name: "流山みりんミュージアム",
-    icon: "🍶",
-    tag: "撮影スポット",
-    note: "施設内でも撮影可能です。",
-    detail: "施設内部での撮影もOK。スタッフの案内に従ってください。",
-    map: "https://maps.app.goo.gl/tAbXgPDHVjfuFDtQ6",
-  },
-  {
-    id: 7,
-    name: "江戸川土手",
-    icon: "🌊",
-    tag: "撮影スポット",
-    note: "全域で撮影可能です。",
-    detail: "広大な土手エリアを自由に使えます。自然光を活かした撮影に最適。",
-    map: "https://maps.app.goo.gl/n85F3pgeVYoRADuN6",
-    map2: "https://maps.app.goo.gl/99h5UiiE3TyGNwvv7",
-    map3: "https://maps.app.goo.gl/YqpCRJ7d3aC6hpVs7",
-  },
+  { id: 1, name: "近藤勇陣屋跡", icon: "🏯", tag: "撮影スポット", note: "室内撮影も可能になりました。", detail: "近藤勇ゆかりの歴史的スポット。屋外・室内ともに撮影OK。", map: "https://maps.app.goo.gl/mA4rqrb5vQbQ4FKVA" },
+  { id: 2, name: "浅間神社", icon: "⛩️", tag: "撮影スポット", note: "撮影可能。トイレもお借りできます。", detail: "境内での撮影が可能です。トイレ利用もOK。参拝者への配慮をお願いします。", map: "https://maps.app.goo.gl/WyXJqtBiWors2EfA6" },
+  { id: 3, name: "流山駅（流鉄流山線）", icon: "🚃", tag: "撮影・乗車", note: "乗車・撮影可能。利用者の邪魔にならない配慮でお願いします。", detail: "コスプレ乗車可能区間：流山駅〜馬橋駅（流鉄流山線全区間）。全駅降車可能ですが、改札外に出られるのは流山駅と平和台駅のみ。乗車可能時間は後日発表。", map: "https://maps.app.goo.gl/4XHTUziQm3Ewwzrx5" },
+  { id: 4, name: "CHAT ERRANT", icon: "🍽️", tag: "協賛店", note: "フレンチレストラン。詳細は追って告知します。", detail: "流山本町エリアの創作フレンチレストラン。当日は撮影スポットとして利用可能です。", image: "/ChatErrant.jpeg", map: "https://maps.app.goo.gl/XPWSuMm8fijJqLkt6" },
+  { id: 5, name: "万華鏡ミュージアム", icon: "🔮", tag: "撮影スポット", note: "狭いため、建物前のみでの撮影が良いと思います。", detail: "建物外観が撮影スポットです。館内は一般見学者への配慮をお願いします。", map: "https://maps.app.goo.gl/C1GoXzKYEUd7JiLx9" },
+  { id: 6, name: "流山みりんミュージアム", icon: "🍶", tag: "撮影スポット", note: "施設内でも撮影可能です。", detail: "施設内部での撮影もOK。スタッフの案内に従ってください。", map: "https://maps.app.goo.gl/tAbXgPDHVjfuFDtQ6" },
+  { id: 7, name: "江戸川土手", icon: "🌊", tag: "撮影スポット", note: "全域で撮影可能です。", detail: "広大な土手エリアを自由に使えます。自然光を活かした撮影に最適。", map: "https://maps.app.goo.gl/n85F3pgeVYoRADuN6", map2: "https://maps.app.goo.gl/99h5UiiE3TyGNwvv7", map3: "https://maps.app.goo.gl/YqpCRJ7d3aC6hpVs7" },
 ];
 
 const faqs = [
-  {
-    category: "参加について",
-    items: [
-      { q: "初めてのコスプレイベントでも参加できますか？", a: "もちろん大歓迎です！スタッフがサポートしますので、お気軽にご参加ください。" },
-      { q: "当日参加はできますか？", a: "定員に余裕がある場合のみ当日参加が可能です。事前予約を推奨しています。" },
-      { q: "友人と一緒に参加できますか？", a: "もちろんです！グループでのご参加も歓迎しています。" },
-    ],
-  },
-  {
-    category: "衣装・更衣について",
-    items: [
-      { q: "更衣室の利用に追加料金はかかりますか？", a: "参加費に含まれていますので追加料金はかかりません。" },
-      { q: "更衣室に鍵付きロッカーはありますか？", a: "鍵付きロッカーのご用意はありませんが、クロークをご利用いただけます。貴重品は各自で管理してください。" },
-      { q: "衣装のサイズや種類に制限はありますか？", a: "着ぐるみや大型衣装の場合はアテンドの同行が必要です。また禁止衣装がありますので、ルールページをご確認ください。" },
-    ],
-  },
-  {
-    category: "撮影について",
-    items: [
-      { q: "一般の方への撮影をお願いしてもいいですか？", a: "一般の方への撮影依頼はご遠慮ください。参加者同士での撮影は必ず相手の同意を得てから行ってください。" },
-      { q: "三脚や大型カメラの使用はできますか？", a: "周囲の方の迷惑にならない範囲でご使用いただけます。道路での使用は禁止します。撮影可能場所混雑時はスタッフの指示に従ってください。" },
-    ],
-  },
-  {
-    category: "流鉄について",
-    items: [
-      { q: "乗車券は自分で購入するのですか？", a: "はい、乗車券は各自でご購入ください。通常の運賃が適用されます。" },
-      { q: "コスプレのまま改札を通っていいですか？", a: "乗車可能時間内であれば問題ありません。ただしコスプレのままでの来退場は禁止ですのでご注意ください。" },
-    ],
-  },
-  {
-    category: "その他",
-    items: [
-      { q: "雨天の場合はどうなりますか？", a: "小雨の場合は予定通り開催します。荒天の場合は公式SNSにてお知らせします。" },
-      { q: "子どもと一緒に参加できますか？", a: "お子様連れでのご参加も歓迎です。未成年の方は保護者の同伴または同意書が必要です。" },
-    ],
-  },
+  { category: "参加について", items: [
+    { q: "初めてのコスプレイベントでも参加できますか？", a: "もちろん大歓迎です！スタッフがサポートしますので、お気軽にご参加ください。" },
+    { q: "当日参加はできますか？", a: "定員に余裕がある場合のみ当日参加が可能です。事前予約を推奨しています。" },
+    { q: "友人と一緒に参加できますか？", a: "もちろんです！グループでのご参加も歓迎しています。" },
+  ]},
+  { category: "衣装・更衣について", items: [
+    { q: "更衣室の利用に追加料金はかかりますか？", a: "参加費に含まれていますので追加料金はかかりません。" },
+    { q: "更衣室に鍵付きロッカーはありますか？", a: "鍵付きロッカーのご用意はありませんが、クロークをご利用いただけます。貴重品は各自で管理してください。" },
+    { q: "衣装のサイズや種類に制限はありますか？", a: "着ぐるみや大型衣装の場合はアテンドの同行が必要です。また禁止衣装がありますので、ルールページをご確認ください。" },
+  ]},
+  { category: "撮影について", items: [
+    { q: "一般の方への撮影をお願いしてもいいですか？", a: "一般の方への撮影依頼はご遠慮ください。参加者同士での撮影は必ず相手の同意を得てから行ってください。" },
+    { q: "三脚や大型カメラの使用はできますか？", a: "周囲の方の迷惑にならない範囲でご使用いただけます。道路での使用は禁止します。撮影可能場所混雑時はスタッフの指示に従ってください。" },
+  ]},
+  { category: "流鉄について", items: [
+    { q: "乗車券は自分で購入するのですか？", a: "はい、乗車券は各自でご購入ください。通常の運賃が適用されます。" },
+    { q: "コスプレのまま改札を通っていいですか？", a: "乗車可能時間内であれば問題ありません。ただしコスプレのままでの来退場は禁止ですのでご注意ください。" },
+  ]},
+  { category: "その他", items: [
+    { q: "雨天の場合はどうなりますか？", a: "小雨の場合は予定通り開催します。荒天の場合は公式SNSにてお知らせします。" },
+    { q: "子どもと一緒に参加できますか？", a: "お子様連れでのご参加も歓迎です。未成年の方は保護者の同伴または同意書が必要です。" },
+  ]},
 ];
 
-const tabs = ["TOP", "スポット", "更衣室", "ルール", "FAQ"];
+const tabs = ["TOP", "スポット", "更衣室", "アクセス", "ルール", "FAQ"];
 const tagColor = (tag) => {
   if (tag === "協賛店") return "#555";
   if (tag === "撮影・乗車") return "#222";
@@ -137,9 +63,9 @@ export default function App() {
           <div style={{ fontSize: 13, letterSpacing: 2, color: "#ccc" }}>CONVENTION</div>
         </div>
         <button onClick={() => setMenuOpen(!menuOpen)} style={{ background: "none", border: "none", cursor: "pointer", padding: 8, display: "flex", flexDirection: "column", gap: 5 }}>
-          <span style={{ display: "block", width: 24, height: 2, background: menuOpen ? "#aaa" : "#fff", transition: "0.2s" }} />
-          <span style={{ display: "block", width: 24, height: 2, background: menuOpen ? "#aaa" : "#fff", transition: "0.2s" }} />
-          <span style={{ display: "block", width: 24, height: 2, background: menuOpen ? "#aaa" : "#fff", transition: "0.2s" }} />
+          <span style={{ display: "block", width: 24, height: 2, background: menuOpen ? "#aaa" : "#fff" }} />
+          <span style={{ display: "block", width: 24, height: 2, background: menuOpen ? "#aaa" : "#fff" }} />
+          <span style={{ display: "block", width: 24, height: 2, background: menuOpen ? "#aaa" : "#fff" }} />
         </button>
       </div>
 
@@ -150,20 +76,7 @@ export default function App() {
           <div style={{ position: "absolute", right: 0, top: 0, width: 240, height: "100%", background: "#111", padding: "80px 0 40px" }}>
             <div style={{ fontSize: 11, letterSpacing: 3, color: "#666", padding: "0 24px", marginBottom: 16 }}>MENU</div>
             {tabs.map(t => (
-              <button key={t} onClick={() => handleTab(t)} style={{
-                display: "block",
-                width: "100%",
-                padding: "16px 24px",
-                background: activeTab === t ? "#222" : "none",
-                border: "none",
-                borderLeft: activeTab === t ? "3px solid #fff" : "3px solid transparent",
-                color: activeTab === t ? "#fff" : "#aaa",
-                fontSize: 15,
-                fontWeight: activeTab === t ? 700 : 400,
-                textAlign: "left",
-                cursor: "pointer",
-                letterSpacing: 1,
-              }}>{t}</button>
+              <button key={t} onClick={() => handleTab(t)} style={{ display: "block", width: "100%", padding: "16px 24px", background: activeTab === t ? "#222" : "none", border: "none", borderLeft: activeTab === t ? "3px solid #fff" : "3px solid transparent", color: activeTab === t ? "#fff" : "#aaa", fontSize: 15, fontWeight: activeTab === t ? 700 : 400, textAlign: "left", cursor: "pointer", letterSpacing: 1 }}>{t}</button>
             ))}
           </div>
         </div>
@@ -172,6 +85,7 @@ export default function App() {
       {/* Content */}
       <div style={{ padding: "20px 16px", paddingBottom: 40 }}>
 
+        {/* TOP */}
         {activeTab === "TOP" && (
           <div>
             <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: "32px 24px", marginBottom: 20, textAlign: "center" }}>
@@ -183,27 +97,18 @@ export default function App() {
                 <div style={{ fontSize: 12, color: "#bbb" }}>🎟 参加費：3,000〜4,000円</div>
               </div>
             </div>
-
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10, letterSpacing: 1 }}>📌 イベント概要</div>
-              {[
-                ["主催", "レイヤーズ ジャック コンベンション実行委員会"],
-                ["協賛", "流山市"],
-                ["エリア", "流山本町周辺"],
-                ["参加人数", "50〜100名"],
-                ["更衣室", "流山福祉会館"],
-              ].map(([k, v]) => (
+              {[["主催", "レイヤーズ ジャック コンベンション実行委員会"], ["協賛", "流山市"], ["エリア", "流山本町周辺"], ["参加人数", "50〜100名"], ["更衣室", "流山福祉会館"]].map(([k, v]) => (
                 <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "10px 0", borderBottom: "1px solid #e0e0e0", fontSize: 13 }}>
                   <span style={{ color: "#888" }}>{k}</span>
                   <span style={{ fontWeight: 500 }}>{v}</span>
                 </div>
               ))}
             </div>
-
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, fontSize: 12, color: "#555", lineHeight: 1.8, marginBottom: 12 }}>
               💡 流山市の歴史ある街並みを舞台にしたコスプレイベントです。近藤勇ゆかりの地や流鉄流山線など、唯一無二のロケーションをお楽しみください。
             </div>
-
             <div style={{ background: "#111", color: "#fff", borderRadius: 10, padding: 16, textAlign: "center" }}>
               <div style={{ fontSize: 12, color: "#aaa", marginBottom: 8, letterSpacing: 1 }}>📣 公式ハッシュタグ</div>
               <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>#流山本町</div>
@@ -217,6 +122,7 @@ export default function App() {
           </div>
         )}
 
+        {/* スポット */}
         {activeTab === "スポット" && (
           <div>
             <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>撮影スポット・協賛店一覧</div>
@@ -254,6 +160,7 @@ export default function App() {
           </div>
         )}
 
+        {/* 更衣室 */}
         {activeTab === "更衣室" && (
           <div>
             <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: 20, marginBottom: 16, textAlign: "center" }}>
@@ -266,19 +173,49 @@ export default function App() {
               ["🕐 利用時間", "イベント当日のみ（時間は追って告知）"],
               ["💼 荷物", "鍵付きロッカーはありませんが、クロークをご利用いただけます。貴重品は各自で管理してください。"],
               ["🚻 設備", "男女別更衣スペース設置予定"],
-              ["🗺 マップ", <a href="https://maps.app.goo.gl/sPNcwtP9Q7PvRiP79" target="_blank" rel="noreferrer" style={{ color: "#111", fontWeight: 600 }}>Google マップで見る</a>],
             ].map(([k, v]) => (
               <div key={k} style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: "14px 16px", marginBottom: 8, fontSize: 13 }}>
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>{k}</div>
                 <div style={{ color: "#555" }}>{v}</div>
               </div>
             ))}
-            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8, marginTop: 8 }}>
+            <a href="https://maps.app.goo.gl/sPNcwtP9Q7PvRiP79" target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "14px 16px", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 8 }}>🗺 Google マップで見る</a>
+            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8 }}>
               ⚠️ 更衣室は参加者のみ利用可能です。混雑状況によりお待ちいただく場合があります。
             </div>
           </div>
         )}
 
+        {/* アクセス */}
+        {activeTab === "アクセス" && (
+          <div>
+            <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>会場へのアクセス</div>
+            <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: 20, marginBottom: 16, textAlign: "center" }}>
+              <div style={{ fontSize: 32, marginBottom: 8 }}>📍</div>
+              <div style={{ fontWeight: 700, fontSize: 16 }}>流山福祉会館</div>
+              <div style={{ fontSize: 12, color: "#aaa", marginTop: 4 }}>〒270-0164 千葉県流山市流山２丁目１０２</div>
+            </div>
+            <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, marginBottom: 8 }}>
+              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10 }}>🚃 電車でのアクセス</div>
+              <div style={{ fontSize: 13, color: "#555", lineHeight: 1.8, marginBottom: 12 }}>
+                <div>流鉄流山線 <strong>流山駅</strong> が最寄り駅です。</div>
+              </div>
+              <a href="https://maps.app.goo.gl/8qVkYAFz1XG6wVDu8" target="_blank" rel="noreferrer" style={{ display: "inline-block", background: "#111", color: "#fff", borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>🗺 駅からのルートを見る</a>
+            </div>
+            <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, marginBottom: 8 }}>
+              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10 }}>🚗 車でのアクセス</div>
+              <div style={{ fontSize: 13, color: "#555", lineHeight: 1.8 }}>
+                <div>会場専用の無料駐車場はありません。</div>
+                <div>近辺の有料コインパーキングをご利用ください。</div>
+              </div>
+            </div>
+            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8 }}>
+              ⚠️ 会場周辺は混雑が予想されます。できるだけ電車でのご来場をお願いします。
+            </div>
+          </div>
+        )}
+
+        {/* ルール */}
         {activeTab === "ルール" && (
           <div>
             <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 12, letterSpacing: 1 }}>📋 参加ルール・マナー</div>
@@ -299,6 +236,8 @@ export default function App() {
             ))}
           </div>
         )}
+
+        {/* FAQ */}
         {activeTab === "FAQ" && (
           <div>
             <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>よくある質問</div>
