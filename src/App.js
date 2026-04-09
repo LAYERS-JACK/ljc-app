@@ -94,7 +94,7 @@ export default function App() {
               <div style={{ fontSize: 13, color: "#aaa", letterSpacing: 3 }}>CONVENTION</div>
               <div style={{ marginTop: 20, padding: "10px 0", borderTop: "1px solid #333" }}>
                 <div style={{ fontSize: 12, color: "#bbb", marginBottom: 4 }}>📍 千葉県流山市 流山本町エリア</div>
-                <div style={{ fontSize: 12, color: "#bbb" }}>🎟 参加費：3,000〜4,000円</div>
+                <div style={{ fontSize: 12, color: "#bbb" }}>🎟 参加費：3,500円（予定）</div>
               </div>
             </div>
             <div style={{ marginBottom: 16 }}>
