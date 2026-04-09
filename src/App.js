@@ -45,6 +45,7 @@ const spots = [
     tag: "撮影スポット",
     note: "狭いため、建物前のみでの撮影が良いと思います。",
     detail: "建物外観が撮影スポットです。館内は一般見学者への配慮をお願いします。",
+    map: "https://maps.app.goo.gl/C1GoXzKYEUd7JiLx9",
   },
   {
     id: 6,
@@ -53,6 +54,7 @@ const spots = [
     tag: "撮影スポット",
     note: "施設内でも撮影可能です。",
     detail: "施設内部での撮影もOK。スタッフの案内に従ってください。",
+    map: "https://maps.app.goo.gl/tAbXgPDHVjfuFDtQ6",
   },
   {
     id: 7,
