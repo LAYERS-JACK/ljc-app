@@ -191,7 +191,7 @@ export default function App() {
                 ["協賛", "流山市"],
                 ["エリア", "流山本町周辺"],
                 ["参加人数", "50〜100名"],
-                ["更衣室", "流山市生涯学習センター"],
+                ["更衣室", "流山福祉会館"],
               ].map(([k, v]) => (
                 <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "10px 0", borderBottom: "1px solid #e0e0e0", fontSize: 13 }}>
                   <span style={{ color: "#888" }}>{k}</span>
@@ -258,14 +258,15 @@ export default function App() {
           <div>
             <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: 20, marginBottom: 16, textAlign: "center" }}>
               <div style={{ fontSize: 32, marginBottom: 8 }}>👘</div>
-              <div style={{ fontWeight: 700, fontSize: 16 }}>流山市生涯学習センター</div>
+              <div style={{ fontWeight: 700, fontSize: 16 }}>流山福祉会館</div>
               <div style={{ fontSize: 12, color: "#aaa", marginTop: 4 }}>公式更衣室</div>
             </div>
             {[
-              ["📍 住所", "千葉県流山市（詳細は確定次第更新）"],
+              ["📍 住所", "〒270-0164 千葉県流山市流山２丁目１０２"],
               ["🕐 利用時間", "イベント当日のみ（時間は追って告知）"],
-              ["💼 荷物", "貴重品の管理は各自でお願いします"],
+              ["💼 荷物", "鍵付きロッカーはありませんが、クロークをご利用いただけます。貴重品は各自で管理してください。"],
               ["🚻 設備", "男女別更衣スペース設置予定"],
+              ["🗺 マップ", <a href="https://maps.app.goo.gl/sPNcwtP9Q7PvRiP79" target="_blank" rel="noreferrer" style={{ color: "#111", fontWeight: 600 }}>Google マップで見る</a>],
             ].map(([k, v]) => (
               <div key={k} style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: "14px 16px", marginBottom: 8, fontSize: 13 }}>
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>{k}</div>
