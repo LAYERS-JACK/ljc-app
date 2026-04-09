@@ -69,7 +69,47 @@ const spots = [
   },
 ];
 
-const tabs = ["TOP", "スポット", "更衣室", "ルール"];
+const faqs = [
+  {
+    category: "参加について",
+    items: [
+      { q: "初めてのコスプレイベントでも参加できますか？", a: "もちろん大歓迎です！スタッフがサポートしますので、お気軽にご参加ください。" },
+      { q: "当日参加はできますか？", a: "定員に余裕がある場合のみ当日参加が可能です。事前予約を推奨しています。" },
+      { q: "友人と一緒に参加できますか？", a: "もちろんです！グループでのご参加も歓迎しています。" },
+    ],
+  },
+  {
+    category: "衣装・更衣について",
+    items: [
+      { q: "更衣室の利用に追加料金はかかりますか？", a: "参加費に含まれていますので追加料金はかかりません。" },
+      { q: "更衣室に鍵付きロッカーはありますか？", a: "鍵付きロッカーのご用意はありませんが、クロークをご利用いただけます。貴重品は各自で管理してください。" },
+      { q: "衣装のサイズや種類に制限はありますか？", a: "着ぐるみや大型衣装の場合はアテンドの同行が必要です。また禁止衣装がありますので、ルールページをご確認ください。" },
+    ],
+  },
+  {
+    category: "撮影について",
+    items: [
+      { q: "一般の方への撮影をお願いしてもいいですか？", a: "一般の方への撮影依頼はご遠慮ください。参加者同士での撮影は必ず相手の同意を得てから行ってください。" },
+      { q: "三脚や大型カメラの使用はできますか？", a: "周囲の方の迷惑にならない範囲でご使用いただけます。道路での使用は禁止します。撮影可能場所混雑時はスタッフの指示に従ってください。" },
+    ],
+  },
+  {
+    category: "流鉄について",
+    items: [
+      { q: "乗車券は自分で購入するのですか？", a: "はい、乗車券は各自でご購入ください。通常の運賃が適用されます。" },
+      { q: "コスプレのまま改札を通っていいですか？", a: "乗車可能時間内であれば問題ありません。ただしコスプレのままでの来退場は禁止ですのでご注意ください。" },
+    ],
+  },
+  {
+    category: "その他",
+    items: [
+      { q: "雨天の場合はどうなりますか？", a: "小雨の場合は予定通り開催します。荒天の場合は公式SNSにてお知らせします。" },
+      { q: "子どもと一緒に参加できますか？", a: "お子様連れでのご参加も歓迎です。未成年の方は保護者の同伴または同意書が必要です。" },
+    ],
+  },
+];
+
+const tabs = ["TOP", "スポット", "更衣室", "ルール", "FAQ"];
 const tagColor = (tag) => {
   if (tag === "協賛店") return "#555";
   if (tag === "撮影・乗車") return "#222";
@@ -258,6 +298,23 @@ export default function App() {
             ))}
           </div>
         )}
+        {activeTab === "FAQ" && (
+          <div>
+            <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>よくある質問</div>
+            {faqs.map(section => (
+              <div key={section.category} style={{ marginBottom: 20 }}>
+                <div style={{ fontWeight: 700, fontSize: 13, letterSpacing: 1, marginBottom: 8, padding: "6px 12px", background: "#111", color: "#fff", borderRadius: 6 }}>{section.category}</div>
+                {section.items.map((item, i) => (
+                  <div key={i} style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 14, marginBottom: 8 }}>
+                    <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 6 }}>Q. {item.q}</div>
+                    <div style={{ fontSize: 13, color: "#555", lineHeight: 1.8 }}>A. {item.a}</div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
+
       </div>
     </div>
   );
