@@ -10,6 +10,18 @@ const spots = [
   { id: 7, name: "江戸川土手", icon: "🌊", tag: "撮影スポット", note: "全域で撮影可能です。", detail: "広大な土手エリアを自由に使えます。自然光を活かした撮影に最適。", map: "https://maps.app.goo.gl/n85F3pgeVYoRADuN6", map2: "https://maps.app.goo.gl/99h5UiiE3TyGNwvv7", map3: "https://maps.app.goo.gl/YqpCRJ7d3aC6hpVs7" },
 ];
 
+const schedule = [
+  { time: "10:00〜", label: "アーリー更衣室利用受付開始", icon: "⭐", note: "アーリー利用は+500円" },
+  { time: "11:00〜", label: "通常更衣室受付開始", icon: "👘", note: "" },
+  { time: "11:00〜", label: "流鉄流山線コスプレ乗車開始", icon: "🚃", note: "往復440円 / 一日フリー500円" },
+  { time: "12:00〜", label: "オープニングイベント", icon: "🎉", note: "📍 浅間神社" },
+  { time: "12:15〜", label: "集合写真撮影", icon: "📸", note: "📍 浅間神社" },
+  { time: "〜16:00", label: "受付終了・流鉄コスプレ乗車終了", icon: "🔔", note: "" },
+  { time: "16:30〜", label: "クローズイベント", icon: "🎊", note: "📍 浅間神社" },
+  { time: "16:45〜", label: "集合写真撮影", icon: "📸", note: "📍 浅間神社" },
+  { time: "〜18:30", label: "更衣室完全撤収", icon: "🏁", note: "時間厳守でお願いします" },
+];
+
 const faqs = [
   { category: "参加について", items: [
     { q: "初めてのコスプレイベントでも参加できますか？", a: "もちろん大歓迎です！スタッフがサポートしますので、お気軽にご参加ください。" },
@@ -35,7 +47,7 @@ const faqs = [
   ]},
 ];
 
-const tabs = ["TOP", "スポット", "更衣室", "アクセス", "ルール", "FAQ"];
+const tabs = ["TOP", "スケジュール", "スポット", "更衣室", "アクセス", "ルール", "FAQ"];
 const tagColor = (tag) => {
   if (tag === "協賛店") return "#555";
   if (tag === "撮影・乗車") return "#222";
@@ -97,7 +109,6 @@ export default function App() {
                 <div style={{ fontSize: 16, color: "#fff", fontWeight: 700 }}>🎟 参加費：3,500円</div>
               </div>
             </div>
-
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10, letterSpacing: 1 }}>📌 イベント概要</div>
               {[
@@ -117,8 +128,6 @@ export default function App() {
                 </div>
               ))}
             </div>
-
-            {/* 料金表 */}
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, marginBottom: 12 }}>
               <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10 }}>💴 料金一覧</div>
               {[
@@ -132,16 +141,13 @@ export default function App() {
                 </div>
               ))}
             </div>
-
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, fontSize: 12, color: "#555", lineHeight: 1.8, marginBottom: 12 }}>
               💡 流山市の歴史ある街並みを舞台にしたコスプレイベントです。近藤勇ゆかりの地や流鉄流山線など、唯一無二のロケーションをお楽しみください。
             </div>
-
             <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
               <a href="https://x.com/LJC_Nagareyama" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#111", color: "#fff", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>𝕏 公式アカウント</a>
               <a href="https://www.instagram.com/ljc_nagareyama" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>📷 Instagram</a>
             </div>
-
             <div style={{ background: "#111", color: "#fff", borderRadius: 10, padding: 16, textAlign: "center" }}>
               <div style={{ fontSize: 12, color: "#aaa", marginBottom: 8, letterSpacing: 1 }}>📣 公式ハッシュタグ</div>
               <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>#流山本町</div>
@@ -152,6 +158,26 @@ export default function App() {
                 <div>他の参加者を映した写真は必ず同意を得てから投稿しましょう。</div>
               </div>
             </div>
+          </div>
+        )}
+
+        {/* スケジュール */}
+        {activeTab === "スケジュール" && (
+          <div>
+            <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>2026年6月27日（日）タイムスケジュール</div>
+            {schedule.map((item, i) => (
+              <div key={i} style={{ display: "flex", gap: 12, marginBottom: 8 }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                  <div style={{ width: 40, height: 40, background: "#111", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>{item.icon}</div>
+                  {i < schedule.length - 1 && <div style={{ width: 2, flex: 1, background: "#ddd", margin: "4px 0" }} />}
+                </div>
+                <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: "10px 14px", flex: 1, marginBottom: 4 }}>
+                  <div style={{ fontSize: 12, color: "#888", marginBottom: 2 }}>{item.time}</div>
+                  <div style={{ fontWeight: 600, fontSize: 14 }}>{item.label}</div>
+                  {item.note !== "" && <div style={{ fontSize: 12, color: "#888", marginTop: 4 }}>{item.note}</div>}
+                </div>
+              </div>
+            ))}
           </div>
         )}
 
@@ -252,8 +278,6 @@ export default function App() {
                 <div>近辺の有料コインパーキングをご利用ください。</div>
               </div>
             </div>
-
-            {/* 流鉄情報 */}
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, marginBottom: 8 }}>
               <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10 }}>🚃 流鉄流山線 コスプレ乗車情報</div>
               {[
@@ -270,7 +294,6 @@ export default function App() {
                 </div>
               ))}
             </div>
-
             <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8 }}>
               ⚠️ 会場周辺は混雑が予想されます。できるだけ電車でのご来場をお願いします。
             </div>
