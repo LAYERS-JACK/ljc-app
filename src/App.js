@@ -7,6 +7,7 @@ const spots = [
   { id: 4, name: "CHAT ERRANT", icon: "🍽️", tag: "協賛店",     note: "ドリンクチケット利用可・撮影スポット",     detail: "流山本町エリアにある創作フレンチレストランです。当日はランチ営業を行っており、店内は撮影スポットとしてもご利用いただけます。また、当日お渡しするドリンクチケットにて、ドリンク1杯またはイベント限定の「流山白みりんフルーツソースかき氷」をお楽しみいただけます。", image: "/ChatErrant.jpeg", map: "https://maps.app.goo.gl/XPWSuMm8fijJqLkt6" },
   { id: 5, name: "万華鏡ミュージアム", icon: "🔮", tag: "撮影スポット", note: "狭いため、建物前のみでの撮影が良いと思います。", detail: "建物外観が撮影スポットです。館内は一般見学者への配慮をお願いします。", map: "https://maps.app.goo.gl/C1GoXzKYEUd7JiLx9" },
   { id: 6, name: "流山みりんミュージアム", icon: "🍶", tag: "撮影スポット", note: "施設内でも撮影可能です。", detail: "施設内部での撮影もOK。スタッフの案内に従ってください。", map: "https://maps.app.goo.gl/tAbXgPDHVjfuFDtQ6" },
+  { id: 8, name: "流山線歩道橋", icon: "🌉", tag: "撮影スポット", note: "撮影の際は、安全確認をお願いします。", detail: "駅が近く、撮影スポットとして使用できます。", map: "https://maps.app.goo.gl/3sad4NCQfLbutbxs5" },
   { id: 7, name: "江戸川土手", icon: "🌊", tag: "撮影スポット", note: "全域で撮影可能です。", detail: "広大な土手エリアを自由に使えます。自然光を活かした撮影に最適。", map: "https://maps.app.goo.gl/n85F3pgeVYoRADuN6", map2: "https://maps.app.goo.gl/99h5UiiE3TyGNwvv7", map3: "https://maps.app.goo.gl/YqpCRJ7d3aC6hpVs7" },
 ];
 
