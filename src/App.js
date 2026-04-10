@@ -145,6 +145,8 @@ export default function App() {
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, fontSize: 12, color: "#555", lineHeight: 1.8, marginBottom: 12 }}>
               💡 流山市の歴史ある街並みを舞台にしたコスプレイベントです。近藤勇ゆかりの地や流鉄流山線など、唯一無二のロケーションをお楽しみください。
             </div>
+            <a href="https://forms.gle/m2JGgezHBKugHoUs7" target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#fff", color: "#111", border: "2px solid #111", borderRadius: 10, padding: "16px 0", fontSize: 15, fontWeight: 700, textDecoration: "none", marginBottom: 12, letterSpacing: 1 }}>📝 参加申込はこちら</a>
+
             <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
               <a href="https://x.com/LJC_Nagareyama" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#111", color: "#fff", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>𝕏 公式アカウント</a>
               <a href="https://www.instagram.com/ljc_nagareyama" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>📷 Instagram</a>
@@ -351,6 +353,26 @@ export default function App() {
         )}
 
       </div>
+      {/* 固定申込ボタン */}
+      <a href="https://forms.gle/m2JGgezHBKugHoUs7" target="_blank" rel="noreferrer" style={{
+        position: "fixed",
+        bottom: 20,
+        left: "50%",
+        transform: "translateX(-50%)",
+        background: "#fff",
+        color: "#111",
+        border: "2px solid #111",
+        borderRadius: 30,
+        padding: "14px 32px",
+        fontSize: 15,
+        fontWeight: 700,
+        textDecoration: "none",
+        letterSpacing: 1,
+        boxShadow: "0 4px 16px rgba(0,0,0,0.25)",
+        zIndex: 300,
+        whiteSpace: "nowrap",
+      }}>📝 参加申込はこちら</a>
+
     </div>
   );
 }
