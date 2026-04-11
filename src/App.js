@@ -125,8 +125,8 @@ export default function App() {
               <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10 }}>💴 料金一覧</div>
               {[
                 ["参加費（更衣室込み）", "3,500円"],
-                ["クローク利用", "500円"],
                 ["アーリー更衣室（10:00〜）", "500円"],
+                ["クローク利用（当日現金払い）", "500円"],
               ].map(([k, v]) => (
                 <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", borderBottom: "1px solid #f0f0f0", fontSize: 13 }}>
                   <span style={{ color: "#555" }}>{k}</span>
