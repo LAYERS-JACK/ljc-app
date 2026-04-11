@@ -113,7 +113,7 @@ export default function App() {
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10, letterSpacing: 1 }}>📌 イベント概要</div>
               {[
-                ["📅 開催日", "2026年6月27日（日）"],
+                ["📅 開催日", "2026年6月28日（日）"],
                 ["🕐 開催時間", "11:00〜17:00"],
                 ["👘 更衣室完全撤収", "18:30"],
                 ["👥 定員", "100名"],
@@ -169,7 +169,7 @@ export default function App() {
         {/* スケジュール */}
         {activeTab === "スケジュール" && (
           <div>
-            <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>2026年6月27日（日）タイムスケジュール</div>
+            <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>2026年6月28日（日）タイムスケジュール</div>
             {schedule.map((item, i) => (
               <div key={i} style={{ display: "flex", gap: 12, marginBottom: 8 }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
