@@ -112,12 +112,12 @@ export default function App() {
                 ["💰 参加費", "3,500円（更衣室利用込み）"],
                 ["📍 エリア", "流山本町周辺"],
                 ["👘 更衣室", "流山福祉会館"],
-                ["🎪 主催", "レイヤーズ ジャック コンベンション実行委員会"],
+                ["🎪 主催", "レイヤーズ ジャック実行委員会"],
                 ["🤝 協賛", "流山市"],
               ].map(([k, v]) => (
                 <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "10px 0", borderBottom: "1px solid #e0e0e0", fontSize: 13 }}>
                   <span style={{ color: "#888" }}>{k}</span>
-                  <span style={{ fontWeight: 500, textAlign: "right", maxWidth: "60%" }}>{v}</span>
+                  <span style={{ fontWeight: 500, textAlign: "right", maxWidth: "60%", whiteSpace: "pre-line" }}>{v}</span>
                 </div>
               ))}
             </div>
