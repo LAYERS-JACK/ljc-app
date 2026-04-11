@@ -224,7 +224,7 @@ export default function App() {
               ["🕐 通常利用時間", "11:00〜17:00"],
               ["⭐ アーリー利用", "10:00〜（+500円）"],
               ["🏁 完全撤収", "18:30"],
-              ["💼 クローク", "利用可能（500円）※スペース限定"],
+              ["💼 クローク", "利用可能（500円・当日現金払い）※スペース限定"],
             ].map(([k, v]) => (
               <div key={k} style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: "14px 16px", marginBottom: 8, fontSize: 13 }}>
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>{k}</div>
