@@ -4,7 +4,7 @@ const spots = [
   { id: 1, name: "近藤勇陣屋跡", icon: "🏯", tag: "撮影スポット", note: "室内撮影も可能になりました。", detail: "近藤勇ゆかりの歴史的スポット。屋外・室内ともに撮影OK。", map: "https://maps.app.goo.gl/mA4rqrb5vQbQ4FKVA" },
   { id: 2, name: "浅間神社", icon: "⛩️", tag: "撮影スポット", note: "撮影可能。トイレもお借りできます。", detail: "境内での撮影が可能です。トイレ利用もOK。参拝者への配慮をお願いします。", map: "https://maps.app.goo.gl/WyXJqtBiWors2EfA6" },
   { id: 3, name: "流山駅（流鉄流山線）", icon: "🚃", tag: "撮影・乗車", note: "乗車・撮影可能。利用者の邪魔にならない配慮でお願いします。", detail: "コスプレ乗車可能区間：流山駅〜馬橋駅。降車は流山駅・馬橋駅のみ。改札外に出られるのは流山駅のみ。コスプレ乗車時間：11:00〜16:00。往復乗車券440円、一日フリー乗車券500円。", map: "https://maps.app.goo.gl/4XHTUziQm3Ewwzrx5" },
-  { id: 4, name: "CHAT ERRANT", icon: "🍽️", tag: "協賛店",     note: "ドリンクチケット利用可・撮影スポット",     detail: "流山本町エリアにある創作フレンチレストランです。当日はランチ営業を行っており、店内は撮影スポットとしてもご利用いただけます。また、当日お渡しするドリンクチケットにて、ドリンク1杯またはイベント限定の「流山白みりんフルーツソースかき氷」をお楽しみいただけます。", image: "/ChatErrant.jpeg", map: "https://maps.app.goo.gl/XPWSuMm8fijJqLkt6" },
+  { id: 4, name: "CHAT ERRANT", icon: "🍽️", tag: "協賛店", note: "ランチ営業・撮影スポット", detail: "流山本町エリアにある創作フレンチレストランです。当日はランチ営業を行っており、店内は撮影スポットとしてもご利用いただけます。", image: "/ChatErrant.jpeg", map: "https://maps.app.goo.gl/XPWSuMm8fijJqLkt6" },
   { id: 5, name: "万華鏡ミュージアム", icon: "🔮", tag: "撮影スポット", note: "狭いため、建物前のみでの撮影が良いと思います。", detail: "建物外観が撮影スポットです。館内は一般見学者への配慮をお願いします。", map: "https://maps.app.goo.gl/C1GoXzKYEUd7JiLx9" },
   { id: 6, name: "流山みりんミュージアム", icon: "🍶", tag: "撮影スポット", note: "施設内でも撮影可能です。", detail: "施設内部での撮影もOK。スタッフの案内に従ってください。", map: "https://maps.app.goo.gl/tAbXgPDHVjfuFDtQ6" },
   { id: 8, name: "流山線歩道橋", icon: "🌉", tag: "撮影スポット", note: "撮影の際は、安全確認をお願いします。", detail: "駅が近く、撮影スポットとして使用できます。", map: "https://maps.app.goo.gl/3sad4NCQfLbutbxs5" },
@@ -68,7 +68,6 @@ export default function App() {
   return (
     <div style={{ fontFamily: "'Helvetica Neue', sans-serif", background: "#f5f5f5", minHeight: "100vh", maxWidth: 480, margin: "0 auto", color: "#111" }}>
 
-      {/* Header */}
       <div style={{ background: "#111", color: "#fff", padding: "24px 20px 16px", position: "sticky", top: 0, zIndex: 100, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div onClick={() => setActiveTab("TOP")} style={{ cursor: "pointer" }}>
           <div style={{ fontSize: 11, letterSpacing: 3, color: "#aaa", marginBottom: 4 }}>COSPLAY EVENT</div>
@@ -82,7 +81,6 @@ export default function App() {
         </button>
       </div>
 
-      {/* Hamburger Menu */}
       {menuOpen && (
         <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", zIndex: 200 }}>
           <div onClick={() => setMenuOpen(false)} style={{ position: "absolute", width: "100%", height: "100%", background: "rgba(0,0,0,0.5)" }} />
@@ -95,10 +93,8 @@ export default function App() {
         </div>
       )}
 
-      {/* Content */}
-      <div style={{ padding: "20px 16px", paddingBottom: 40 }}>
+      <div style={{ padding: "20px 16px", paddingBottom: 100 }}>
 
-        {/* TOP */}
         {activeTab === "TOP" && (
           <div>
             <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: "32px 24px", marginBottom: 20, textAlign: "center" }}>
@@ -141,8 +137,8 @@ export default function App() {
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, fontSize: 12, color: "#555", lineHeight: 1.8, marginBottom: 12 }}>
               💡 流山市の歴史ある街並みを舞台にしたコスプレイベントです。近藤勇ゆかりの地や流鉄流山線など、唯一無二のロケーションをお楽しみください。
             </div>
+            <a href="https://livepocket.jp/e/ip399" target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "16px 0", fontSize: 15, fontWeight: 700, textDecoration: "none", marginBottom: 12, letterSpacing: 1 }}>🎟 チケット購入はこちら</a>
             <a href="mailto:layersjack.convention@gmail.com" style={{ display: "block", textAlign: "center", background: "#fff", color: "#111", border: "1px solid #ddd", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 12 }}>📧 お問い合わせはこちら</a>
-
             <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
               <a href="https://x.com/LJC_Nagareyama" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#111", color: "#fff", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>𝕏 公式アカウント</a>
               <a href="https://www.instagram.com/ljc_nagareyama" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>📷 Instagram</a>
@@ -160,7 +156,6 @@ export default function App() {
           </div>
         )}
 
-        {/* スケジュール */}
         {activeTab === "スケジュール" && (
           <div>
             <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>2026年6月28日（日）タイムスケジュール</div>
@@ -180,7 +175,6 @@ export default function App() {
           </div>
         )}
 
-        {/* スポット */}
         {activeTab === "スポット" && (
           <div>
             <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>撮影スポット・協賛店一覧</div>
@@ -218,7 +212,6 @@ export default function App() {
           </div>
         )}
 
-        {/* 更衣室 */}
         {activeTab === "更衣室" && (
           <div>
             <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: 20, marginBottom: 16, textAlign: "center" }}>
@@ -253,7 +246,6 @@ export default function App() {
           </div>
         )}
 
-        {/* アクセス */}
         {activeTab === "アクセス" && (
           <div>
             <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>会場へのアクセス</div>
@@ -299,19 +291,18 @@ export default function App() {
           </div>
         )}
 
-        {/* ルール */}
         {activeTab === "ルール" && (
           <div>
             <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 12, letterSpacing: 1 }}>📋 参加ルール・マナー</div>
             {[
-              { title: "📋 受付・身分証明書について", items: ["受付時に**身分証明書の確認**を行っています。あらかじめご了承ください", "参加中はリストバンドと身分証明書を必ず携帯してください", "スタッフからお声がけがあった際には、すぐにご提示ください"], warning: true },
+              { title: "📋 受付・身分証明書について", items: ["**受付時に身分証明書の確認**を行っています。あらかじめご了承ください", "参加中はリストバンドと身分証明書を必ず携帯してください", "スタッフからお声がけがあった際には、すぐにご提示ください"], warning: true },
               { title: "🎭 イベントコンセプト・マナー", items: ["当イベントは「コスプレを楽しむ」をコンセプトに、初心者から上級者まで安心して参加できる場を目指しています", "SNS上での誹謗中傷・他者のクオリティに関する否定的な発言は固くお断りします"], warning: false },
               { title: "🎥 公式撮影について", items: ["公式カメラマンによる動画撮影を予定しています", "撮影をご希望されない場合はスタッフまでお声がけください"], warning: false },
               { title: "🦁 大型コスプレ・キグルミ・ドールについて", items: ["更衣後に簡単な視界チェックを行います（アテンドがいる場合を除く）", "安全面で危険と判断した場合は**参加をお断りする場合があります**", "マスク・ヘッドは1分以内に脱着できる仕様であることをご確認ください"], warning: true },
               { title: "👘 仮装・羽織ものについて", items: ["仮装（羽織もの・帽子など）であっても、事務局の判断によりコスプレと認定する場合があります", "その際はコスプレ参加チケットのご購入をお願いします", "当日はスタッフよりお声がけする場合がありますのでご了承ください"], warning: false },
               { title: "⚔️ 長物・衣装小物について", items: ["1m以上の衣装小物を持って移動する際は**必ず袋やケースに入れてください**", "撮影可能スポットであっても、安全面を考慮しお控えいただく場合があります", "その際はスタッフの指示に従ってください"], warning: true },
+              { title: "📸 撮影マナー", items: ["撮影前に必ず相手の同意を得てください", "一般市民・観光客への配慮を忘れずに", "私有地・立入禁止区域には入らないこと"], warning: false },
               { title: "🚃 流鉄乗車ルール", items: ["乗車可能区間：流山駅〜馬橋駅", "降車は流山駅・馬橋駅のみ", "改札外に出られるのは流山駅のみ", "コスプレ乗車時間：11:00〜16:00", "駅ホームでの撮影は運行・一般利用客の妨げにならないよう注意", "車内での大声・迷惑行為は禁止"], warning: false },
-              { title: "👘 衣装・更衣について", items: ["更衣は男女それぞれのイベント専用更衣室内にて行ってください", "イベント専用更衣室以外での更衣が発覚した場合は、退場していただきます", "緊急非常時は異性スタッフが更衣室に立ち入ることがあります", "一般の方が不愉快な思いをする衣装と判断した場合は、更衣室にて着替えていただきます", "武器や小道具は長さや形状に関わらず、撮影時以外には袋等に入れて移動・保管してください"], warning: false },
               { title: "🚫 禁止行為", items: ["更衣室以外での着替えやメイク", "屋内でのスプレー類の使用", "コスプレをしたままの来退場", "現行の国家機関衣装の着用", "下着に間違われやすい衣装", "会場内でのウィッグカット", "実際に音を出す行為", "スピーカー等による過度な音出し", "着ぐるみ・大型衣装での1人移動（アテンド同行必須、アテンド1人につき2体まで）", "他の方に怪我をさせる危険のある物や、周囲を汚す・破損させる恐れのある物の持ち込み"], warning: true },
               { title: "📱 SNS投稿について", items: ["公式ハッシュタグ：#流山本町 #レイヤーズジャック をつけて投稿しよう", "他の参加者を映した写真は同意を得てから投稿", "イベント公式の動画撮影にご協力ください"], warning: false },
               { title: "⚠️ 全般的な注意", items: ["ゴミは必ず持ち帰るか指定の場所へ", "スタッフの指示に従ってください", "体調不良の場合はスタッフへ申し出てください"], warning: false },
@@ -330,7 +321,6 @@ export default function App() {
           </div>
         )}
 
-        {/* FAQ */}
         {activeTab === "FAQ" && (
           <div>
             <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>よくある質問</div>
@@ -350,6 +340,26 @@ export default function App() {
         )}
 
       </div>
+
+      <a href="https://livepocket.jp/e/ip399" target="_blank" rel="noreferrer" style={{
+        position: "fixed",
+        bottom: 20,
+        left: "50%",
+        transform: "translateX(-50%)",
+        background: "#111",
+        color: "#fff",
+        border: "2px solid #fff",
+        borderRadius: 30,
+        padding: "14px 32px",
+        fontSize: 15,
+        fontWeight: 700,
+        textDecoration: "none",
+        letterSpacing: 1,
+        boxShadow: "0 4px 16px rgba(0,0,0,0.25)",
+        zIndex: 300,
+        whiteSpace: "nowrap",
+      }}>🎟 チケット購入はこちら</a>
+
     </div>
   );
 }
