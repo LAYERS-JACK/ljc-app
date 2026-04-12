@@ -181,6 +181,10 @@ export default function App() {
                 </div>
               ))}
             </div>
+            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8, marginBottom: 12, textAlign: "center" }}>
+              📲 このページをホーム画面に追加すると<br />いつでもすぐにアクセスできます！
+            </div>
+
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, marginBottom: 12 }}>
               <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10 }}>💴 料金一覧</div>
               {[
