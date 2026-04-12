@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 const spots = [
-  { id: 1, name: "近藤勇陣屋跡", icon: "🏯", tag: "撮影スポット", note: "室内撮影も可能になりました。", detail: "近藤勇ゆかりの歴史的スポット。屋外・室内ともに撮影OK。", map: "https://maps.app.goo.gl/mA4rqrb5vQbQ4FKVA" },
-  { id: 2, name: "浅間神社", icon: "⛩️", tag: "撮影スポット", note: "撮影可能。トイレもお借りできます。", detail: "境内での撮影が可能です。トイレ利用もOK。参拝者への配慮をお願いします。", image: "/sengen01.jpg", map: "https://maps.app.goo.gl/WyXJqtBiWors2EfA6" },
-  { id: 3, name: "流山駅（流鉄流山線）", icon: "🚃", tag: "撮影・乗車", note: "乗車・撮影可能。利用者の邪魔にならない配慮でお願いします。", detail: "コスプレ乗車可能区間：流山駅〜馬橋駅。降車は流山駅・馬橋駅のみ。改札外に出られるのは流山駅のみ。コスプレ乗車時間：11:00〜16:00。往復乗車券440円、一日フリー乗車券500円。", image: "/nagareyamaeki.jpg", map: "https://maps.app.goo.gl/4XHTUziQm3Ewwzrx5" },
-  { id: 4, name: "CHAT ERRANT", icon: "🍽️", tag: "協賛店", note: "ランチ営業・撮影スポット", detail: "流山本町エリアにある創作フレンチレストランです。当日はランチ営業を行っており、店内は撮影スポットとしてもご利用いただけます。", image: "/ChatErrant.jpeg", map: "https://maps.app.goo.gl/XPWSuMm8fijJqLkt6" },
-  { id: 5, name: "万華鏡ミュージアム", icon: "🔮", tag: "撮影スポット", note: "狭いため、建物前のみでの撮影が良いと思います。", detail: "建物外観が撮影スポットです。館内は一般見学者への配慮をお願いします。", map: "https://maps.app.goo.gl/C1GoXzKYEUd7JiLx9" },
-  { id: 6, name: "流山みりんミュージアム", icon: "🍶", tag: "撮影スポット", note: "施設内でも撮影可能です。", detail: "施設内部での撮影もOK。スタッフの案内に従ってください。", image: "/mirin01.jpg", map: "https://maps.app.goo.gl/tAbXgPDHVjfuFDtQ6" },
-  { id: 8, name: "流山線歩道橋", icon: "🌉", tag: "撮影スポット", note: "撮影の際は、安全確認をお願いします。", detail: "駅が近く、撮影スポットとして使用できます。", map: "https://maps.app.goo.gl/3sad4NCQfLbutbxs5" },
-  { id: 7, name: "江戸川土手", icon: "🌊", tag: "撮影スポット", note: "全域で撮影可能です。", detail: "広大な土手エリアを自由に使えます。自然光を活かした撮影に最適。", map: "https://maps.app.goo.gl/n85F3pgeVYoRADuN6", map2: "https://maps.app.goo.gl/99h5UiiE3TyGNwvv7", map3: "https://maps.app.goo.gl/YqpCRJ7d3aC6hpVs7" },
+  { id: 1, name: "近藤勇陣屋跡", icon: "🏯", tag: "撮影スポット", note: "室内撮影も可能になりました。", detail: "近藤勇ゆかりの歴史的スポット。屋外・室内ともに撮影OK。", images: ["/jinnyaato01.jpg", "/jinyaato02.jpg"], map: "https://maps.app.goo.gl/mA4rqrb5vQbQ4FKVA" },
+  { id: 2, name: "浅間神社", icon: "⛩️", tag: "撮影スポット", note: "撮影可能。トイレもお借りできます。", detail: "境内での撮影が可能です。トイレ利用もOK。参拝者への配慮をお願いします。", images: ["/sengen01.jpg", "/sengen02.jpg", "/sengen03.jpg"], map: "https://maps.app.goo.gl/WyXJqtBiWors2EfA6" },
+  { id: 3, name: "流山駅（流鉄流山線）", icon: "🚃", tag: "撮影・乗車", note: "乗車・撮影可能。利用者の邪魔にならない配慮でお願いします。", detail: "コスプレ乗車可能区間：流山駅〜馬橋駅。降車は流山駅・馬橋駅のみ。改札外に出られるのは流山駅のみ。コスプレ乗車時間：11:00〜16:00。往復乗車券440円、一日フリー乗車券500円。", images: ["/nagareyamaeki.jpg"], map: "https://maps.app.goo.gl/4XHTUziQm3Ewwzrx5" },
+  { id: 4, name: "CHAT ERRANT", icon: "🍽️", tag: "協賛店", note: "ランチ営業・撮影スポット", detail: "流山本町エリアにある創作フレンチレストランです。当日はランチ営業を行っており、店内は撮影スポットとしてもご利用いただけます。", images: ["/chaterrant01.jpg"], map: "https://maps.app.goo.gl/XPWSuMm8fijJqLkt6" },
+  { id: 5, name: "万華鏡ミュージアム", icon: "🔮", tag: "撮影スポット", note: "狭いため、建物前のみでの撮影が良いと思います。", detail: "建物外観が撮影スポットです。館内は一般見学者への配慮をお願いします。", images: ["/mangekyou01.jpg"], map: "https://maps.app.goo.gl/C1GoXzKYEUd7JiLx9" },
+  { id: 6, name: "流山みりんミュージアム", icon: "🍶", tag: "撮影スポット", note: "施設内でも撮影可能です。", detail: "施設内部での撮影もOK。スタッフの案内に従ってください。", images: ["/mirin01.jpg"], map: "https://maps.app.goo.gl/tAbXgPDHVjfuFDtQ6" },
+  { id: 8, name: "流山線歩道橋", icon: "🌉", tag: "撮影スポット", note: "撮影の際は、安全確認をお願いします。", detail: "駅が近く、撮影スポットとして使用できます。", images: ["/hodokyou01.jpg", "/hodoukyou02.jpg", "/hodoukyou03.jpg", "/hodoukyou04.jpg", "/hodoukyou05.jpg"], map: "https://maps.app.goo.gl/3sad4NCQfLbutbxs5" },
+  { id: 7, name: "江戸川土手", icon: "🌊", tag: "撮影スポット", note: "全域で撮影可能です。", detail: "広大な土手エリアを自由に使えます。自然光を活かした撮影に最適。", images: ["/edogawa01.jpg", "/edogawa02.jpg", "/edogawa03.jpg", "/edogawa04.jpg", "/edogawa05.jpg"], map: "https://maps.app.goo.gl/n85F3pgeVYoRADuN6", map2: "https://maps.app.goo.gl/99h5UiiE3TyGNwvv7", map3: "https://maps.app.goo.gl/YqpCRJ7d3aC6hpVs7" },
 ];
 
 const schedule = [
@@ -31,7 +31,7 @@ const faqs = [
   ]},
   { category: "衣装・更衣について", items: [
     { q: "更衣室の利用に追加料金はかかりますか？", a: "参加費（3,500円）に含まれていますので追加料金はかかりません。" },
-    { q: "更衣室に鍵付きロッカーはありますか？", a: "鍵付きロッカーのご用意はありませんが、クローク（500円）をご利用いただけます。貴重品は各自で管理してください。" },
+    { q: "更衣室に鍵付きロッカーはありますか？", a: "鍵付きロッカーのご用意はありませんが、クローク（500円・当日現金払い）をご利用いただけます。貴重品は各自で管理してください。" },
     { q: "衣装のサイズや種類に制限はありますか？", a: "着ぐるみや大型衣装の場合はアテンドの同行が必要です。また禁止衣装がありますので、ルールページをご確認ください。" },
   ]},
   { category: "撮影について", items: [
@@ -55,15 +55,29 @@ const tagColor = (tag) => {
   return "#333";
 };
 
+function ImageSlider({ images, name }) {
+  const [idx, setIdx] = useState(0);
+  if (!images || images.length === 0) return null;
+  return (
+    <div style={{ position: "relative", marginBottom: 10 }}>
+      <img src={images[idx]} alt={name} style={{ width: "100%", borderRadius: 8, display: "block" }} />
+      {images.length > 1 && (
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 6 }}>
+          <button onClick={() => setIdx(i => (i - 1 + images.length) % images.length)} style={{ background: "#111", color: "#fff", border: "none", borderRadius: 6, padding: "4px 12px", fontSize: 16, cursor: "pointer" }}>‹</button>
+          <span style={{ fontSize: 12, color: "#888" }}>{idx + 1} / {images.length}</span>
+          <button onClick={() => setIdx(i => (i + 1) % images.length)} style={{ background: "#111", color: "#fff", border: "none", borderRadius: 6, padding: "4px 12px", fontSize: 16, cursor: "pointer" }}>›</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function App() {
   const [activeTab, setActiveTab] = useState("TOP");
   const [openSpot, setOpenSpot] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleTab = (t) => {
-    setActiveTab(t);
-    setMenuOpen(false);
-  };
+  const handleTab = (t) => { setActiveTab(t); setMenuOpen(false); };
 
   return (
     <div style={{ fontFamily: "'Helvetica Neue', sans-serif", background: "#f5f5f5", minHeight: "100vh", maxWidth: 480, margin: "0 auto", color: "#111" }}>
@@ -138,7 +152,6 @@ export default function App() {
               💡 流山市の歴史ある街並みを舞台にしたコスプレイベントです。近藤勇ゆかりの地や流鉄流山線など、唯一無二のロケーションをお楽しみください。
             </div>
             <a href="https://www.google.com/maps/d/edit?mid=1w5oyodlavOqjWNFjJj6C3ZmEKcGUyrI&usp=sharing" target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 12 }}>🗺 イベントエリアマップを見る</a>
-
             <a href="https://livepocket.jp/e/ip399" target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "16px 0", fontSize: 15, fontWeight: 700, textDecoration: "none", marginBottom: 12, letterSpacing: 1 }}>🎟 チケット購入はこちら</a>
             <a href="mailto:layersjack.convention@gmail.com" style={{ display: "block", textAlign: "center", background: "#fff", color: "#111", border: "1px solid #ddd", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 12 }}>📧 お問い合わせはこちら</a>
             <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
@@ -194,7 +207,7 @@ export default function App() {
                 </div>
                 {openSpot === spot.id && (
                   <div style={{ background: "#f9f9f9", border: "1px solid #ddd", borderTop: "none", borderRadius: "0 0 10px 10px", padding: "12px 16px", marginTop: -8, marginBottom: 8, fontSize: 13, lineHeight: 1.8, color: "#333" }}>
-                    {spot.image && <img src={spot.image} alt={spot.name} style={{ width: "100%", borderRadius: 8, marginBottom: 10 }} />}
+                    <ImageSlider images={spot.images} name={spot.name} />
                     <div style={{ marginBottom: 6 }}>{spot.detail}</div>
                     {spot.map && !spot.map2 && (
                       <a href={spot.map} target="_blank" rel="noreferrer" style={{ display: "inline-block", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 14px", fontSize: 12, fontWeight: 600, marginBottom: 8, textDecoration: "none" }}>🗺 Google マップで見る</a>
@@ -344,22 +357,10 @@ export default function App() {
       </div>
 
       <a href="https://livepocket.jp/e/ip399" target="_blank" rel="noreferrer" style={{
-        position: "fixed",
-        bottom: 20,
-        left: "50%",
-        transform: "translateX(-50%)",
-        background: "#111",
-        color: "#fff",
-        border: "2px solid #fff",
-        borderRadius: 30,
-        padding: "14px 32px",
-        fontSize: 15,
-        fontWeight: 700,
-        textDecoration: "none",
-        letterSpacing: 1,
-        boxShadow: "0 4px 16px rgba(0,0,0,0.25)",
-        zIndex: 300,
-        whiteSpace: "nowrap",
+        position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)",
+        background: "#111", color: "#fff", border: "2px solid #fff", borderRadius: 30,
+        padding: "14px 32px", fontSize: 15, fontWeight: 700, textDecoration: "none",
+        letterSpacing: 1, boxShadow: "0 4px 16px rgba(0,0,0,0.25)", zIndex: 300, whiteSpace: "nowrap",
       }}>🎟 チケット購入はこちら</a>
 
     </div>
