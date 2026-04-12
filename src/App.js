@@ -184,7 +184,8 @@ export default function App() {
           <div>
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10, letterSpacing: 1 }}>📌 イベント概要</div>
-              {[
+              <img src="/hukushi01.jpg" alt="流山福祉会館" style={{ width: "100%", borderRadius: 8, marginBottom: 16 }} />
+            {[
                 ["📅 開催日", "2026年6月28日（日）"],
                 ["🕐 開催時間", "11:00〜17:00"],
                 ["👘 更衣室完全撤収", "18:30"],
@@ -283,6 +284,7 @@ export default function App() {
               <div style={{ fontWeight: 700, fontSize: 16 }}>流山福祉会館</div>
               <div style={{ fontSize: 12, color: "#aaa", marginTop: 4 }}>公式更衣室</div>
             </div>
+            <img src="/hukushi01.jpg" alt="流山福祉会館" style={{ width: "100%", borderRadius: 8, marginBottom: 16 }} />
             {[
               ["📍 住所", "〒270-0164 千葉県流山市流山２丁目１０２"],
               ["🕐 通常利用時間", "11:00〜17:00"],
@@ -303,10 +305,13 @@ export default function App() {
                 <div>・荷物が多い場合は追加料金が発生します</div>
               </div>
             </div>
-            <a href="https://maps.app.goo.gl/sPNcwtP9Q7PvRiP79" target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "14px 16px", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 8 }}>🗺 Google マップで見る</a>
-            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8 }}>
-              ⚠️ 更衣室は参加者のみ利用可能です。混雑状況によりお待ちいただく場合があります。
+            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8, marginBottom: 8 }}>
+              ⚠️ 更衣室は参加者のみ利用可能です。混雑状況によりお待ちいただく場合があります。<br />
+              ・館内ではスタッフの指示に従ってください。<br />
+              ・土足禁止エリアがあります。
             </div>
+            <a href="https://maps.app.goo.gl/sPNcwtP9Q7PvRiP79" target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "14px 16px", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 8 }}>🗺 Google マップで見る</a>
+
           </div>
         )}
 
