@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const spots = [
   { id: 1, name: "近藤勇陣屋跡", icon: "🏯", tag: "撮影スポット", note: "室内撮影も可能になりました。", detail: "近藤勇ゆかりの歴史的スポット。屋外・室内ともに撮影OK。", images: ["/jinnyaato01.jpg", "/jinyaato02.jpg"], map: "https://maps.app.goo.gl/mA4rqrb5vQbQ4FKVA" },
@@ -10,6 +10,8 @@ const spots = [
   { id: 8, name: "流山線歩道橋", icon: "🌉", tag: "撮影スポット", note: "撮影の際は、安全確認をお願いします。", detail: "駅が近く、撮影スポットとして使用できます。", images: ["/hodokyou01.jpg", "/hodoukyou02.jpg", "/hodoukyou03.jpg", "/hodoukyou04.jpg", "/hodoukyou05.jpg"], map: "https://maps.app.goo.gl/3sad4NCQfLbutbxs5" },
   { id: 7, name: "江戸川土手", icon: "🌊", tag: "撮影スポット", note: "全域で撮影可能です。", detail: "広大な土手エリアを自由に使えます。自然光を活かした撮影に最適。", images: ["/edogawa01.jpg", "/edogawa02.jpg", "/edogawa03.jpg", "/edogawa04.jpg", "/edogawa05.jpg"], map: "https://maps.app.goo.gl/n85F3pgeVYoRADuN6", map2: "https://maps.app.goo.gl/99h5UiiE3TyGNwvv7", map3: "https://maps.app.goo.gl/YqpCRJ7d3aC6hpVs7" },
 ];
+
+const allImages = spots.flatMap(s => s.images.map(img => ({ src: img, name: s.name })));
 
 const schedule = [
   { time: "10:00〜", label: "アーリー更衣室利用受付開始", icon: "⭐", note: "アーリー利用は+500円" },
@@ -48,7 +50,7 @@ const faqs = [
   ]},
 ];
 
-const tabs = ["TOP", "スケジュール", "スポット", "更衣室", "アクセス", "ルール", "FAQ"];
+const tabs = ["TOP", "イベント概要", "スケジュール", "スポット", "更衣室", "アクセス", "ルール", "FAQ"];
 const tagColor = (tag) => {
   if (tag === "協賛店") return "#555";
   if (tag === "撮影・乗車") return "#222";
@@ -61,12 +63,7 @@ function ImageSlider({ images, name }) {
   if (!images || images.length === 0) return null;
   return (
     <div style={{ position: "relative", marginBottom: 10 }}>
-      <img
-        src={images[idx]}
-        alt={name}
-        onClick={() => setModal(true)}
-        style={{ width: "100%", borderRadius: 8, display: "block", cursor: "zoom-in" }}
-      />
+      <img src={images[idx]} alt={name} onClick={() => setModal(true)} style={{ width: "100%", borderRadius: 8, display: "block", cursor: "zoom-in" }} />
       {images.length > 1 && (
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 6 }}>
           <button onClick={() => setIdx(i => (i - 1 + images.length) % images.length)} style={{ background: "#111", color: "#fff", border: "none", borderRadius: 6, padding: "4px 12px", fontSize: 16, cursor: "pointer" }}>‹</button>
@@ -75,36 +72,9 @@ function ImageSlider({ images, name }) {
         </div>
       )}
       {modal && (
-        <div
-          onClick={() => setModal(false)}
-          style={{
-            position: "fixed", top: 0, left: 0, width: "100%", height: "100%",
-            background: "rgba(0,0,0,0.95)", zIndex: 1000,
-            display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-          }}
-        >
-          <button
-            onClick={() => setModal(false)}
-            style={{
-              position: "fixed", top: 20, right: 20,
-              background: "#fff", color: "#111", border: "none",
-              borderRadius: "50%", width: 48, height: 48,
-              fontSize: 22, fontWeight: 700, cursor: "pointer",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.5)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              zIndex: 1001,
-            }}
-          >✕</button>
-          <img
-            src={images[idx]}
-            alt={name}
-            onClick={e => e.stopPropagation()}
-            style={{
-              maxWidth: "95vw", maxHeight: "85vh",
-              borderRadius: 8, objectFit: "contain",
-              touchAction: "pinch-zoom",
-            }}
-          />
+        <div onClick={() => setModal(false)} style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(0,0,0,0.95)", zIndex: 1000, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+          <button onClick={() => setModal(false)} style={{ position: "fixed", top: 20, right: 20, background: "#fff", color: "#111", border: "none", borderRadius: "50%", width: 48, height: 48, fontSize: 22, fontWeight: 700, cursor: "pointer", boxShadow: "0 2px 8px rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1001 }}>✕</button>
+          <img src={images[idx]} alt={name} onClick={e => e.stopPropagation()} style={{ maxWidth: "95vw", maxHeight: "85vh", borderRadius: 8, objectFit: "contain", touchAction: "pinch-zoom" }} />
           {images.length > 1 && (
             <div style={{ display: "flex", gap: 16, marginTop: 16 }}>
               <button onClick={e => { e.stopPropagation(); setIdx(i => (i - 1 + images.length) % images.length); }} style={{ background: "#fff", color: "#111", border: "none", borderRadius: 6, padding: "8px 20px", fontSize: 20, cursor: "pointer", fontWeight: 700 }}>‹</button>
@@ -114,6 +84,27 @@ function ImageSlider({ images, name }) {
           )}
         </div>
       )}
+    </div>
+  );
+}
+
+function TopSlideshow() {
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => setIdx(i => (i + 1) % allImages.length), 3000);
+    return () => clearInterval(timer);
+  }, []);
+  return (
+    <div style={{ position: "relative", width: "100%", borderRadius: 12, overflow: "hidden", marginBottom: 16 }}>
+      <img src={allImages[idx].src} alt={allImages[idx].name} style={{ width: "100%", height: 240, objectFit: "cover", display: "block" }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(transparent, rgba(0,0,0,0.7))", padding: "20px 16px 12px" }}>
+        <div style={{ color: "#fff", fontSize: 12, fontWeight: 600 }}>📍 {allImages[idx].name}</div>
+      </div>
+      <div style={{ position: "absolute", bottom: 8, right: 12, display: "flex", gap: 4 }}>
+        {allImages.map((_, i) => (
+          <div key={i} onClick={() => setIdx(i)} style={{ width: i === idx ? 16 : 6, height: 6, borderRadius: 3, background: i === idx ? "#fff" : "rgba(255,255,255,0.5)", cursor: "pointer", transition: "width 0.3s" }} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -157,11 +148,40 @@ export default function App() {
 
         {activeTab === "TOP" && (
           <div>
-            <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: "32px 24px", marginBottom: 20, textAlign: "center" }}>
+            <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: "24px 24px 20px", marginBottom: 16, textAlign: "center" }}>
               <img src="/ljc_vo1.jpeg" alt="LAYERS JACK CONVENTION" style={{ width: "100%", borderRadius: 8, marginBottom: 12 }} />
               <div style={{ fontSize: 22, fontWeight: 700, letterSpacing: 2, marginBottom: 4 }}>LAYERS JACK</div>
               <div style={{ fontSize: 13, color: "#aaa", letterSpacing: 3 }}>CONVENTION</div>
             </div>
+
+            <TopSlideshow />
+
+            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8, marginBottom: 12, textAlign: "center" }}>
+              📲 このページをホーム画面に追加すると<br />いつでもすぐにアクセスできます！
+            </div>
+
+            <a href="https://www.google.com/maps/d/edit?mid=1w5oyodlavOqjWNFjJj6C3ZmEKcGUyrI&usp=sharing" target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 12 }}>🗺 イベントエリアマップを見る</a>
+            <a href="https://livepocket.jp/e/ip399" target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "16px 0", fontSize: 15, fontWeight: 700, textDecoration: "none", marginBottom: 12, letterSpacing: 1 }}>🎟 チケット購入はこちら</a>
+            <a href="mailto:layersjack.convention@gmail.com" style={{ display: "block", textAlign: "center", background: "#fff", color: "#111", border: "1px solid #ddd", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 12 }}>📧 お問い合わせはこちら</a>
+            <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
+              <a href="https://x.com/LJC_Nagareyama" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#111", color: "#fff", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>𝕏 公式アカウント</a>
+              <a href="https://www.instagram.com/ljc_nagareyama" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>📷 Instagram</a>
+            </div>
+            <div style={{ background: "#111", color: "#fff", borderRadius: 10, padding: 16, textAlign: "center" }}>
+              <div style={{ fontSize: 12, color: "#aaa", marginBottom: 8, letterSpacing: 1 }}>📣 公式ハッシュタグ</div>
+              <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>#流山本町</div>
+              <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1, marginBottom: 12 }}>#レイヤーズジャック</div>
+              <button onClick={() => { navigator.clipboard.writeText("#流山本町 #レイヤーズジャック"); alert("ハッシュタグをコピーしました！"); }} style={{ background: "#333", color: "#fff", border: "none", borderRadius: 6, padding: "8px 20px", fontSize: 12, cursor: "pointer", fontWeight: 600 }}>📋 まとめてコピー</button>
+              <div style={{ marginTop: 12, borderTop: "1px solid #333", paddingTop: 12, fontSize: 12, color: "#aaa", lineHeight: 1.8 }}>
+                <div>SNS投稿時は公式ハッシュタグをつけてシェアしよう！</div>
+                <div>他の参加者を映した写真は必ず同意を得てから投稿しましょう。</div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === "イベント概要" && (
+          <div>
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10, letterSpacing: 1 }}>📌 イベント概要</div>
               {[
@@ -181,10 +201,6 @@ export default function App() {
                 </div>
               ))}
             </div>
-            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8, marginBottom: 12, textAlign: "center" }}>
-              📲 このページをホーム画面に追加すると<br />いつでもすぐにアクセスできます！
-            </div>
-
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, marginBottom: 12 }}>
               <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10 }}>💴 料金一覧</div>
               {[
@@ -198,25 +214,8 @@ export default function App() {
                 </div>
               ))}
             </div>
-            <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, fontSize: 12, color: "#555", lineHeight: 1.8, marginBottom: 12 }}>
+            <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, fontSize: 12, color: "#555", lineHeight: 1.8 }}>
               💡 流山市の歴史ある街並みを舞台にしたコスプレイベントです。近藤勇ゆかりの地や流鉄流山線など、唯一無二のロケーションをお楽しみください。
-            </div>
-            <a href="https://www.google.com/maps/d/edit?mid=1w5oyodlavOqjWNFjJj6C3ZmEKcGUyrI&usp=sharing" target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 12 }}>🗺 イベントエリアマップを見る</a>
-            <a href="https://livepocket.jp/e/ip399" target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "16px 0", fontSize: 15, fontWeight: 700, textDecoration: "none", marginBottom: 12, letterSpacing: 1 }}>🎟 チケット購入はこちら</a>
-            <a href="mailto:layersjack.convention@gmail.com" style={{ display: "block", textAlign: "center", background: "#fff", color: "#111", border: "1px solid #ddd", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 12 }}>📧 お問い合わせはこちら</a>
-            <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
-              <a href="https://x.com/LJC_Nagareyama" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#111", color: "#fff", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>𝕏 公式アカウント</a>
-              <a href="https://www.instagram.com/ljc_nagareyama" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>📷 Instagram</a>
-            </div>
-            <div style={{ background: "#111", color: "#fff", borderRadius: 10, padding: 16, textAlign: "center" }}>
-              <div style={{ fontSize: 12, color: "#aaa", marginBottom: 8, letterSpacing: 1 }}>📣 公式ハッシュタグ</div>
-              <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>#流山本町</div>
-              <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1, marginBottom: 12 }}>#レイヤーズジャック</div>
-              <button onClick={() => { navigator.clipboard.writeText("#流山本町 #レイヤーズジャック"); alert("ハッシュタグをコピーしました！"); }} style={{ background: "#333", color: "#fff", border: "none", borderRadius: 6, padding: "8px 20px", fontSize: 12, cursor: "pointer", fontWeight: 600 }}>📋 まとめてコピー</button>
-              <div style={{ marginTop: 12, borderTop: "1px solid #333", paddingTop: 12, fontSize: 12, color: "#aaa", lineHeight: 1.8 }}>
-                <div>SNS投稿時は公式ハッシュタグをつけてシェアしよう！</div>
-                <div>他の参加者を映した写真は必ず同意を得てから投稿しましょう。</div>
-              </div>
             </div>
           </div>
         )}
