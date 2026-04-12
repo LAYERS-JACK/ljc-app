@@ -57,15 +57,61 @@ const tagColor = (tag) => {
 
 function ImageSlider({ images, name }) {
   const [idx, setIdx] = useState(0);
+  const [modal, setModal] = useState(false);
   if (!images || images.length === 0) return null;
   return (
     <div style={{ position: "relative", marginBottom: 10 }}>
-      <img src={images[idx]} alt={name} style={{ width: "100%", borderRadius: 8, display: "block" }} />
+      <img
+        src={images[idx]}
+        alt={name}
+        onClick={() => setModal(true)}
+        style={{ width: "100%", borderRadius: 8, display: "block", cursor: "zoom-in" }}
+      />
       {images.length > 1 && (
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 6 }}>
           <button onClick={() => setIdx(i => (i - 1 + images.length) % images.length)} style={{ background: "#111", color: "#fff", border: "none", borderRadius: 6, padding: "4px 12px", fontSize: 16, cursor: "pointer" }}>‹</button>
           <span style={{ fontSize: 12, color: "#888" }}>{idx + 1} / {images.length}</span>
           <button onClick={() => setIdx(i => (i + 1) % images.length)} style={{ background: "#111", color: "#fff", border: "none", borderRadius: 6, padding: "4px 12px", fontSize: 16, cursor: "pointer" }}>›</button>
+        </div>
+      )}
+      {modal && (
+        <div
+          onClick={() => setModal(false)}
+          style={{
+            position: "fixed", top: 0, left: 0, width: "100%", height: "100%",
+            background: "rgba(0,0,0,0.95)", zIndex: 1000,
+            display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+          }}
+        >
+          <button
+            onClick={() => setModal(false)}
+            style={{
+              position: "fixed", top: 20, right: 20,
+              background: "#fff", color: "#111", border: "none",
+              borderRadius: "50%", width: 48, height: 48,
+              fontSize: 22, fontWeight: 700, cursor: "pointer",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.5)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              zIndex: 1001,
+            }}
+          >✕</button>
+          <img
+            src={images[idx]}
+            alt={name}
+            onClick={e => e.stopPropagation()}
+            style={{
+              maxWidth: "95vw", maxHeight: "85vh",
+              borderRadius: 8, objectFit: "contain",
+              touchAction: "pinch-zoom",
+            }}
+          />
+          {images.length > 1 && (
+            <div style={{ display: "flex", gap: 16, marginTop: 16 }}>
+              <button onClick={e => { e.stopPropagation(); setIdx(i => (i - 1 + images.length) % images.length); }} style={{ background: "#fff", color: "#111", border: "none", borderRadius: 6, padding: "8px 20px", fontSize: 20, cursor: "pointer", fontWeight: 700 }}>‹</button>
+              <span style={{ color: "#fff", fontSize: 14, display: "flex", alignItems: "center" }}>{idx + 1} / {images.length}</span>
+              <button onClick={e => { e.stopPropagation(); setIdx(i => (i + 1) % images.length); }} style={{ background: "#fff", color: "#111", border: "none", borderRadius: 6, padding: "8px 20px", fontSize: 20, cursor: "pointer", fontWeight: 700 }}>›</button>
+            </div>
+          )}
         </div>
       )}
     </div>
