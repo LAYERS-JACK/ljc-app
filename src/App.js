@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const spots = [
   { id: 1, name: "近藤勇陣屋跡", icon: "🏯", tag: "撮影スポット", note: "室内撮影も可能になりました。\n・施設の判断により、入場をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・本格的な撮影はご遠慮ください。", detail: "近藤勇ゆかりの歴史的スポット。屋外・室内ともに撮影OK。", images: ["/jinnyaato01.jpg", "/jinyaato02.jpg"], map: "https://maps.app.goo.gl/mA4rqrb5vQbQ4FKVA" },
   { id: 2, name: "浅間神社", icon: "⛩️", tag: "撮影スポット", note: "撮影可能。トイレもお借りできます。\n・施設の道具や設備は許可なく使用、移動させないでください。\n・建築物に登る、寄りかかる行為はおやめください。\n・当日の状況により、撮影時間を制限させていただく場合があります。", detail: "境内での撮影が可能です。トイレ利用もOK。参拝者への配慮をお願いします。", images: ["/sengen01.jpg", "/sengen02.jpg", "/sengen03.jpg"], map: "https://maps.app.goo.gl/WyXJqtBiWors2EfA6" },
-  { id: 3, name: "流山駅（流鉄流山線）", icon: "🚃", tag: "撮影・乗車", note: "乗車・撮影可能。利用者の邪魔にならない配慮でお願いします。\n・一般の方も通行・利用されます。通行の妨げとならないようご注意ください。", detail: "コスプレ乗車可能区間：流山駅〜馬橋駅。降車は流山駅・馬橋駅のみ。改札外に出られるのは流山駅のみ。コスプレ乗車時間：11:00〜16:00。往復乗車券440円、一日フリー乗車券500円。", images: ["/nagareyamaeki.jpg"], map: "https://maps.app.goo.gl/4XHTUziQm3Ewwzrx5" },
+  { id: 3, name: "流山駅（流鉄流山線）", icon: "🚃", tag: "撮影・乗車", note: "近日公開", detail: "近日公開", images: ["/nagareyamaeki.jpg"], map: "https://maps.app.goo.gl/4XHTUziQm3Ewwzrx5" },
   { id: 4, name: "CHAT ERRANT", icon: "🍽️", tag: "協賛店", note: "ランチ営業・撮影スポット\n・店舗の判断により、入店をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・本格的な撮影はご遠慮ください。", detail: "流山本町エリアにある創作フレンチレストランです。当日はランチ営業を行っており、店内は撮影スポットとしてもご利用いただけます。", images: ["/chaterrant01.jpg"], map: "https://maps.app.goo.gl/XPWSuMm8fijJqLkt6" },
   { id: 5, name: "万華鏡ミュージアム", icon: "🔮", tag: "撮影スポット", note: "狭いため、建物前のみでの撮影が良いと思います。\n・施設の判断により、入場をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・本格的な撮影はご遠慮ください。\n・買い物目的以外での入店、商品の取り扱いはご遠慮ください。", detail: "建物外観が撮影スポットです。館内は一般見学者への配慮をお願いします。", images: ["/mangekyou01.jpg"], map: "https://maps.app.goo.gl/C1GoXzKYEUd7JiLx9" },
   { id: 6, name: "流山みりんミュージアム", icon: "🍶", tag: "撮影スポット", note: "施設内でも撮影可能です。\n・施設の判断により、入場をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・買い物目的以外での、商品の取り扱いはご遠慮ください。", detail: "施設内部での撮影もOK。スタッフの案内に従ってください。", images: ["/mirin01.jpg"], map: "https://maps.app.goo.gl/tAbXgPDHVjfuFDtQ6" },
@@ -340,19 +340,7 @@ export default function App() {
             </div>
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, marginBottom: 8 }}>
               <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10 }}>🚃 流鉄流山線 コスプレ乗車情報</div>
-              {[
-                ["乗車可能区間", "流山駅〜馬橋駅"],
-                ["降車可能駅", "流山駅・馬橋駅のみ"],
-                ["改札外に出られる駅", "流山駅のみ"],
-                ["コスプレ乗車時間", "11:00〜16:00"],
-                ["往復乗車券", "440円"],
-                ["一日フリー乗車券", "500円（お得！）"],
-              ].map(([k, v]) => (
-                <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", borderBottom: "1px solid #f0f0f0", fontSize: 13 }}>
-                  <span style={{ color: "#888" }}>{k}</span>
-                  <span style={{ fontWeight: 500 }}>{v}</span>
-                </div>
-              ))}
+              <div style={{ fontSize: 13, color: "#888", textAlign: "center", padding: "16px 0" }}>近日公開</div>
             </div>
             <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8 }}>
               ⚠️ 会場周辺は混雑が予想されます。できるだけ電車でのご来場をお願いします。
@@ -371,7 +359,6 @@ export default function App() {
               { title: "👘 仮装・羽織ものについて", items: ["仮装（羽織もの・帽子など）であっても、事務局の判断によりコスプレと認定する場合があります", "その際はコスプレ参加チケットのご購入をお願いします", "当日はスタッフよりお声がけする場合がありますのでご了承ください"], warning: false },
               { title: "⚔️ 長物・衣装小物について", items: ["1m以上の衣装小物を持って移動する際は**必ず袋やケースに入れてください**", "撮影可能スポットであっても、安全面を考慮しお控えいただく場合があります", "その際はスタッフの指示に従ってください"], warning: true },
               { title: "📸 撮影マナー", items: ["撮影前に必ず相手の同意を得てください", "一般市民・観光客への配慮を忘れずに", "私有地・立入禁止区域には入らないこと"], warning: false },
-              { title: "🚃 流鉄乗車ルール", items: ["乗車可能区間：流山駅〜馬橋駅", "降車は流山駅・馬橋駅のみ", "改札外に出られるのは流山駅のみ", "コスプレ乗車時間：11:00〜16:00", "駅ホームでの撮影は運行・一般利用客の妨げにならないよう注意", "車内での大声・迷惑行為は禁止"], warning: false },
               { title: "🚫 禁止行為", items: ["更衣室以外での着替えやメイク", "屋内でのスプレー類の使用", "コスプレをしたままの来退場", "現行の国家機関衣装の着用", "下着に間違われやすい衣装", "会場内でのウィッグカット", "実際に音を出す行為", "スピーカー等による過度な音出し", "着ぐるみ・大型衣装での1人移動（アテンド同行必須、アテンド1人につき2体まで）", "他の方に怪我をさせる危険のある物や、周囲を汚す・破損させる恐れのある物の持ち込み"], warning: true },
               { title: "📱 SNS投稿について", items: ["公式ハッシュタグ：#流山本町 #レイヤーズジャック をつけて投稿しよう", "他の参加者を映した写真は同意を得てから投稿", "イベント公式の動画撮影にご協力ください"], warning: false },
               { title: "⚠️ 全般的な注意", items: ["ゴミは必ず持ち帰るか指定の場所へ", "スタッフの指示に従ってください", "体調不良の場合はスタッフへ申し出てください"], warning: false },
