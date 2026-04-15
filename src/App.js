@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const spots = [
   { id: 1, name: "近藤勇陣屋跡", icon: "🏯", tag: "撮影スポット", note: "室内撮影も可能になりました。\n・施設の判断により、入場をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・本格的な撮影はご遠慮ください。", detail: "近藤勇ゆかりの歴史的スポット。屋外・室内ともに撮影OK。", images: ["/jinnyaato01.jpg", "/jinyaato02.jpg"], map: "https://maps.app.goo.gl/mA4rqrb5vQbQ4FKVA" },
   { id: 2, name: "浅間神社", icon: "⛩️", tag: "撮影スポット", note: "撮影可能。トイレもお借りできます。\n・施設の道具や設備は許可なく使用、移動させないでください。\n・建築物に登る、寄りかかる行為はおやめください。\n・当日の状況により、撮影時間を制限させていただく場合があります。", detail: "境内での撮影が可能です。トイレ利用もOK。参拝者への配慮をお願いします。", images: ["/sengen01.jpg", "/sengen02.jpg", "/sengen03.jpg"], map: "https://maps.app.goo.gl/WyXJqtBiWors2EfA6" },
-  { id: 3, name: "流山駅（流鉄流山線）", icon: "🚃", tag: "撮影・乗車", note: "近日公開", detail: "近日公開", images: ["/nagareyamaeki.jpg"], map: "https://maps.app.goo.gl/4XHTUziQm3Ewwzrx5" },
+  { id: 3, name: "流山駅（流鉄流山線）", icon: "🚃", tag: "撮影・乗車", note: "Coming Soon", detail: "Coming Soon", images: ["/nagareyamaeki.jpg"], map: "https://maps.app.goo.gl/4XHTUziQm3Ewwzrx5" },
   { id: 4, name: "CHAT ERRANT", icon: "🍽️", tag: "協賛店", note: "ランチ営業・撮影スポット\n・店舗の判断により、入店をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・本格的な撮影はご遠慮ください。", detail: "流山本町エリアにある創作フレンチレストランです。当日はランチ営業を行っており、店内は撮影スポットとしてもご利用いただけます。", images: ["/chaterrant01.jpg"], map: "https://maps.app.goo.gl/XPWSuMm8fijJqLkt6" },
   { id: 5, name: "万華鏡ミュージアム", icon: "🔮", tag: "撮影スポット", note: "狭いため、建物前のみでの撮影が良いと思います。\n・施設の判断により、入場をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・本格的な撮影はご遠慮ください。\n・買い物目的以外での入店、商品の取り扱いはご遠慮ください。", detail: "建物外観が撮影スポットです。館内は一般見学者への配慮をお願いします。", images: ["/mangekyou01.jpg"], map: "https://maps.app.goo.gl/C1GoXzKYEUd7JiLx9" },
   { id: 6, name: "流山みりんミュージアム", icon: "🍶", tag: "撮影スポット", note: "施設内でも撮影可能です。\n・施設の判断により、入場をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・買い物目的以外での、商品の取り扱いはご遠慮ください。", detail: "施設内部での撮影もOK。スタッフの案内に従ってください。", images: ["/mirin01.jpg"], map: "https://maps.app.goo.gl/tAbXgPDHVjfuFDtQ6" },
@@ -278,40 +278,8 @@ export default function App() {
         )}
 
         {activeTab === "更衣室" && (
-          <div>
-            <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: 20, marginBottom: 16, textAlign: "center" }}>
-              <div style={{ fontSize: 32, marginBottom: 8 }}>👘</div>
-              <div style={{ fontWeight: 700, fontSize: 16 }}>流山福祉会館</div>
-              <div style={{ fontSize: 12, color: "#aaa", marginTop: 4 }}>公式更衣室</div>
-            </div>
-            <img src="/hukushi01.jpg" alt="流山福祉会館" style={{ width: "100%", borderRadius: 8, marginBottom: 16 }} />
-            {[
-              ["📍 住所", "〒270-0164 千葉県流山市流山２丁目１０２"],
-              ["🕐 通常利用時間", "11:00〜17:00"],
-              ["⭐ アーリー利用", "10:00〜（+500円）"],
-              ["🏁 完全撤収", "18:30"],
-              ["💼 クローク", "利用可能（500円・当日現金払い）※スペース限定"],
-            ].map(([k, v]) => (
-              <div key={k} style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: "14px 16px", marginBottom: 8, fontSize: 13 }}>
-                <div style={{ fontWeight: 600, marginBottom: 4 }}>{k}</div>
-                <div style={{ color: "#555" }}>{v}</div>
-              </div>
-            ))}
-            <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: "14px 16px", marginBottom: 8, fontSize: 13 }}>
-              <div style={{ fontWeight: 600, marginBottom: 4 }}>🧳 荷物について</div>
-              <div style={{ color: "#555", lineHeight: 1.8 }}>
-                <div>・段ボールでの衣装持ち込みは不可です</div>
-                <div>・スーツケース・ボストンバッグでの来場を推奨</div>
-                <div>・荷物が多い場合は追加料金が発生します</div>
-              </div>
-            </div>
-            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8, marginBottom: 8 }}>
-              ⚠️ 更衣室は参加者のみ利用可能です。混雑状況によりお待ちいただく場合があります。<br />
-              ・館内ではスタッフの指示に従ってください。<br />
-              ・土足禁止エリアがあります。
-            </div>
-            <a href="https://maps.app.goo.gl/sPNcwtP9Q7PvRiP79" target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "14px 16px", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 8 }}>🗺 Google マップで見る</a>
-
+          <div style={{ textAlign: "center", padding: "60px 0" }}>
+            <div style={{ fontSize: 18, letterSpacing: 3, color: "#aaa", fontWeight: 600 }}>Coming Soon</div>
           </div>
         )}
 
