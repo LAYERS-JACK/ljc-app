@@ -48,7 +48,10 @@ export default function App() {
               <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 12, letterSpacing: 1, textAlign: "center" }}>📷 公式カメラマン📷</div>
               <img src="/tsubasa01.jpeg" alt="TSUBASA" style={{ width: "100%", borderRadius: 8, marginBottom: 12 }} />
               <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 8, textAlign: "center" }}>TSUBASA</div>
-              <a href="https://x.com/tsubasacamera" target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "12px 0", fontSize: 13, fontWeight: 600, textDecoration: "none", marginTop: 8 }}>TSUBASA 𝕏 アカウント</a>
+              <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+                <a href="https://x.com/tsubasacamera" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "12px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>𝕏 アカウント</a>
+                <a href="https://www.instagram.com/tsubasacameratokyo/" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 10, padding: "12px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>📷 Instagram</a>
+              </div>
             </div>
 
             <div style={{ fontSize: 13, color: "#888", letterSpacing: 2, marginBottom: 8, textAlign: "center" }}>― LAYERS JACK CONVENTION ―</div>
