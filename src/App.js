@@ -148,6 +148,9 @@ export default function App({ event }) {
                 {event.current && (
                   <button onClick={() => handleTab("TOP")} style={{ width: "100%", background: "#111", color: "#fff", border: "none", borderRadius: 8, padding: "12px 0", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>詳細を見る →</button>
                 )}
+                {!event.current && event.url && (
+                  <a href={event.url} target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 8, padding: "12px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>詳細を見る →</a>
+                )}
                 {event.status === "coming_soon" && (
                   <div style={{ textAlign: "center", fontSize: 12, color: "#aaa", padding: "8px 0" }}>詳細は近日公開予定です</div>
                 )}
@@ -165,6 +168,12 @@ export default function App({ event }) {
         {/* TOP */}
         {activeTab === "TOP" && (
           <div>
+            {meta.backUrl && (
+              <a href={meta.backUrl} style={{ display: "flex", alignItems: "center", gap: 8, background: "#f0f0f0", borderRadius: 10, padding: "12px 16px", fontSize: 13, fontWeight: 600, textDecoration: "none", color: "#111", marginBottom: 16 }}>
+                ← {meta.backLabel}はこちら
+              </a>
+            )}
+
             <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: "24px 24px 20px", marginBottom: 16, textAlign: "center" }}>
               <img src={meta.logo} alt={meta.title} style={{ width: "100%", borderRadius: 8 }} />
             </div>

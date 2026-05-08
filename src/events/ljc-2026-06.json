@@ -13,6 +13,8 @@
     "ticketUrl": "https://livepocket.jp/e/ip399",
     "showSlideshow": true,
     "showPresale": true,
+    "backUrl": null,
+    "backLabel": null,
     "eventsList": [
       {
         "title": "LAYERS JACK CONVENTION",
@@ -27,6 +29,7 @@
         "area": "詳細近日公開",
         "description": "神社から神社へ移動する街コス！狐の嫁入りイベント開催決定！",
         "presale": "6月イベントへご来場された方に、チケット先行販売を予定しています！",
+        "url": "https://kitsune-app-six.vercel.app",
         "status": "coming_soon",
         "current": false
       },
