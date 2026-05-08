@@ -11,6 +11,8 @@
     },
     "sponsor": "流山市",
     "ticketUrl": "https://livepocket.jp/e/ip399",
+    "showSlideshow": true,
+    "showPresale": true,
     "eventsList": [
       {
         "title": "LAYERS JACK CONVENTION",

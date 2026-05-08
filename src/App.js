@@ -188,12 +188,14 @@ export default function App({ event }) {
               <a href={meta.ticketUrl} target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "16px 0", fontSize: 15, fontWeight: 700, textDecoration: "none", marginBottom: 16, letterSpacing: 1 }}>🎟 参加申し込みはこちら</a>
             )}
 
-            <div style={{ background: "#fff", border: "2px solid #111", borderRadius: 12, padding: 16, marginBottom: 16 }}>
-              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 8 }}>🎟 先行販売情報</div>
-              <div style={{ fontSize: 13, color: "#444", lineHeight: 1.8 }}>次回イベント「狐の嫁入りイベント」のチケット先行販売を、6月イベントへご来場された方に予定しています！</div>
-            </div>
+            {meta.showPresale && (
+              <div style={{ background: "#fff", border: "2px solid #111", borderRadius: 12, padding: 16, marginBottom: 16 }}>
+                <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 8 }}>🎟 先行販売情報</div>
+                <div style={{ fontSize: 13, color: "#444", lineHeight: 1.8 }}>次回イベント「狐の嫁入りイベント」のチケット先行販売を、6月イベントへご来場された方に予定しています！</div>
+              </div>
+            )}
 
-            <TopSlideshow spots={spots} />
+            {meta.showSlideshow && <TopSlideshow spots={spots} />}
 
             <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8, marginBottom: 12, textAlign: "center" }}>
               📲 このページをホーム画面に追加すると<br />いつでもすぐにアクセスできます！
