@@ -6,9 +6,15 @@ const tagColor = (tag) => {
   return "#333";
 };
 
-function ImageSlider({ images, name }) {
+function ImageSlider({ images, name, autoPlay = false }) {
   const [idx, setIdx] = useState(0);
   const [modal, setModal] = useState(false);
+
+  useEffect(() => {
+    if (!autoPlay || images.length <= 1) return;
+    const timer = setInterval(() => setIdx(i => (i + 1) % images.length), 3000);
+    return () => clearInterval(timer);
+  }, [autoPlay, images.length]);
   if (!images || images.length === 0) return null;
   return (
     <div style={{ position: "relative", marginBottom: 10 }}>
@@ -488,6 +494,8 @@ export default function App({ event }) {
               <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 4 }}>撮影オフ会プラン</div>
               <div style={{ fontSize: 12, color: "#aaa" }}>少人数から楽しめる撮影オフ会</div>
             </div>
+
+            <ImageSlider images={["/chaterrant01.jpg", "/chaterrant03.jpg", "/chaterrant04.jpg", "/chaterrant05.jpg"]} name="CHAT ERRANT" autoPlay={true} />
 
             <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8, marginBottom: 16 }}>
               自由な形で開催できます。最低人数10名〜。<br />少人数の場合、料金が変更になります。お問い合わせください。
