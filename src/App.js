@@ -174,6 +174,14 @@ export default function App({ event }) {
               </a>
             )}
 
+            {meta.showBoothRecruitment && (
+              <div style={{ background: "#fff", border: "2px solid #111", borderRadius: 12, padding: 16, marginBottom: 16 }}>
+                <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 8 }}>🛍️ 物販ブース出店者募集！</div>
+                <div style={{ fontSize: 13, color: "#444", lineHeight: 1.8, marginBottom: 12 }}>狐の嫁入りイベントにて物販ブースの出店者を募集しています！<br />お気軽にお問い合わせください。</div>
+                <a href={`mailto:${meta.contact}`} style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 8, padding: "12px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>📧 出店のお問い合わせ</a>
+              </div>
+            )}
+
             <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: "24px 24px 20px", marginBottom: 16, textAlign: "center" }}>
               <img src={meta.logo} alt={meta.title} style={{ width: "100%", borderRadius: 8 }} />
             </div>

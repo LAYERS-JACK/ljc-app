@@ -15,6 +15,7 @@
     "showPresale": true,
     "backUrl": null,
     "backLabel": null,
+    "showBoothRecruitment": false,
     "eventsList": [
       {
         "title": "LAYERS JACK CONVENTION",
