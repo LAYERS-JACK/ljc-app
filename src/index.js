@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import eventData from './events/ljc-2026-06.json';
+import eventData from './events/kitsune-2026-07.json';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
