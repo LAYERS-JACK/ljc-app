@@ -224,6 +224,17 @@ export default function App({ event }) {
               📲 このページをホーム画面に追加すると<br />いつでもすぐにアクセスできます！
             </div>
 
+            {notices.length > 0 && (
+              <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: 16, marginBottom: 16 }}>
+                <div style={{ fontSize: 11, color: "#aaa", marginBottom: 4 }}>{notices[0].date}</div>
+                <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 8 }}>{notices[0].title}</div>
+                <div style={{ fontSize: 13, color: "#555", lineHeight: 1.8, marginBottom: 10 }}>
+                  {notices[0].body[0]}
+                </div>
+                <button onClick={() => handleTab("お知らせ")} style={{ background: "none", border: "none", color: "#111", fontSize: 12, fontWeight: 600, cursor: "pointer", padding: 0, textDecoration: "underline" }}>もっと見る →</button>
+              </div>
+            )}
+
             {photographer && (
               <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: 20, marginBottom: 16, textAlign: "left" }}>
                 <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 12, letterSpacing: 1, textAlign: "center" }}>📷 公式カメラマン📷</div>
@@ -347,9 +358,32 @@ export default function App({ event }) {
                 {openSpot === spot.id && (
                   <div style={{ background: "#f9f9f9", border: "1px solid #ddd", borderTop: "none", borderRadius: "0 0 10px 10px", padding: "12px 16px", marginTop: -8, marginBottom: 8, fontSize: 13, lineHeight: 1.8, color: "#333" }}>
                     <ImageSlider images={spot.images} name={spot.name} />
-                    <div style={{ marginBottom: 6 }}>{spot.detail}</div>
+                    <div style={{ marginBottom: 6, whiteSpace: "pre-line" }}>{spot.detail}</div>
                     {spot.map && !spot.map2 && (
-                      <a href={spot.map} target="_blank" rel="noreferrer" style={{ display: "inline-block", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 14px", fontSize: 12, fontWeight: 600, marginBottom: 8, textDecoration: "none" }}>🗺 Google マップで見る</a>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 8 }}>
+                        <div style={{ display: "flex", gap: 8 }}>
+                          {spot.instagram && (
+                            <a href={spot.instagram} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>📷 Instagram</a>
+                          )}
+                          {spot.facebook && (
+                            <a href={spot.facebook} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>📘 Facebook</a>
+                          )}
+                        </div>
+                        <div style={{ display: "flex", gap: 8 }}>
+                          {spot.twitter && (
+                            <a href={spot.twitter} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>𝕏 X</a>
+                          )}
+                          {spot.website && (
+                            <a href={spot.website} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>🌐 ホームページ</a>
+                          )}
+                        </div>
+                        <div style={{ display: "flex", gap: 8 }}>
+                          {spot.tel && (
+                            <a href={`tel:${spot.tel}`} style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>📞 {spot.telDisplay}</a>
+                          )}
+                          <a href={spot.map} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>🗺 Google マップ</a>
+                        </div>
+                      </div>
                     )}
                     {spot.map && spot.map2 && (
                       <div style={{ display: "flex", gap: 8, marginBottom: 8, flexWrap: "wrap" }}>
@@ -358,7 +392,19 @@ export default function App({ event }) {
                         {spot.map3 && <a href={spot.map3} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>🗺 階段③</a>}
                       </div>
                     )}
-                    <div style={{ background: "#111", color: "#fff", borderRadius: 6, padding: "8px 12px", fontSize: 12, whiteSpace: "pre-line" }}>📢 {spot.note}</div>
+                    <div style={{ background: "#111", color: "#fff", borderRadius: 6, padding: "8px 12px", fontSize: 13 }}>
+                      📢 {spot.note.split('\n').map((line, i) => {
+                        const isLarge = line.startsWith('@@') && line.endsWith('@@');
+                        const text = isLarge ? line.slice(2, -2) : line;
+                        return (
+                          <div key={i} style={isLarge ? { fontSize: 15, fontWeight: 700, margin: "4px 0" } : {}}>
+                            {text.split(/\*\*(.*?)\*\*/).map((part, j) =>
+                              j % 2 === 1 ? <strong key={j}>{part}</strong> : part
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 )}
               </div>
