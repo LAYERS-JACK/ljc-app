@@ -143,46 +143,82 @@
       "note": "撮影可能。トイレもお借りできます。\n・施設の道具や設備は許可なく使用、移動させないでください。\n・建築物に登る、寄りかかる行為はおやめください。\n・当日の状況により、撮影時間を制限させていただく場合があります。",
       "images": [
         "/sengen01.jpg",
-        "/sengen03.jpg"
+        "/sengen03.jpg",
+        "/sengen04.jpeg"
       ],
       "map": "https://maps.app.goo.gl/WyXJqtBiWors2EfA6"
+    },
+    {
+      "id": 3,
+      "name": "流山駅（流鉄流山線）",
+      "icon": "🚃",
+      "tag": "撮影・乗車",
+      "detail": "コスプレ乗車可能区間：流山駅〜平和台駅。\n流山駅・平和台駅とも降車・改札外への移動可能。\nコスプレ乗車時間：11:00〜16:00。\nコスプレ乗車を予定していて、流山線で来場される方は、\n一日フリー乗車券（500円）がお得で便利です。\n一日フリー乗車券は、来場時に乗車する駅でお買い求めください。",
+      "note": "・撮影スポットとして利用できます。\n・ホームでの撮影可能。\n・一般の方も利用されます。妨げとならないよう配慮をお願いします。\nその他、ルールページをご確認ください。",
+      "images": [
+        "/nagareyamaeki.jpg",
+        "/nagareyamaeki01.jpg",
+        "/nagareyamaeki06.jpeg"
+      ],
+      "map": "https://maps.app.goo.gl/4XHTUziQm3Ewwzrx5",
+      "website": "http://ryutetsu.jp/index.html"
     },
     {
       "id": 1,
       "name": "近藤勇陣屋跡",
       "icon": "🏯",
       "tag": "撮影スポット",
-      "detail": "近藤勇ゆかりの歴史的スポット。屋外・室内ともに撮影OK。",
+      "detail": "近藤勇ゆかりの歴史的スポット。屋外・室内ともに撮影OK。\n@@⏰ 入館は15:00まで@@",
       "note": "室内撮影も可能になりました。\n・施設の判断により、入場をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・本格的な撮影はご遠慮ください。",
       "images": [
         "/jinnyaato01.jpg",
-        "/jinyaato02.jpg"
+        "/jinyaato02.jpg",
+        "/jinyaato04.jpg"
       ],
-      "map": "https://maps.app.goo.gl/mA4rqrb5vQbQ4FKVA"
-    },
-    {
-      "id": 5,
-      "name": "万華鏡ミュージアム",
-      "icon": "🔮",
-      "tag": "撮影スポット",
-      "detail": "建物外観が撮影スポットです。館内は一般見学者への配慮をお願いします。",
-      "note": "狭いため、建物前のみでの撮影が良いと思います。\n・施設の判断により、入場をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・本格的な撮影はご遠慮ください。\n・買い物目的以外での入店、商品の取り扱いはご遠慮ください。",
-      "images": [
-        "/mangekyou01.jpg"
-      ],
-      "map": "https://maps.app.goo.gl/C1GoXzKYEUd7JiLx9"
+      "map": "https://maps.app.goo.gl/mA4rqrb5vQbQ4FKVA",
+      "website": "https://www.city.nagareyama.chiba.jp/tourism/1013070/1013072.html"
     },
     {
       "id": 6,
       "name": "流山市白みりんミュージアム",
       "icon": "🍶",
       "tag": "撮影スポット",
-      "detail": "施設内部での撮影もOK。スタッフの案内に従ってください。",
+      "detail": "施設内での撮影もOK。スタッフの案内に従ってください。\n流山で生まれた白みりんの醸造文化を、学びと体感を通じて次世代へ伝える。\n白みりんのおいしさ、楽しさを五感を使ってお楽しみください。",
       "note": "施設内でも撮影可能です。\n・施設の判断により、入場をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・買い物目的以外での、商品の取り扱いはご遠慮ください。",
       "images": [
-        "/mirin01.jpg"
+        "/mirin01.jpg",
+        "/mirin04.jpg",
+        "/mirin05.jpg"
       ],
       "map": "https://maps.app.goo.gl/tAbXgPDHVjfuFDtQ6"
+    },
+    {
+      "id": 5,
+      "name": "万華鏡ミュージアム",
+      "icon": "🔮",
+      "tag": "撮影スポット",
+      "detail": "建物外観が撮影スポットです。\n館内は撮影不可。見学、お買い物での入店は可能です。\n一般見学者への配慮をお願いします。",
+      "note": "・施設の判断により、入館をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・商品の取り扱いは十分ご遠慮ください。",
+      "images": [
+        "/mangekyou01.jpg"
+      ],
+      "map": "https://maps.app.goo.gl/C1GoXzKYEUd7JiLx9"
+    },
+    {
+      "id": 16,
+      "name": "一茶双樹記念館",
+      "icon": "🏛️",
+      "tag": "撮影スポット",
+      "detail": "施設内での撮影OK。スタッフの案内に従ってください。\n江戸時代の俳人小林一茶と、流山でみりんの醸造を行った俳号双樹（五代目秋元三左衛門）との交流を記念して設立。",
+      "note": "施設内でも撮影可能です。\n・長物の使用しての撮影は原則禁止。\n・枯山水庭園があります。飛び石を歩き、砂利には踏み込まないこと。\n・施設の判断により、入場をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。",
+      "images": [
+        "/issa01.jpg",
+        "/issa02.jpg",
+        "/issa03.jpg",
+        "/issa04.jpg"
+      ],
+      "map": "https://maps.app.goo.gl/dBsEDSqgu5zbyhq97",
+      "website": "https://shiro-mirin.com/issasoju/"
     },
     {
       "id": 8,
@@ -212,24 +248,12 @@
         "/edogawa02.jpg",
         "/edogawa03.jpg",
         "/edogawa04.jpg",
-        "/edogawa05.jpg"
+        "/edogawa05.jpg",
+        "/edogawa06.jpg"
       ],
       "map": "https://maps.app.goo.gl/n85F3pgeVYoRADuN6",
       "map2": "https://maps.app.goo.gl/99h5UiiE3TyGNwvv7",
       "map3": "https://maps.app.goo.gl/YqpCRJ7d3aC6hpVs7"
-    },
-    {
-      "id": 3,
-      "name": "流山駅（流鉄流山線）",
-      "icon": "🚃",
-      "tag": "調整中",
-      "detail": "Coming Soon",
-      "note": "Coming Soon",
-      "images": [
-        "/nagareyamaeki.jpg",
-        "/nagareyamaeki01.jpg"
-      ],
-      "map": "https://maps.app.goo.gl/4XHTUziQm3Ewwzrx5"
     },
     {
       "id": 4,
@@ -257,7 +281,9 @@
       "images": [
         "/kuragokoro01.jpg",
         "/kuragokoro02.jpg",
-        "/kuragokoro03.jpg"
+        "/kuragokoro03.jpg",
+        "/kuragokoro04.jpg",
+        "/kuragokoro05.jpg"
       ],
       "map": "https://maps.app.goo.gl/fE41gbQTiUCuiuj1A",
       "instagram": "https://www.instagram.com/kuragokoro/",
@@ -268,12 +294,43 @@
       "telDisplay": "04-7197-3116"
     },
     {
+      "id": 14,
+      "name": "新川屋",
+      "icon": "👘",
+      "tag": "協賛店",
+      "detail": "創業 江戸時代弘化3年（1846年）明治23年（1890年）築の店舗は流山市第1号国登録有形文化財。\n呉服・婦人服・蔵づくりの店。\nきものご相談、自然素材の服（遠州織物・久留米絣、ガーゼ・麻の洋服）和洋モダン雑貨。",
+      "note": "店舗内・外観撮影スポット\n・店舗内で撮影出来ます。お買い物もお楽しみください。\n・他のお客様の映り込みにご注意ください。\n・店舗の方の指示に従ってください。\n・店舗の判断により、撮影をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。",
+      "images": [
+        "/shinkawaya01.jpg",
+        "/shinkawaya02.jpg",
+        "/shinkawaya03.jpg",
+        "/shinkawaya04.jpg",
+        "/shinkawaya05.jpg"
+      ],
+      "map": "https://maps.app.goo.gl/YKzH7mJYshXCzUVC7",
+      "instagram": "https://www.instagram.com/shinkawaya_since1846/"
+    },
+    {
+      "id": 11,
+      "name": "笹屋商店",
+      "icon": "🛏️",
+      "tag": "協賛店",
+      "detail": "笹屋商店は寝具をはじめ、猫のふとん、メガネのふとん、和雑貨などを取り扱っております。\nふとんの打ち直し(仕立直し)や丸洗い等、何でもご相談が出来るお店です。\nお客様に合った寝具を選ぶお手伝いを丁寧にいたします。ぜひお気軽にお立ち寄りください。",
+      "note": "外観撮影スポット\n・外観のみ撮影可能です。\n・他のお客様の映り込みにご注意ください。\n・店舗の方の指示に従ってください。\n・店舗の判断により、撮影をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。",
+      "images": [
+        "/sasaya01.jpg"
+      ],
+      "map": "https://maps.app.goo.gl/WMhL6MLEZNnpoFxk6",
+      "website": "https://sasa-ya.jp/",
+      "line": "https://line.me/R/ti/p/%40801xdmhk"
+    },
+    {
       "id": 10,
       "name": "Odaidoco（おだいどこ）〜ととのいごはんとおやつ〜",
       "icon": "🍱",
       "tag": "協賛店",
-      "detail": "江戸川からほど近い流山本町の古民家で、ふらっと立ち寄って、あたたかいごはんを食べて、少しほっとする。\nそんなゆるやかなひとときを過ごせるお店。\n二階にはドリンクを楽しめるゆったりとしたスペースに、切り絵画廊が併設されています。",
-      "note": "ランチ営業・撮影スポット\n@@・ランチご利用の際は、必ず予約をお願いします。@@\n@@　📩 InstagramのDMよりご予約ください。@@\n・展示されている切り絵には、手を触れないようお願いします。\n・店舗の判断により、入店をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・本格的な撮影はご遠慮ください。",
+      "detail": "江戸川からほど近い流山本町の古民家で、ふらっと立ち寄って、あたたかいごはんを食べて、少しほっとする。\nそんなゆるやかなひとときを過ごせるお店。\n二階にはドリンクを楽しめるゆったりとしたスペースに、切り絵画廊が併設されています。\n@@バインミー・ドリンクのテイクアウト可能（予約不要）@@",
+      "note": "ランチ営業・撮影スポット\n**・ランチご利用の際は、必ず予約をお願いします。**\n**　📩 InstagramのDMよりご予約ください。**\nバインミー・ドリンクのテイクアウト可能（予約不要）\n・展示されている切り絵には、手を触れないようお願いします。\n・店舗の判断により、入店をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・本格的な撮影はご遠慮ください。",
       "images": [
         "/odaidoco01.jpg",
         "/odaidoco02.jpg",
@@ -284,6 +341,54 @@
       ],
       "map": "https://maps.app.goo.gl/MhTHSfVJNNtUACxJ8",
       "instagram": "https://www.instagram.com/odaidoco_nagareyama/"
+    },
+    {
+      "id": 13,
+      "name": "fossette+",
+      "icon": "🍰",
+      "tag": "協賛店",
+      "detail": "焼き菓子・タルトを販売しています。\n併設のカフェは予約なしでも利用可能。\nドリンクのテイクアウトできます。",
+      "note": "カフェ・テイクアウト・外観撮影スポット\n・他のお客様の映り込みにご注意ください。\n・店舗の方の指示に従ってください。\n・店舗の判断により、撮影をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。",
+      "images": [
+        "/fossette01.jpg",
+        "/fossette02.jpg",
+        "/fossette03.jpg",
+        "/fossette04.jpg"
+      ],
+      "map": "https://maps.app.goo.gl/YAY8NsUyf5uTKUUo8",
+      "instagram": "https://www.instagram.com/fossette124/",
+      "instagram2": "https://www.instagram.com/fossette_plus/",
+      "instagram3": "https://www.instagram.com/fossette_plus.tarte/"
+    },
+    {
+      "id": 15,
+      "name": "うどん 竜禅",
+      "icon": "🍜",
+      "tag": "協賛店",
+      "detail": "白みりん発祥の地ならではの、こぼれ梅（みりん粕）を練りこんだ自家製麺うどんを提供しています。\n当日はランチをご利用できます。",
+      "note": "ランチ営業・撮影スポット\n**・ランチご利用の際は、必ず予約をお願いします。**\n**　📩 予約は食べログよりご予約ください。**\n・店舗の判断により、入店をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。\n・本格的な撮影はご遠慮ください。",
+      "images": [
+        "/rinzen01.jpg"
+      ],
+      "map": "https://maps.app.goo.gl/5duUERktWYRZdphw7",
+      "instagram": "https://www.instagram.com/rinzen_udon/",
+      "reservation": "https://yoyaku.tabelog.com/yoyaku/smartphone/net_booking_form/index?rcd=12061975"
+    },
+    {
+      "id": 12,
+      "name": "かごや商店",
+      "icon": "🍶",
+      "tag": "協賛店",
+      "detail": "オリジナルブランドの地酒をはじめ、流山本みりんや、こだわりの梅酒、柚子酒なども取り扱っております。\nスーパーや量販店では手に入らない、流山ブランドの温かみある商品をぜひお試しください。",
+      "note": "撮影・お買い物スポット\n・店内・外観での撮影許可をいただいていますが、会場から離れているため移動の際は十分気を付けて下さい。\n・他のお客様の映り込みにご注意ください。\n・店舗の方の指示に従ってください。\n・店舗の判断により、撮影をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。",
+      "images": [
+        "/kagoya01.jpg",
+        "/kagoya02.jpg",
+        "/kagoya03.jpg"
+      ],
+      "map": "https://maps.app.goo.gl/bKU1AcVGZ7Ymit9LA",
+      "website": "https://kagoya-group.co.jp/",
+      "facebook": "https://www.facebook.com/kagoyagroup/"
     }
   ],
   "dressingRoom": {
@@ -361,6 +466,18 @@
         "エリア内に墓地があります。撮影の際は映り込まないようご配慮ください",
         "寺社仏閣では本堂・社殿の中央や賽銭箱前など正面からの撮影はご遠慮ください",
         "居住区での撮影の際は、表札が映り込まないようご注意ください"
+      ],
+      "warning": false
+    },
+    {
+      "title": "🚃 流鉄乗車ルール",
+      "items": [
+        "乗車可能区間：流山駅〜平和台駅",
+        "流山駅・平和台駅とも降車・改札外への移動可能",
+        "コスプレ乗車時間：11:00〜16:00",
+        "一日フリー乗車券：500円",
+        "駅ホームでの撮影は運行・一般利用客の妨げにならないよう注意",
+        "車内での三脚など撮影機器使用、大声・迷惑行為は禁止"
       ],
       "warning": false
     },
@@ -544,8 +661,12 @@
       "category": "流鉄について",
       "items": [
         {
-          "q": "流鉄流山線のコスプレ乗車について教えてください。",
-          "a": "現在調整中です。詳細が決まり次第お知らせします。"
+          "q": "乗車券は自分で購入するのですか？",
+          "a": "はい、乗車券は各自でご購入ください。往復乗車券440円、または一日フリー乗車券500円がご利用いただけます。電車で来場される方は一日フリー乗車券がお得です。"
+        },
+        {
+          "q": "コスプレのまま改札を通っていいですか？",
+          "a": "コスプレでの乗車は11:00〜16:00の間のみ可能です。改札外に出られるのは流山駅のみとなります。"
         }
       ]
     }

@@ -18,7 +18,7 @@ function ImageSlider({ images, name, autoPlay = false }) {
   if (!images || images.length === 0) return null;
   return (
     <div style={{ position: "relative", marginBottom: 10 }}>
-      <img src={images[idx]} alt={name} onClick={() => setModal(true)} style={{ width: "100%", borderRadius: 8, display: "block", cursor: "zoom-in" }} />
+      <img src={images[idx]} alt={name} onClick={() => setModal(true)} style={{ width: "100%", borderRadius: 8, display: "block", cursor: "zoom-in" }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
       {images.length > 1 && (
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 6 }}>
           <button onClick={() => setIdx(i => (i - 1 + images.length) % images.length)} style={{ background: "#111", color: "#fff", border: "none", borderRadius: 6, padding: "4px 12px", fontSize: 16, cursor: "pointer" }}>‹</button>
@@ -29,7 +29,7 @@ function ImageSlider({ images, name, autoPlay = false }) {
       {modal && (
         <div onClick={() => setModal(false)} style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(0,0,0,0.95)", zIndex: 1000, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
           <button onClick={() => setModal(false)} style={{ position: "fixed", top: 20, right: 20, background: "#fff", color: "#111", border: "none", borderRadius: "50%", width: 48, height: 48, fontSize: 22, fontWeight: 700, cursor: "pointer", zIndex: 1001, display: "flex", alignItems: "center", justifyContent: "center" }}>✕</button>
-          <img src={images[idx]} alt={name} onClick={e => e.stopPropagation()} style={{ maxWidth: "95vw", maxHeight: "85vh", borderRadius: 8, objectFit: "contain", touchAction: "pinch-zoom" }} />
+          <img src={images[idx]} alt={name} onClick={e => e.stopPropagation()} style={{ maxWidth: "95vw", maxHeight: "85vh", borderRadius: 8, objectFit: "contain", touchAction: "pinch-zoom" }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
           {images.length > 1 && (
             <div style={{ display: "flex", gap: 16, marginTop: 16 }}>
               <button onClick={e => { e.stopPropagation(); setIdx(i => (i - 1 + images.length) % images.length); }} style={{ background: "#fff", color: "#111", border: "none", borderRadius: 6, padding: "8px 20px", fontSize: 20, cursor: "pointer", fontWeight: 700 }}>‹</button>
@@ -52,7 +52,7 @@ function TopSlideshow({ spots }) {
   }, [allImages.length]);
   return (
     <div style={{ position: "relative", width: "100%", borderRadius: 12, overflow: "hidden", marginBottom: 16 }}>
-      <img src={allImages[idx].src} alt={allImages[idx].name} style={{ width: "100%", height: 240, objectFit: "cover", display: "block" }} />
+      <img src={allImages[idx].src} alt={allImages[idx].name} style={{ width: "100%", height: 240, objectFit: "cover", display: "block" }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(transparent, rgba(0,0,0,0.7))", padding: "20px 16px 12px" }}>
         <div style={{ color: "#fff", fontSize: 12, fontWeight: 600 }}>📍 {allImages[idx].name}</div>
       </div>
@@ -189,7 +189,19 @@ export default function App({ event }) {
             )}
 
             <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: "24px 24px 20px", marginBottom: 16, textAlign: "center" }}>
-              <img src={meta.logo} alt={meta.title} style={{ width: "100%", borderRadius: 8 }} />
+              <img src={meta.logo} alt={meta.title} style={{ width: "100%", borderRadius: 8 }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
+            </div>
+
+            <div style={{ background: "#111", color: "#fff", borderRadius: 10, padding: 16, textAlign: "center", marginBottom: 16 }}>
+              <div style={{ fontSize: 12, color: "#aaa", marginBottom: 8, letterSpacing: 1 }}>📣 公式ハッシュタグ</div>
+              {meta.hashtags.map(tag => (
+                <div key={tag} style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>{tag}</div>
+              ))}
+              <button onClick={() => { navigator.clipboard.writeText(meta.hashtags.join(" ")); alert("ハッシュタグをコピーしました！"); }} style={{ background: "#333", color: "#fff", border: "none", borderRadius: 6, padding: "8px 20px", fontSize: 12, cursor: "pointer", fontWeight: 600, marginTop: 8 }}>📋 まとめてコピー</button>
+              <div style={{ marginTop: 12, borderTop: "1px solid #333", paddingTop: 12, fontSize: 12, color: "#aaa", lineHeight: 1.8 }}>
+                <div>SNS投稿時は公式ハッシュタグをつけてシェアしよう！</div>
+                <div>他の参加者を映した写真は必ず同意を得てから投稿しましょう。</div>
+              </div>
             </div>
 
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: "16px 20px", marginBottom: 16, display: "flex", flexDirection: "column", gap: 10 }}>
@@ -205,6 +217,17 @@ export default function App({ event }) {
                   <span style={{ fontSize: 14, fontWeight: 700, color: "#111" }}>{value}</span>
                 </div>
               ))}
+            </div>
+
+            <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: 16, marginBottom: 16 }}>
+              <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 10, textAlign: "center" }}>🚃 流鉄流山線 コスプレ乗車決定！！</div>
+              <div style={{ fontSize: 13, lineHeight: 1.9 }}>
+                <div>コスプレしたまま、乗車できます。</div>
+                <div style={{ color: "#aaa", marginBottom: 8 }}>詳細は、スポットページをご確認ください。</div>
+                <div>コスプレ乗車を予定していて、流山線で来場される方は、</div>
+                <div style={{ fontWeight: 700, color: "#ffd700" }}>一日フリー乗車券（500円）がお得で便利です。</div>
+                <div>一日フリー乗車券は、来場時に乗車する駅でお買い求めください。</div>
+              </div>
             </div>
 
             {meta.ticketUrl && (
@@ -238,7 +261,7 @@ export default function App({ event }) {
             {photographer && (
               <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: 20, marginBottom: 16, textAlign: "left" }}>
                 <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 12, letterSpacing: 1, textAlign: "center" }}>📷 公式カメラマン📷</div>
-                <img src={photographer.image} alt={photographer.name} style={{ width: "100%", borderRadius: 8, marginBottom: 12 }} />
+                <img src={photographer.image} alt={photographer.name} style={{ width: "100%", borderRadius: 8, marginBottom: 12 }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
                 <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 8, textAlign: "center" }}>{photographer.name}</div>
                 <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
                   <a href={photographer.twitter} target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "12px 0", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>𝕏 アカウント</a>
@@ -255,23 +278,17 @@ export default function App({ event }) {
             <a href={`mailto:${meta.contact}`} style={{ display: "block", textAlign: "center", background: "#fff", color: "#111", border: "1px solid #ddd", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 12 }}>📧 お問い合わせはこちら</a>
 
             {meta.sponsor && (
-              <div style={{ textAlign: "center", padding: "16px 0", marginBottom: 12 }}>
-                <div style={{ fontSize: 13, color: "#aaa", letterSpacing: 2, marginBottom: 6 }}>後援</div>
-                <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: 3, color: "#111" }}>{meta.sponsor}</div>
+              <div style={{ background: "#fff", border: "2px solid #111", borderRadius: 12, padding: "16px 20px", marginBottom: 12, textAlign: "center" }}>
+                <div style={{ fontSize: 14, color: "#888", letterSpacing: 3, marginBottom: 8 }}>― 後　援 ―</div>
+                <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: 4, color: "#111", marginBottom: 16 }}>{meta.sponsor}</div>
+                <div style={{ borderTop: "1px solid #ddd", paddingTop: 12 }}>
+                  <div style={{ fontSize: 12, color: "#888", letterSpacing: 2, marginBottom: 8 }}>― 協　賛　店 ―</div>
+                  {spots.filter(s => s.tag === "協賛店").map((s, i) => (
+                    <div key={i} style={{ fontSize: 14, fontWeight: 600, color: "#111", marginBottom: 4 }}>{s.name}</div>
+                  ))}
+                </div>
               </div>
             )}
-
-            <div style={{ background: "#111", color: "#fff", borderRadius: 10, padding: 16, textAlign: "center" }}>
-              <div style={{ fontSize: 12, color: "#aaa", marginBottom: 8, letterSpacing: 1 }}>📣 公式ハッシュタグ</div>
-              {meta.hashtags.map(tag => (
-                <div key={tag} style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>{tag}</div>
-              ))}
-              <button onClick={() => { navigator.clipboard.writeText(meta.hashtags.join(" ")); alert("ハッシュタグをコピーしました！"); }} style={{ background: "#333", color: "#fff", border: "none", borderRadius: 6, padding: "8px 20px", fontSize: 12, cursor: "pointer", fontWeight: 600, marginTop: 8 }}>📋 まとめてコピー</button>
-              <div style={{ marginTop: 12, borderTop: "1px solid #333", paddingTop: 12, fontSize: 12, color: "#aaa", lineHeight: 1.8 }}>
-                <div>SNS投稿時は公式ハッシュタグをつけてシェアしよう！</div>
-                <div>他の参加者を映した写真は必ず同意を得てから投稿しましょう。</div>
-              </div>
-            </div>
           </div>
         )}
 
@@ -358,18 +375,34 @@ export default function App({ event }) {
                 {openSpot === spot.id && (
                   <div style={{ background: "#f9f9f9", border: "1px solid #ddd", borderTop: "none", borderRadius: "0 0 10px 10px", padding: "12px 16px", marginTop: -8, marginBottom: 8, fontSize: 13, lineHeight: 1.8, color: "#333" }}>
                     <ImageSlider images={spot.images} name={spot.name} />
-                    <div style={{ marginBottom: 6, whiteSpace: "pre-line" }}>{spot.detail}</div>
+                    <div style={{ marginBottom: 6 }}>
+                      {spot.detail.split('\n').map((line, i) => {
+                        const isLarge = line.startsWith('@@') && line.endsWith('@@');
+                        const text = isLarge ? line.slice(2, -2) : line;
+                        return (
+                          <div key={i} style={isLarge ? { fontSize: 15, fontWeight: 700, color: "#c00", margin: "6px 0" } : {}}>
+                            {text}
+                          </div>
+                        );
+                      })}
+                    </div>
                     {spot.map && !spot.map2 && (
                       <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 8 }}>
                         <div style={{ display: "flex", gap: 8 }}>
                           {spot.instagram && (
                             <a href={spot.instagram} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>📷 Instagram</a>
                           )}
+                          {spot.instagram2 && (
+                            <a href={spot.instagram2} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>📷 Instagram②</a>
+                          )}
                           {spot.facebook && (
                             <a href={spot.facebook} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>📘 Facebook</a>
                           )}
                         </div>
                         <div style={{ display: "flex", gap: 8 }}>
+                          {spot.instagram3 && (
+                            <a href={spot.instagram3} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>📷 Instagram③</a>
+                          )}
                           {spot.twitter && (
                             <a href={spot.twitter} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>𝕏 X</a>
                           )}
@@ -378,6 +411,14 @@ export default function App({ event }) {
                           )}
                         </div>
                         <div style={{ display: "flex", gap: 8 }}>
+                          {spot.reservation && (
+                            <a href={spot.reservation} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#111", color: "#fff", border: "none", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 700, textDecoration: "none" }}>🗓 予約はコチラ！</a>
+                          )}
+                        </div>
+                        <div style={{ display: "flex", gap: 8 }}>
+                          {spot.line && (
+                            <a href={spot.line} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>💬 LINE</a>
+                          )}
                           {spot.tel && (
                             <a href={`tel:${spot.tel}`} style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>📞 {spot.telDisplay}</a>
                           )}
@@ -466,13 +507,29 @@ export default function App({ event }) {
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, marginBottom: 8 }}>
               <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10 }}>🚃 電車でのアクセス</div>
               <div style={{ fontSize: 13, color: "#555", lineHeight: 1.8, marginBottom: 12 }}>
-                <div><strong>{access.station}</strong> が最寄り駅です。</div>
-                <div>一日フリー乗車券（500円）がお得で便利です。</div>
+                <div><strong>{access.station}</strong> から徒歩約３分。</div>
+                <div style={{ marginTop: 8, fontWeight: 700, color: "#111" }}>コスプレ乗車を予定していて、電車で来場される方は、</div>
+                <div style={{ fontWeight: 700, color: "#111" }}>一日フリー乗車券（500円）がお得で便利です。</div>
+                <div style={{ fontWeight: 700, color: "#111" }}>一日フリー乗車券は、来場時に乗車する駅でお買い求めください。</div>
               </div>
               <div style={{ display: "flex", gap: 8 }}>
                 <a href={access.routeUrl} target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", borderRadius: 6, padding: "10px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none", textAlign: "center" }}>🗺 駅からのルートを見る</a>
                 <a href={access.mapUrl} target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "10px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none", textAlign: "center" }}>🗺 イベントエリアマップ</a>
               </div>
+            </div>
+            <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, marginBottom: 8 }}>
+              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10 }}>🚃 流鉄流山線 コスプレ乗車情報</div>
+              {[
+                ["乗車可能区間", "流山駅〜平和台駅"],
+                ["降車・改札外移動", "流山駅・平和台駅"],
+                ["コスプレ乗車時間", "11:00〜16:00"],
+                ["一日フリー乗車券", "500円（お得！）"],
+              ].map(([k, v]) => (
+                <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", borderBottom: "1px solid #f0f0f0", fontSize: 13 }}>
+                  <span style={{ color: "#888" }}>{k}</span>
+                  <span style={{ fontWeight: 500 }}>{v}</span>
+                </div>
+              ))}
             </div>
             <div style={{ borderRadius: 10, overflow: "hidden", marginBottom: 8 }}>
               <iframe
@@ -488,17 +545,19 @@ export default function App({ event }) {
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, marginBottom: 8 }}>
               <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10 }}>🚗 車でのアクセス</div>
               <div style={{ fontSize: 13, color: "#555", lineHeight: 1.8 }}>
-                <div>会場専用の無料駐車場はありません。</div>
+                <div>常磐自動車道 流山ICから、会場付近まで約10分。</div>
+                <div>イベント専用の駐車場はありません。</div>
                 <div>近辺の有料コインパーキングをご利用ください。</div>
               </div>
             </div>
-            <div style={{ background: "#fff", border: "1px solid #c00", borderRadius: 10, padding: 16, marginBottom: 8 }}>
+            <div style={{ background: "#fff", border: "2px solid #c00", borderRadius: 10, padding: 16, marginBottom: 8 }}>
               <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10, color: "#c00" }}>🚫 駐車場について</div>
-              <div style={{ fontSize: 13, color: "#c00", lineHeight: 1.8 }}>
-                各施設・店舗の無料駐車場のご利用はお断りします。イベント参加者専用の駐車場はございません。
+              <div style={{ fontSize: 13, color: "#c00", fontWeight: 700, lineHeight: 1.8 }}>
+                <div>各施設・店舗の無料駐車場のご利用はお断りします。</div>
+                <div>イベント参加者専用の駐車場はございません。</div>
               </div>
             </div>
-            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8 }}>
+            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 14, fontWeight: 600, color: "#555", lineHeight: 1.8, marginBottom: 8 }}>
               ⚠️ 会場周辺は混雑が予想されます。できるだけ電車でのご来場をお願いします。
             </div>
           </div>
@@ -543,13 +602,14 @@ export default function App({ event }) {
 
             <ImageSlider images={["/chaterrant01.jpg", "/chaterrant03.jpg", "/chaterrant04.jpg", "/chaterrant05.jpg"]} name="CHAT ERRANT" autoPlay={true} />
 
-            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8, marginBottom: 16 }}>
-              自由な形で開催できます。最低人数10名〜。<br />少人数の場合、料金が変更になります。お問い合わせください。
+            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 14, color: "#555", lineHeight: 2, marginBottom: 16 }}>
+              自由な形で開催できます。<br />少人数の場合、料金が変更になります。<br />お気軽に、お問い合わせください。
             </div>
 
             {/* ランチプラン */}
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: 20, marginBottom: 12 }}>
-              <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 12 }}>🍽️ レストラン貸切ランチ付き撮影オフ会プラン</div>
+              <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 4 }}>🍽️ レストラン貸切ランチ付き撮影オフ会プラン</div>
+              <div style={{ fontSize: 12, color: "#888", marginBottom: 12 }}>10名〜</div>
               {[
                 ["🕐 時間", "10:00〜17:00"],
                 ["💰 料金", "5,000円（ランチ付き）"],
@@ -563,7 +623,8 @@ export default function App({ event }) {
 
             {/* ディナープラン */}
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: 20, marginBottom: 12 }}>
-              <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 12 }}>🍷 レストラン貸切ディナー付き撮影オフ会プラン</div>
+              <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 4 }}>🍷 レストラン貸切ディナー付き撮影オフ会プラン</div>
+              <div style={{ fontSize: 12, color: "#888", marginBottom: 12 }}>10名〜</div>
               {[
                 ["🕐 時間", "18:00〜21:00"],
                 ["💰 料金", "7,500円（ディナー付き）"],
@@ -578,10 +639,9 @@ export default function App({ event }) {
             {/* オプション */}
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: 20, marginBottom: 16 }}>
               <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10 }}>✨ オプション（別料金）</div>
-              <div style={{ fontSize: 13, color: "#444", lineHeight: 1.8 }}>
-                <div>・外ロケーション撮影許可</div>
-                <div>・アテンド兼、案内係を付けることができます</div>
-              </div>
+              <div style={{ fontSize: 13, color: "#444", lineHeight: 1.8, marginBottom: 10 }}>・外ロケーション撮影許可</div>
+              <img src="/machi01.jpeg" alt="外ロケーション撮影" style={{ width: "100%", borderRadius: 8, marginBottom: 10 }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
+              <div style={{ fontSize: 13, color: "#444", lineHeight: 1.8 }}>・アテンド兼、案内係をお付けします</div>
             </div>
 
             <a href={`mailto:${meta.contact}`} style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "16px 0", fontSize: 14, fontWeight: 700, textDecoration: "none", marginBottom: 8 }}>📧 オフ会プランについて問い合わせる</a>
