@@ -6,15 +6,25 @@ const tagColor = (tag) => {
   return "#333";
 };
 
-function ImageSlider({ images, name, autoPlay = false }) {
-  const [idx, setIdx] = useState(0);
+function ImageSlider({ images, name, autoPlay = false, random = false, startIdx = 0 }) {
+  const [idx, setIdx] = useState(startIdx);
   const [modal, setModal] = useState(false);
 
   useEffect(() => {
     if (!autoPlay || images.length <= 1) return;
-    const timer = setInterval(() => setIdx(i => (i + 1) % images.length), 3000);
+    const timer = setInterval(() => {
+      if (random) {
+        setIdx(current => {
+          let next;
+          do { next = Math.floor(Math.random() * images.length); } while (next === current);
+          return next;
+        });
+      } else {
+        setIdx(i => (i + 1) % images.length);
+      }
+    }, 3000);
     return () => clearInterval(timer);
-  }, [autoPlay, images.length]);
+  }, [autoPlay, random, images.length]);
   if (!images || images.length === 0) return null;
   return (
     <div style={{ position: "relative", marginBottom: 10 }}>
@@ -65,7 +75,7 @@ function TopSlideshow({ spots }) {
   );
 }
 
-const tabs = ["TOP", "お知らせ", "イベント概要", "スケジュール", "スポット", "更衣室", "アクセス", "ルール", "FAQ", "イベント一覧", "オフ会プラン"];
+const tabs = ["TOP", "お知らせ", "イベント概要", "スケジュール", "スポット", "更衣室", "アクセス", "ルール", "FAQ", "エリアマップ", "イベント一覧", "オフ会プラン"];
 
 export default function App({ event }) {
   const { meta, details, photographer, notices, spots, dressingRoom, access, rules, faqs, staff } = event;
@@ -78,6 +88,7 @@ export default function App({ event }) {
   const [activeTab, setActiveTab] = useState(getInitialTab);
   const [openSpot, setOpenSpot] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mapModal, setMapModal] = useState(false);
   const [staffUnlocked, setStaffUnlocked] = useState(false);
   const [passwordInput, setPasswordInput] = useState("");
   const [passwordError, setPasswordError] = useState(false);
@@ -132,6 +143,78 @@ export default function App({ event }) {
       )}
 
       <div style={{ padding: "20px 16px", paddingBottom: 100 }}>
+
+        {/* エリアマップ */}
+        {activeTab === "エリアマップ" && (
+          <div>
+            <div style={{ fontSize: 13, color: "#888", marginBottom: 12 }}>タップで拡大・ピンチイン／アウトでズームできます</div>
+            <div
+              onClick={() => setMapModal(true)}
+              style={{ borderRadius: 10, border: "1px solid #ddd", overflow: "hidden", cursor: "zoom-in" }}
+            >
+              <img
+                src="/LJC_areamap.svg"
+                alt="イベントエリアマップ"
+                style={{ width: "100%", display: "block" }}
+                onContextMenu={e => e.preventDefault()}
+                onDragStart={e => e.preventDefault()}
+              />
+            </div>
+            <div style={{ marginTop: 12 }}>
+              <a href={access.mapUrl} target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "14px 0", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 16 }}>🗺 Googleマップで見る</a>
+            </div>
+
+            <div style={{ background: "#fff", border: "2px solid #c00", borderRadius: 12, padding: 16, marginBottom: 12 }}>
+              <div style={{ fontSize: 13, color: "#c00", fontWeight: 700, lineHeight: 1.8 }}>
+                <div>🟠 オレンジ色の施設は立入禁止エリアです。絶対に立ち入らないようにしてください。</div>
+                <div>⚠️ マップのエリア外への移動は禁止です。</div>
+              </div>
+            </div>
+
+            <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: 16, marginBottom: 12 }}>
+              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 8 }}>🚶 エリア内を移動する際のお願い</div>
+              {[
+                "流山街道・本町通りは交通量が多いため、十分にご注意ください。",
+                "必ず歩道・白線内を通行してください。",
+                "信号を守り、交差点では周囲をよく確認してから通行してください。",
+                "一般の方への配慮を常に心がけてください。",
+                "ゴミは必ず持ち帰ってください。",
+                "民家・店舗前での長時間の占有はご遠慮ください。",
+              ].map((item, i) => (
+                <div key={i} style={{ fontSize: 13, color: "#444", lineHeight: 1.8 }}>・{item}</div>
+              ))}
+            </div>
+
+            <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: 16, marginBottom: 12 }}>
+              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 8 }}>📸 撮影時のお願い</div>
+              {[
+                "公道での撮影は周囲の安全を十分に確認してから行ってください。",
+                "墓地・居住区での表札の映り込みにご注意ください。",
+              ].map((item, i) => (
+                <div key={i} style={{ fontSize: 13, color: "#444", lineHeight: 1.8 }}>・{item}</div>
+              ))}
+            </div>
+
+            <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: 16, marginBottom: 12 }}>
+              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 8 }}>🆘 緊急時</div>
+              <div style={{ fontSize: 13, color: "#444", lineHeight: 1.8 }}>・体調不良・トラブルが発生した場合は、速やかにスタッフへご連絡ください。</div>
+            </div>
+            {mapModal && (
+              <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(0,0,0,0.95)", zIndex: 1000 }}>
+                <button onClick={() => setMapModal(false)} style={{ position: "fixed", top: 20, right: 20, background: "#fff", color: "#111", border: "none", borderRadius: "50%", width: 48, height: 48, fontSize: 22, fontWeight: 700, cursor: "pointer", zIndex: 1001 }}>✕</button>
+                <div style={{ overflow: "scroll", width: "100%", height: "100%", WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y pinch-zoom" }}>
+                  <img
+                    src="/LJC_areamap.svg"
+                    alt="イベントエリアマップ"
+                    style={{ width: "250%", maxWidth: "none", display: "block" }}
+                    onContextMenu={e => e.preventDefault()}
+                    onDragStart={e => e.preventDefault()}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* イベント一覧 */}
         {activeTab === "イベント一覧" && (
@@ -241,6 +324,19 @@ export default function App({ event }) {
               </div>
             )}
 
+            <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: 16, marginBottom: 16 }}>
+              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 4 }}>📣 参加表明カード</div>
+              <div style={{ fontSize: 12, color: "#888", marginBottom: 12 }}>2種類からお選びいただき、ダウンロードして加工後SNSに投稿してね！</div>
+              <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
+                <img src="/declaration001.png" alt="参加表明カード グレー" style={{ flex: 1, width: "50%", borderRadius: 6, cursor: "pointer" }} onClick={() => { const a = document.createElement('a'); a.href = '/declaration001.png'; a.download = 'LJC_参加表明カード_グレー.png'; a.click(); }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
+                <img src="/declaration002.png" alt="参加表明カード ターコイズ" style={{ flex: 1, width: "50%", borderRadius: 6, cursor: "pointer" }} onClick={() => { const a = document.createElement('a'); a.href = '/declaration002.png'; a.download = 'LJC_参加表明カード_ターコイズ.png'; a.click(); }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
+              </div>
+              <div style={{ display: "flex", gap: 8 }}>
+                <button onClick={() => { const a = document.createElement('a'); a.href = '/declaration001.png'; a.download = 'LJC_参加表明カード_グレー.png'; a.click(); }} style={{ flex: 1, background: "#111", color: "#fff", border: "none", borderRadius: 8, padding: "10px 0", fontSize: 12, fontWeight: 600, cursor: "pointer" }}>⬇ グレー版</button>
+                <button onClick={() => { const a = document.createElement('a'); a.href = '/declaration002.png'; a.download = 'LJC_参加表明カード_ターコイズ.png'; a.click(); }} style={{ flex: 1, background: "#111", color: "#fff", border: "none", borderRadius: 8, padding: "10px 0", fontSize: 12, fontWeight: 600, cursor: "pointer" }}>⬇ ターコイズ版</button>
+              </div>
+            </div>
+
             {meta.showSlideshow && <TopSlideshow spots={spots} />}
 
             <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8, marginBottom: 12, textAlign: "center" }}>
@@ -254,6 +350,16 @@ export default function App({ event }) {
                 <div style={{ fontSize: 13, color: "#555", lineHeight: 1.8, marginBottom: 10 }}>
                   {notices[0].body[0]}
                 </div>
+                {notices.length > 1 && (
+                  <>
+                    <div style={{ borderTop: "1px solid #f0f0f0", margin: "10px 0" }} />
+                    <div style={{ fontSize: 11, color: "#aaa", marginBottom: 4 }}>{notices[1].date}</div>
+                    <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 8 }}>{notices[1].title}</div>
+                    <div style={{ fontSize: 13, color: "#555", lineHeight: 1.8, marginBottom: 10 }}>
+                      {notices[1].body[0]}
+                    </div>
+                  </>
+                )}
                 <button onClick={() => handleTab("お知らせ")} style={{ background: "none", border: "none", color: "#111", fontSize: 12, fontWeight: 600, cursor: "pointer", padding: 0, textDecoration: "underline" }}>もっと見る →</button>
               </div>
             )}
@@ -301,7 +407,7 @@ export default function App({ event }) {
                 <div style={{ fontSize: 11, color: "#aaa", marginBottom: 6 }}>{n.date}</div>
                 <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 8 }}>{n.title}</div>
                 <div style={{ fontSize: 13, color: "#555", lineHeight: 1.8 }}>
-                  {n.body.map((line, j) => <div key={j}>{line}</div>)}
+                  {n.body.map((line, j) => <div key={j} style={{ minHeight: line === "" ? 8 : "auto" }}>{line}</div>)}
                 </div>
               </div>
             ))}
@@ -514,7 +620,7 @@ export default function App({ event }) {
               </div>
               <div style={{ display: "flex", gap: 8 }}>
                 <a href={access.routeUrl} target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", borderRadius: 6, padding: "10px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none", textAlign: "center" }}>🗺 駅からのルートを見る</a>
-                <a href={access.mapUrl} target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "10px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none", textAlign: "center" }}>🗺 イベントエリアマップ</a>
+                <button onClick={() => handleTab("エリアマップ")} style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "10px 8px", fontSize: 12, fontWeight: 600, cursor: "pointer", textAlign: "center" }}>🗺 イベントエリアマップ</button>
               </div>
             </div>
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 10, padding: 16, marginBottom: 8 }}>
@@ -600,7 +706,7 @@ export default function App({ event }) {
               <div style={{ fontSize: 12, color: "#aaa" }}>少人数から楽しめる撮影オフ会</div>
             </div>
 
-            <ImageSlider images={["/chaterrant01.jpg", "/chaterrant03.jpg", "/chaterrant04.jpg", "/chaterrant05.jpg"]} name="CHAT ERRANT" autoPlay={true} />
+            <ImageSlider images={["/chaterrant01.jpg", "/chaterrant03.jpg", "/chaterrant04.jpg", "/chaterrant05.jpg", "/off01.jpeg", "/off02.jpeg"]} name="CHAT ERRANT" autoPlay={true} />
 
             <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 14, color: "#555", lineHeight: 2, marginBottom: 16 }}>
               自由な形で開催できます。<br />少人数の場合、料金が変更になります。<br />お気軽に、お問い合わせください。
@@ -608,30 +714,30 @@ export default function App({ event }) {
 
             {/* ランチプラン */}
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: 20, marginBottom: 12 }}>
-              <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 4 }}>🍽️ レストラン貸切ランチ付き撮影オフ会プラン</div>
+              <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 4 }}>🍽️ レストラン貸切ランチ付き<br />📷 撮影オフ会プラン</div>
               <div style={{ fontSize: 12, color: "#888", marginBottom: 12 }}>10名〜</div>
               {[
                 ["🕐 時間", "10:00〜17:00"],
-                ["💰 料金", "5,000円（ランチ付き）"],
+                ["💰 料金", "1名様 5,000円（ランチ付き）\n※更衣室・クローク利用料込"],
               ].map(([k, v]) => (
                 <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", borderBottom: "1px solid #f0f0f0", fontSize: 13 }}>
                   <span style={{ color: "#888" }}>{k}</span>
-                  <span style={{ fontWeight: 700 }}>{v}</span>
+                  <span style={{ fontWeight: 700, whiteSpace: "pre-line", textAlign: "right" }}>{v}</span>
                 </div>
               ))}
             </div>
 
             {/* ディナープラン */}
             <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: 20, marginBottom: 12 }}>
-              <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 4 }}>🍷 レストラン貸切ディナー付き撮影オフ会プラン</div>
+              <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 4 }}>🍷 レストラン貸切ディナー付き<br />📷 撮影オフ会プラン</div>
               <div style={{ fontSize: 12, color: "#888", marginBottom: 12 }}>10名〜</div>
               {[
                 ["🕐 時間", "18:00〜21:00"],
-                ["💰 料金", "7,500円（ディナー付き）"],
+                ["💰 料金", "1名様 7,500円（ディナー付き）\n※更衣室・クローク利用料込"],
               ].map(([k, v]) => (
                 <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", borderBottom: "1px solid #f0f0f0", fontSize: 13 }}>
                   <span style={{ color: "#888" }}>{k}</span>
-                  <span style={{ fontWeight: 700 }}>{v}</span>
+                  <span style={{ fontWeight: 700, whiteSpace: "pre-line", textAlign: "right" }}>{v}</span>
                 </div>
               ))}
             </div>
