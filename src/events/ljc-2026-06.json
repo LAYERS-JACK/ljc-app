@@ -353,37 +353,6 @@
       "telDisplay": "04-7197-3116"
     },
     {
-      "id": 14,
-      "name": "新川屋",
-      "icon": "👘",
-      "tag": "協賛店",
-      "detail": "創業 江戸時代弘化3年（1846年）明治23年（1890年）築の店舗は流山市第1号国登録有形文化財。\n呉服・婦人服・蔵づくりの店。\nきものご相談、自然素材の服（遠州織物・久留米絣、ガーゼ・麻の洋服）和洋モダン雑貨。",
-      "note": "店舗内・外観撮影スポット\n・店舗内で撮影出来ます。お買い物もお楽しみください。\n・他のお客様の映り込みにご注意ください。\n・店舗の方の指示に従ってください。\n・店舗の判断により、撮影をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。",
-      "images": [
-        "/shinkawaya01.jpg",
-        "/shinkawaya02.jpg",
-        "/shinkawaya03.jpg",
-        "/shinkawaya04.jpg",
-        "/shinkawaya05.jpg"
-      ],
-      "map": "https://maps.app.goo.gl/YKzH7mJYshXCzUVC7",
-      "instagram": "https://www.instagram.com/shinkawaya_since1846/"
-    },
-    {
-      "id": 11,
-      "name": "笹屋商店",
-      "icon": "🛏️",
-      "tag": "協賛店",
-      "detail": "笹屋商店は寝具をはじめ、猫のふとん、メガネのふとん、和雑貨などを取り扱っております。\nふとんの打ち直し(仕立直し)や丸洗い等、何でもご相談が出来るお店です。\nお客様に合った寝具を選ぶお手伝いを丁寧にいたします。ぜひお気軽にお立ち寄りください。",
-      "note": "外観撮影スポット\n・外観のみ撮影可能です。\n・他のお客様の映り込みにご注意ください。\n・店舗の方の指示に従ってください。\n・店舗の判断により、撮影をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。",
-      "images": [
-        "/sasaya01.jpg"
-      ],
-      "map": "https://maps.app.goo.gl/WMhL6MLEZNnpoFxk6",
-      "website": "https://sasa-ya.jp/",
-      "line": "https://line.me/R/ti/p/%40801xdmhk"
-    },
-    {
       "id": 10,
       "name": "Odaidoco（おだいどこ）〜ととのいごはんとおやつ〜",
       "icon": "🍱",
@@ -434,6 +403,23 @@
       "reservation": "https://yoyaku.tabelog.com/yoyaku/smartphone/net_booking_form/index?rcd=12061975"
     },
     {
+      "id": 14,
+      "name": "新川屋",
+      "icon": "👘",
+      "tag": "協賛店",
+      "detail": "創業 江戸時代弘化3年（1846年）明治23年（1890年）築の店舗は流山市第1号国登録有形文化財。\n呉服・婦人服・蔵づくりの店。\nきものご相談、自然素材の服（遠州織物・久留米絣、ガーゼ・麻の洋服）和洋モダン雑貨。",
+      "note": "店舗内・外観撮影スポット\n・店舗内で撮影出来ます。お買い物もお楽しみください。\n・他のお客様の映り込みにご注意ください。\n・店舗の方の指示に従ってください。\n・店舗の判断により、撮影をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。",
+      "images": [
+        "/shinkawaya01.jpg",
+        "/shinkawaya02.jpg",
+        "/shinkawaya03.jpg",
+        "/shinkawaya04.jpg",
+        "/shinkawaya05.jpg"
+      ],
+      "map": "https://maps.app.goo.gl/YKzH7mJYshXCzUVC7",
+      "instagram": "https://www.instagram.com/shinkawaya_since1846/"
+    },
+    {
       "id": 12,
       "name": "かごや商店",
       "icon": "🍶",
@@ -448,6 +434,20 @@
       "map": "https://maps.app.goo.gl/bKU1AcVGZ7Ymit9LA",
       "website": "https://kagoya-group.co.jp/",
       "facebook": "https://www.facebook.com/kagoyagroup/"
+    },
+    {
+      "id": 11,
+      "name": "笹屋商店",
+      "icon": "🛏️",
+      "tag": "協賛店",
+      "detail": "笹屋商店は寝具をはじめ、猫のふとん、メガネのふとん、和雑貨などを取り扱っております。\nふとんの打ち直し(仕立直し)や丸洗い等、何でもご相談が出来るお店です。\nお客様に合った寝具を選ぶお手伝いを丁寧にいたします。ぜひお気軽にお立ち寄りください。",
+      "note": "外観撮影スポット\n・外観のみ撮影可能です。\n・他のお客様の映り込みにご注意ください。\n・店舗の方の指示に従ってください。\n・店舗の判断により、撮影をご遠慮いただく場合もございますのであらかじめご了承ください。\n・一般のお客様のご迷惑にならないようにご配慮ください。",
+      "images": [
+        "/sasaya01.jpg"
+      ],
+      "map": "https://maps.app.goo.gl/WMhL6MLEZNnpoFxk6",
+      "website": "https://sasa-ya.jp/",
+      "line": "https://line.me/R/ti/p/%40801xdmhk"
     },
     {
       "id": 19,
