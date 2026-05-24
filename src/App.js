@@ -75,7 +75,7 @@ function TopSlideshow({ spots }) {
   );
 }
 
-const tabs = ["TOP", "お知らせ", "イベント概要", "スケジュール", "スポット", "更衣室", "アクセス", "ルール", "FAQ", "エリアマップ", "イベント一覧", "オフ会プラン"];
+const tabs = ["TOP", "お知らせ", "イベント概要", "スケジュール", "スポット", "エリアマップ", "更衣室", "アクセス", "ルール", "FAQ", "イベント一覧", "オフ会プラン"];
 
 export default function App({ event }) {
   const { meta, details, photographer, notices, spots, dressingRoom, access, rules, faqs, staff } = event;
@@ -148,14 +148,13 @@ export default function App({ event }) {
         {activeTab === "エリアマップ" && (
           <div>
             <div style={{ fontSize: 13, color: "#888", marginBottom: 12 }}>タップで拡大・ピンチイン／アウトでズームできます</div>
-            <div
+            <div style={{ borderRadius: 10, border: "1px solid #ddd", overflow: "hidden", cursor: "zoom-in", maxWidth: "100%" }}
               onClick={() => setMapModal(true)}
-              style={{ borderRadius: 10, border: "1px solid #ddd", overflow: "hidden", cursor: "zoom-in" }}
             >
               <img
                 src="/LJC_areamap.svg"
                 alt="イベントエリアマップ"
-                style={{ width: "100%", display: "block" }}
+                style={{ width: "100%", maxHeight: 400, objectFit: "contain", display: "block" }}
                 onContextMenu={e => e.preventDefault()}
                 onDragStart={e => e.preventDefault()}
               />
@@ -202,11 +201,11 @@ export default function App({ event }) {
             {mapModal && (
               <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(0,0,0,0.95)", zIndex: 1000 }}>
                 <button onClick={() => setMapModal(false)} style={{ position: "fixed", top: 20, right: 20, background: "#fff", color: "#111", border: "none", borderRadius: "50%", width: 48, height: 48, fontSize: 22, fontWeight: 700, cursor: "pointer", zIndex: 1001 }}>✕</button>
-                <div style={{ overflow: "scroll", width: "100%", height: "100%", WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y pinch-zoom" }}>
+                <div style={{ overflow: "auto", width: "100%", height: "100%", WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y pinch-zoom", display: "flex", alignItems: "flex-start", justifyContent: "center" }}>
                   <img
                     src="/LJC_areamap.svg"
                     alt="イベントエリアマップ"
-                    style={{ width: "250%", maxWidth: "none", display: "block" }}
+                    style={{ width: "100%", maxWidth: 1200, display: "block" }}
                     onContextMenu={e => e.preventDefault()}
                     onDragStart={e => e.preventDefault()}
                   />
@@ -539,6 +538,7 @@ export default function App({ event }) {
                         {spot.map3 && <a href={spot.map3} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "6px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}>🗺 階段③</a>}
                       </div>
                     )}
+                    {spot.note && (
                     <div style={{ background: "#111", color: "#fff", borderRadius: 6, padding: "8px 12px", fontSize: 13 }}>
                       📢 {spot.note.split('\n').map((line, i) => {
                         const isLarge = line.startsWith('@@') && line.endsWith('@@');
@@ -552,6 +552,7 @@ export default function App({ event }) {
                         );
                       })}
                     </div>
+                    )}
                   </div>
                 )}
               </div>

@@ -82,6 +82,32 @@
   },
   "notices": [
     {
+      "date": "2026.05.24",
+      "title": "📱 アプリ更新のお知らせ",
+      "body": [
+        "新たなスポットを追加しました！",
+        "⛩️ 大杉神社",
+        "🐕 Dogpark＆Cafe TENTEN",
+        "",
+        "また、以下の情報を更新しました。",
+        "・エリアマップ更新",
+        "・各スポット情報更新"
+      ]
+    },
+    {
+      "date": "2026.05.24",
+      "title": "📱 アプリ更新のお知らせ",
+      "body": [
+        "新たなスポットを追加しました！",
+        "⛩️ 大杉神社",
+        "🐕 Dogpark＆Cafe TENTEN",
+        "",
+        "また、以下の情報を更新しました。",
+        "・エリアマップ更新",
+        "・各スポット情報更新"
+      ]
+    },
+    {
       "date": "2026.05.18",
       "title": "🗺️ イベントエリアマップ・参加表明カードを公開しました！",
       "body": [
@@ -167,17 +193,32 @@
   "spots": [
     {
       "id": 2,
-      "name": "浅間神社【メイン会場】",
+      "name": "根郷 浅間神社【メイン会場】",
       "icon": "⛩️",
       "tag": "撮影スポット",
-      "detail": "境内での撮影が可能です。トイレ利用もOK。参拝者への配慮をお願いします。",
+      "detail": "境内での撮影が可能です。トイレ利用もOK。参拝者への配慮をお願いします。\n\n正保元年（1644）創建。富士信仰のため根郷地域の鎮守として建てられた神社です。\n本殿裏には県内トップクラス（約8m）の富士塚があり、富士山の溶岩を積んで造られた「流山の富士山」として知られています。\n頂上まで登ると富士山に登ったのと同じご利益が得られるとされています。\n\n当日は、本殿、神楽殿が開放されます。",
       "note": "撮影可能。トイレもお借りできます。\n・施設の道具や設備は許可なく使用、移動させないでください。\n・建築物に登る、寄りかかる行為はおやめください。\n・当日の状況により、撮影時間を制限させていただく場合があります。",
       "images": [
         "/sengen01.jpg",
         "/sengen03.jpg",
-        "/sengen04.jpeg"
+        "/sengen04.jpeg",
+        "/sengen05.JPG"
       ],
       "map": "https://maps.app.goo.gl/WyXJqtBiWors2EfA6"
+    },
+    {
+      "id": 17,
+      "name": "大杉神社",
+      "icon": "⛩️",
+      "tag": "撮影スポット",
+      "detail": "茨城県稲敷市にある「御田植大杉神社」（関東・東北に広く分布する大杉神社の総本社）から分霊を迎えた神社です。\nご祭神は大物主命櫛甕玉命（おおものぬしのみことくしみかたまのみこと）。\n歴史ある境内での撮影をお楽しみください。",
+      "note": "・施設の道具や設備は許可なく使用、移動させないでください。\n・建築物に登る、寄りかかる行為はおやめください。\n・当日の状況により、撮影時間を制限させていただく場合があります。",
+      "images": [
+        "/osugi01.jpg",
+        "/osugi02.jpg",
+        "/osugi03.jpg"
+      ],
+      "map": "https://maps.app.goo.gl/shPv3rtpFMBSE2Sc8"
     },
     {
       "id": 3,
@@ -420,6 +461,31 @@
       "map": "https://maps.app.goo.gl/bKU1AcVGZ7Ymit9LA",
       "website": "https://kagoya-group.co.jp/",
       "facebook": "https://www.facebook.com/kagoyagroup/"
+    },
+    {
+      "id": 19,
+      "name": "Dogpark＆Cafe TENTEN",
+      "icon": "🐕",
+      "tag": "協賛店",
+      "detail": "飼い主軸カウンセラーの視点から運営するドッグラン＆カフェ。\n2024年9月オープン。流山市鰭ヶ崎にあり、ワンちゃんと一緒に楽しめるお店です。\n自由で楽しいドッグランを目指しています。",
+      "note": "",
+      "images": [
+        "/tenten01.jpeg"
+      ],
+      "map": "https://maps.app.goo.gl/hUDoc5rfPuQdqnaL8",
+      "instagram": "https://www.instagram.com/tenten.dogpark_cafe"
+    },
+    {
+      "id": 18,
+      "name": "杜のアトリエ 黎明",
+      "icon": "🎨",
+      "tag": "撮影スポット",
+      "detail": "洋画家・笹岡了一氏と画家・歌人の秋元松子氏が開設した「L・T・S笹岡絵画研究所」のアトリエを、流山市が「杜のアトリエ黎明」として整備した施設です。\n両画伯ゆかりの場所として、芸術・文化活動の場として活用されています。\n当日は店休日です。",
+      "note": "当日は店休日です。",
+      "images": [],
+      "map": "https://maps.app.goo.gl/ZoTCvheagvAFsGXw5",
+      "instagram": "https://www.instagram.com/atelier.leimei/",
+      "website": "https://shiro-mirin.com/leimei/"
     }
   ],
   "dressingRoom": {
