@@ -316,6 +316,14 @@ export default function App({ event }) {
               <a href={meta.ticketUrl} target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "16px 0", fontSize: 15, fontWeight: 700, textDecoration: "none", marginBottom: 16, letterSpacing: 1 }}>🎟 参加申し込みはこちら</a>
             )}
 
+            <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: 16, marginBottom: 16, textAlign: "center" }}>
+              <div style={{ fontSize: 24, marginBottom: 8 }}>🎁</div>
+              <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 8 }}>女性限定プレゼント企画！</div>
+              <img src="/sencyaku.jpg" alt="女性限定プレゼント" style={{ width: "100%", borderRadius: 8, marginBottom: 12 }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
+              <div style={{ fontSize: 13, lineHeight: 1.8, marginBottom: 8 }}>ご来場の女性参加者の方に<br />BRiOSS Clear Cleans Brush をプレゼント🎀</div>
+              <div style={{ fontSize: 12, color: "#aaa" }}>数に限りがございます。お早めにご来場ください！</div>
+            </div>
+
             {meta.showPresale && (
               <div style={{ background: "#fff", border: "2px solid #111", borderRadius: 12, padding: 16, marginBottom: 16 }}>
                 <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 8 }}>🎟 先行販売情報</div>
