@@ -291,6 +291,7 @@ export default function App({ event }) {
                 { icon: "📅", label: "開催日", value: details.date },
                 { icon: "🕐", label: "時間", value: details.time },
                 { icon: "📍", label: "場所", value: details.area },
+                { icon: "🪪", label: "受付", value: "CHAT ERRANT" },
                 { icon: "💰", label: "参加費", value: details.price },
               ].map(({ icon, label, value }) => (
                 <div key={label} style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -300,6 +301,12 @@ export default function App({ event }) {
                 </div>
               ))}
             </div>
+
+            <a href="https://maps.app.goo.gl/XPWSuMm8fijJqLkt6" target="_blank" rel="noreferrer" style={{ display: "block", background: "#fff", border: "3px solid #111", borderRadius: 12, padding: 16, marginBottom: 16, textAlign: "center", textDecoration: "none" }}>
+              <div style={{ fontSize: 13, color: "#888", marginBottom: 4 }}>来場された方はまずこちら</div>
+              <div style={{ fontWeight: 700, fontSize: 17, color: "#111" }}>📍 受付：CHAT ERRANT</div>
+              <div style={{ fontSize: 11, color: "#aaa", marginTop: 4 }}>🗺 タップしてマップを見る</div>
+            </a>
 
             <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: 16, marginBottom: 16 }}>
               <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 10, textAlign: "center" }}>🚃 流鉄流山線 コスプレ乗車決定！！</div>
@@ -571,13 +578,16 @@ export default function App({ event }) {
         {/* 更衣室 */}
         {activeTab === "更衣室" && (
           <div>
+            <div style={{ background: "#fff", border: "2px solid #111", borderRadius: 12, padding: 16, marginBottom: 16, textAlign: "center" }}>
+              <div style={{ fontSize: 24, marginBottom: 6 }}>🪪</div>
+              <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 4 }}>更衣室は受付時にご案内します</div>
+              <div style={{ fontSize: 13, color: "#555" }}>受付場所：CHAT ERRANT</div>
+            </div>
             <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: 20, marginBottom: 16, textAlign: "center" }}>
               <div style={{ fontSize: 32, marginBottom: 8 }}>👘</div>
-              <div style={{ fontWeight: 700, fontSize: 16 }}>{dressingRoom.name}</div>
-              <div style={{ fontSize: 12, color: "#aaa", marginTop: 4 }}>公式更衣室</div>
+              <div style={{ fontWeight: 700, fontSize: 16 }}>公式更衣室</div>
             </div>
             {[
-              ["📍 住所", dressingRoom.address],
               ["🕐 通常利用時間", dressingRoom.hours],
               ["⭐ アーリー利用", dressingRoom.earlyHours],
               ["🏁 完全撤収", dressingRoom.closing],
@@ -599,14 +609,6 @@ export default function App({ event }) {
               ・館内ではスタッフの指示に従ってください。<br />
               ・土足禁止エリアがあります。
             </div>
-            {dressingRoom.mapEmbed && (
-              <div style={{ borderRadius: 10, overflow: "hidden", marginBottom: 8 }}>
-                <iframe title={`${dressingRoom.name} 地図`} src={dressingRoom.mapEmbed + "&z=17"} width="100%" height="240" style={{ border: 0, display: "block" }} allowFullScreen="" loading="lazy" />
-              </div>
-            )}
-            {dressingRoom.mapUrl && (
-              <a href={dressingRoom.mapUrl} target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "14px 16px", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 8 }}>🗺 Google マップで見る</a>
-            )}
           </div>
         )}
 
