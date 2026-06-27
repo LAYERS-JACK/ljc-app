@@ -78,7 +78,7 @@ function TopSlideshow({ spots }) {
 const tabs = ["TOP", "お知らせ", "イベント概要", "スケジュール", "スポット", "エリアマップ", "更衣室", "アクセス", "ルール", "FAQ", "イベント一覧", "オフ会プラン"];
 
 export default function App({ event }) {
-  const { meta, details, photographer, notices, spots, dressingRoom, access, rules, faqs, staff } = event;
+  const { meta, details, photographer, notices, spots, dressingRoom, access, rules, faqs, staff, schedule } = event;
 
   const getInitialTab = () => {
     const hash = decodeURIComponent(window.location.hash.replace("#", ""));
@@ -222,12 +222,15 @@ export default function App({ event }) {
             {meta.eventsList.map((event, i) => (
               <div key={i} style={{ background: "#fff", border: `1px solid ${event.current ? "#111" : "#ddd"}`, borderRadius: 12, padding: 20, marginBottom: 12 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
-                  <div style={{ fontWeight: 700, fontSize: 15 }}>{event.title}</div>
+                  <div style={{ fontWeight: 700, fontSize: 15, whiteSpace: "pre-line" }}>{event.title}</div>
                   {event.status === "open" && (
                     <span style={{ background: "#111", color: "#fff", fontSize: 10, fontWeight: 700, padding: "3px 10px", borderRadius: 20, letterSpacing: 1, flexShrink: 0 }}>公開中</span>
                   )}
                   {event.status === "coming_soon" && (
                     <span style={{ background: "#f0f0f0", color: "#888", fontSize: 10, fontWeight: 700, padding: "3px 10px", borderRadius: 20, letterSpacing: 1, flexShrink: 0 }}>COMING SOON</span>
+                  )}
+                  {event.status === "postponed" && (
+                    <span style={{ background: "#888", color: "#fff", fontSize: 10, fontWeight: 700, padding: "3px 10px", borderRadius: 20, letterSpacing: 1, flexShrink: 0 }}>延期</span>
                   )}
                 </div>
                 <div style={{ fontSize: 13, color: "#555", marginBottom: 4 }}>📅 {event.date}</div>
@@ -333,8 +336,13 @@ export default function App({ event }) {
 
             {meta.showPresale && (
               <div style={{ background: "#fff", border: "2px solid #111", borderRadius: 12, padding: 16, marginBottom: 16 }}>
-                <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 8 }}>🎟 先行販売情報</div>
-                <div style={{ fontSize: 13, color: "#444", lineHeight: 1.8 }}>次回イベント「狐の嫁入りイベント」のチケット先行販売を、6月イベントへご来場された方に予定しています！</div>
+                <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 8 }}>🎟 事前受付情報</div>
+                <div style={{ fontSize: 13, color: "#444", lineHeight: 1.8 }}>
+                  <div style={{ fontWeight: 700, marginBottom: 4 }}>8月21・22日開催</div>
+                  <div>イベント当日（6月28日）、おおたかの森 森のナイトカフェの事前受付を行います。</div>
+                  <div>ケモノ・着ぐるみ オンリーイベントとなります。</div>
+                  <div>詳しくは受付にて、お問い合わせください。</div>
+                </div>
               </div>
             )}
 
@@ -471,8 +479,34 @@ export default function App({ event }) {
 
         {/* スケジュール */}
         {activeTab === "スケジュール" && (
-          <div style={{ textAlign: "center", padding: "60px 0" }}>
-            <div style={{ fontSize: 18, letterSpacing: 3, color: "#aaa", fontWeight: 600 }}>Coming Soon</div>
+          <div>
+            <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>当日の流れ</div>
+            {schedule && schedule.map((item, i) => (
+              <div key={i} style={{ display: "flex", gap: 12, marginBottom: 4 }}>
+                <div style={{ width: 70, flexShrink: 0, textAlign: "right", paddingTop: 12 }}>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: item.highlight ? "#111" : "#888" }}>{item.time}</span>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: item.highlight ? "#111" : "#ccc", marginTop: 14 }} />
+                  {i < schedule.length - 1 && <div style={{ width: 2, flex: 1, background: "#e0e0e0", marginTop: 2 }} />}
+                </div>
+                <div style={{ flex: 1, paddingBottom: 16 }}>
+                  <div style={{
+                    background: item.highlight ? "#111" : "#fff",
+                    color: item.highlight ? "#fff" : "#111",
+                    border: item.highlight ? "none" : "1px solid #ddd",
+                    borderRadius: 10,
+                    padding: "10px 14px",
+                  }}>
+                    <div style={{ fontWeight: 700, fontSize: 13 }}>{item.label}</div>
+                    {item.note && <div style={{ fontSize: 12, color: item.highlight ? "#ccc" : "#888", marginTop: 4 }}>{item.note}</div>}
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div style={{ background: "#f0f0f0", borderRadius: 10, padding: 14, fontSize: 12, color: "#666", lineHeight: 1.8, marginTop: 8 }}>
+              ⚠️ 当日の進行状況により、時間が前後する場合があります。最新情報は受付・スタッフにご確認ください。
+            </div>
           </div>
         )}
 
@@ -630,7 +664,7 @@ export default function App({ event }) {
                 <div style={{ fontWeight: 700, color: "#111" }}>一日フリー乗車券は、来場時に乗車する駅でお買い求めください。</div>
               </div>
               <div style={{ display: "flex", gap: 8 }}>
-                <a href={access.routeUrl} target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", borderRadius: 6, padding: "10px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none", textAlign: "center" }}>🗺 駅からのルートを見る</a>
+                <a href="https://www.google.com/maps/dir/?api=1&origin=流山駅&destination=CHAT+ERRANT+流山&travelmode=walking" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", borderRadius: 6, padding: "10px 8px", fontSize: 12, fontWeight: 600, textDecoration: "none", textAlign: "center" }}>🗺 受付（CHAT ERRANT）までのルート</a>
                 <button onClick={() => handleTab("エリアマップ")} style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: "#fff", color: "#111", border: "1px solid #111", borderRadius: 6, padding: "10px 8px", fontSize: 12, fontWeight: 600, cursor: "pointer", textAlign: "center" }}>🗺 イベントエリアマップ</button>
               </div>
             </div>
@@ -648,10 +682,11 @@ export default function App({ event }) {
                 </div>
               ))}
             </div>
+            <div style={{ fontSize: 12, color: "#888", marginBottom: 6 }}>📍 メイン会場：根郷 浅間神社</div>
             <div style={{ borderRadius: 10, overflow: "hidden", marginBottom: 8 }}>
               <iframe
-                title="流山本町エリア 地図"
-                src="https://www.google.com/maps?q=千葉県流山市流山1丁目136&output=embed&z=17"
+                title="根郷 浅間神社 地図"
+                src="https://www.google.com/maps?q=根郷浅間神社+流山&output=embed&z=17"
                 width="100%"
                 height="240"
                 style={{ border: 0, display: "block" }}

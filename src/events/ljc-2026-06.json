@@ -28,12 +28,10 @@
         "current": true
       },
       {
-        "title": "🦊 狐の嫁入りイベント",
-        "date": "2026年7月 開催予定",
-        "area": "詳細近日公開",
-        "description": "神社から神社へ移動する街コス！狐の嫁入りイベント開催決定！",
-        "presale": "6月イベントへご来場された方に、チケット先行販売を予定しています！",
-        "url": "https://kitsune-app-six.vercel.app",
+        "title": "🌙 LAYERS JACK in おおたかの森\n森のナイトカフェ",
+        "date": "2026年8月21日（金）〜22日（土）",
+        "area": "森のまち広場（TX流山おおたかの森駅南口）",
+        "description": "夕方から夜の開催で2日間のスペシャルな着ぐるみイベントです。レイヤーズジャック主催6月イベント参加者様は優先して応募頂けます。",
         "status": "coming_soon",
         "current": false
       },
@@ -43,6 +41,14 @@
         "area": "詳細近日公開",
         "description": "夜に妖怪たちが街へ繰り出す――街コスと盆踊りが融合した、幻想的な百鬼夜行イベント開催決定！",
         "status": "coming_soon",
+        "current": false
+      },
+      {
+        "title": "🦊 狐の嫁入りイベント",
+        "date": "2027年 開催予定（延期）",
+        "area": "詳細近日公開",
+        "description": "狐の嫁入りイベントは、2027年の開催に向けて調整しております。",
+        "status": "postponed",
         "current": false
       }
     ]
@@ -945,5 +951,79 @@
         "tel": "110"
       }
     ]
-  }
+  },
+  "schedule": [
+    {
+      "time": "10:00",
+      "label": "アーリー更衣室受付開始",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "time": "11:00",
+      "label": "通常受付開始",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "time": "11:00",
+      "label": "流鉄コスプレ乗車開始",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "time": "12:00",
+      "label": "オープニングイベント",
+      "note": "📍 浅間神社",
+      "highlight": true
+    },
+    {
+      "time": "12:15",
+      "label": "集合写真撮影",
+      "note": "📍 浅間神社",
+      "highlight": true
+    },
+    {
+      "time": "12:30〜16:00",
+      "label": "フリータイム",
+      "note": "各スポット・協賛店をめぐって撮影をお楽しみください",
+      "highlight": false
+    },
+    {
+      "time": "15:00",
+      "label": "受付終了",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "time": "16:00",
+      "label": "流鉄コスプレ乗車終了",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "time": "16:30",
+      "label": "クローズイベント",
+      "note": "📍 浅間神社",
+      "highlight": true
+    },
+    {
+      "time": "16:45",
+      "label": "集合写真撮影",
+      "note": "📍 浅間神社",
+      "highlight": true
+    },
+    {
+      "time": "17:00",
+      "label": "イベント終了",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "time": "18:30",
+      "label": "更衣室完全撤収",
+      "note": "",
+      "highlight": false
+    }
+  ]
 }
