@@ -24,8 +24,9 @@
         "title": "LAYERS JACK CONVENTION",
         "date": "2026年6月28日（日）",
         "area": "流山本町エリア",
-        "status": "open",
-        "current": true
+        "status": "finished",
+        "current": false,
+        "description": "ご参加いただき、ありがとうございました！次回の開催をお楽しみに。"
       },
       {
         "title": "🌙 LAYERS JACK in おおたかの森\n森のナイトカフェ",
@@ -51,6 +52,12 @@
         "status": "postponed",
         "current": false
       }
+    ],
+    "comingSoonPages": [
+      "イベント概要",
+      "スケジュール",
+      "更衣室",
+      "アクセス"
     ]
   },
   "details": {
@@ -87,6 +94,24 @@
     "instagram": "https://www.instagram.com/tsubasacameratokyo/"
   },
   "notices": [
+    {
+      "date": "2026.06.29",
+      "title": "🎉 LAYERS JACK CONVENTION 無事終了しました！",
+      "body": [
+        "6月28日開催の「レイヤーズジャックコンベンション」は、",
+        "おかげさまで無事に終了いたしました。",
+        "",
+        "ご参加いただいた皆さま、",
+        "協賛店・地域の皆さま、",
+        "スタッフの皆さま、",
+        "本当にありがとうございました。",
+        "",
+        "歴史ある流山本町の街並みを舞台に、",
+        "最高の一日となりました。",
+        "",
+        "またお会いできる日を楽しみにしております！"
+      ]
+    },
     {
       "date": "2026.06.08",
       "title": "📍 受付場所のお知らせ",

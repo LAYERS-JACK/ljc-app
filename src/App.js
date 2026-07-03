@@ -89,6 +89,7 @@ export default function App({ event }) {
   const [openSpot, setOpenSpot] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [mapModal, setMapModal] = useState(false);
+  const [photoModal, setPhotoModal] = useState(false);
   const [staffUnlocked, setStaffUnlocked] = useState(false);
   const [passwordInput, setPasswordInput] = useState("");
   const [passwordError, setPasswordError] = useState(false);
@@ -232,6 +233,9 @@ export default function App({ event }) {
                   {event.status === "postponed" && (
                     <span style={{ background: "#888", color: "#fff", fontSize: 10, fontWeight: 700, padding: "3px 10px", borderRadius: 20, letterSpacing: 1, flexShrink: 0 }}>延期</span>
                   )}
+                  {event.status === "finished" && (
+                    <span style={{ background: "#111", color: "#fff", fontSize: 10, fontWeight: 700, padding: "3px 10px", borderRadius: 20, letterSpacing: 1, flexShrink: 0 }}>終了</span>
+                  )}
                 </div>
                 <div style={{ fontSize: 13, color: "#555", marginBottom: 4 }}>📅 {event.date}</div>
                 <div style={{ fontSize: 13, color: "#555", marginBottom: event.description ? 8 : 16 }}>📍 {event.area}</div>
@@ -277,6 +281,25 @@ export default function App({ event }) {
               <img src={meta.logo} alt={meta.title} style={{ width: "100%", borderRadius: 8 }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
             </div>
 
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ borderRadius: 12, overflow: "hidden", cursor: "zoom-in" }} onClick={() => setPhotoModal(true)}>
+                <img src="/20260628ljc vol.1_set002.jpeg" alt="LAYERS JACK CONVENTION 集合写真" style={{ width: "100%", display: "block" }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
+              </div>
+              <div style={{ textAlign: "center", marginTop: 10 }}>
+                <div style={{ fontWeight: 700, fontSize: 13 }}>📸 LAYERS JACK CONVENTION 2026.6.28</div>
+                <div style={{ fontSize: 12, color: "#888", marginTop: 4 }}>ご参加いただいた皆さま、ありがとうございました！</div>
+              </div>
+            </div>
+
+            {photoModal && (
+              <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(0,0,0,0.95)", zIndex: 1000 }}>
+                <button onClick={() => setPhotoModal(false)} style={{ position: "fixed", top: 20, right: 20, background: "#fff", color: "#111", border: "none", borderRadius: "50%", width: 48, height: 48, fontSize: 22, fontWeight: 700, cursor: "pointer", zIndex: 1001 }}>✕</button>
+                <div style={{ overflow: "auto", width: "100%", height: "100%", WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y pinch-zoom", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <img src="/20260628ljc vol.1_set002.jpeg" alt="LAYERS JACK CONVENTION 集合写真" style={{ width: "100%", maxWidth: 1400, display: "block" }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
+                </div>
+              </div>
+            )}
+
             <div style={{ background: "#111", color: "#fff", borderRadius: 10, padding: 16, textAlign: "center", marginBottom: 16 }}>
               <div style={{ fontSize: 12, color: "#aaa", marginBottom: 8, letterSpacing: 1 }}>📣 公式ハッシュタグ</div>
               {meta.hashtags.map(tag => (
@@ -289,28 +312,6 @@ export default function App({ event }) {
               </div>
             </div>
 
-            <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: "16px 20px", marginBottom: 16, display: "flex", flexDirection: "column", gap: 10 }}>
-              {[
-                { icon: "📅", label: "開催日", value: details.date },
-                { icon: "🕐", label: "時間", value: details.time },
-                { icon: "📍", label: "場所", value: details.area },
-                { icon: "🪪", label: "受付", value: "CHAT ERRANT" },
-                { icon: "💰", label: "参加費", value: details.price },
-              ].map(({ icon, label, value }) => (
-                <div key={label} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <span style={{ fontSize: 20, width: 28, textAlign: "center", flexShrink: 0 }}>{icon}</span>
-                  <span style={{ fontSize: 12, color: "#888", width: 44, flexShrink: 0 }}>{label}</span>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: "#111" }}>{value}</span>
-                </div>
-              ))}
-            </div>
-
-            <a href="https://maps.app.goo.gl/XPWSuMm8fijJqLkt6" target="_blank" rel="noreferrer" style={{ display: "block", background: "#fff", border: "3px solid #111", borderRadius: 12, padding: 16, marginBottom: 16, textAlign: "center", textDecoration: "none" }}>
-              <div style={{ fontSize: 13, color: "#888", marginBottom: 4 }}>来場された方はまずこちら</div>
-              <div style={{ fontWeight: 700, fontSize: 17, color: "#111" }}>📍 受付：CHAT ERRANT</div>
-              <div style={{ fontSize: 11, color: "#aaa", marginTop: 4 }}>🗺 タップしてマップを見る</div>
-            </a>
-
             <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: 16, marginBottom: 16 }}>
               <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 10, textAlign: "center" }}>🚃 流鉄流山線 コスプレ乗車決定！！</div>
               <div style={{ fontSize: 13, lineHeight: 1.9 }}>
@@ -319,43 +320,6 @@ export default function App({ event }) {
                 <div>コスプレ乗車を予定していて、流山線で来場される方は、</div>
                 <div style={{ fontWeight: 700, color: "#ffd700" }}>一日フリー乗車券（500円）がお得で便利です。</div>
                 <div>一日フリー乗車券は、来場時に乗車する駅でお買い求めください。</div>
-              </div>
-            </div>
-
-            {meta.ticketUrl && (
-              <a href={meta.ticketUrl} target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "#111", color: "#fff", borderRadius: 10, padding: "16px 0", fontSize: 15, fontWeight: 700, textDecoration: "none", marginBottom: 16, letterSpacing: 1 }}>🎟 参加申し込みはこちら</a>
-            )}
-
-            <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: 16, marginBottom: 16, textAlign: "center" }}>
-              <div style={{ fontSize: 24, marginBottom: 8 }}>🎁</div>
-              <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 8 }}>女性限定プレゼント企画！</div>
-              <img src="/sencyaku.jpg" alt="女性限定プレゼント" style={{ width: "100%", borderRadius: 8, marginBottom: 12 }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
-              <div style={{ fontSize: 13, lineHeight: 1.8, marginBottom: 8 }}>ご来場の女性参加者の方に<br />BRiOSS Clear Cleans Brush をプレゼント🎀</div>
-              <div style={{ fontSize: 12, color: "#aaa" }}>数に限りがございます。お早めにご来場ください！</div>
-            </div>
-
-            {meta.showPresale && (
-              <div style={{ background: "#fff", border: "2px solid #111", borderRadius: 12, padding: 16, marginBottom: 16 }}>
-                <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 8 }}>🎟 事前受付情報</div>
-                <div style={{ fontSize: 13, color: "#444", lineHeight: 1.8 }}>
-                  <div style={{ fontWeight: 700, marginBottom: 4 }}>8月21・22日開催</div>
-                  <div>イベント当日（6月28日）、おおたかの森 森のナイトカフェの事前受付を行います。</div>
-                  <div>ケモノ・着ぐるみ オンリーイベントとなります。</div>
-                  <div>詳しくは受付にて、お問い合わせください。</div>
-                </div>
-              </div>
-            )}
-
-            <div style={{ background: "#fff", border: "1px solid #ddd", borderRadius: 12, padding: 16, marginBottom: 16 }}>
-              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 4 }}>📣 参加表明カード</div>
-              <div style={{ fontSize: 12, color: "#888", marginBottom: 12 }}>2種類からお選びいただき、ダウンロードして加工後SNSに投稿してね！</div>
-              <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
-                <img src="/declaration001.png" alt="参加表明カード グレー" style={{ flex: 1, width: "50%", borderRadius: 6, cursor: "pointer" }} onClick={() => { const a = document.createElement('a'); a.href = '/declaration001.png'; a.download = 'LJC_参加表明カード_グレー.png'; a.click(); }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
-                <img src="/declaration002.png" alt="参加表明カード ターコイズ" style={{ flex: 1, width: "50%", borderRadius: 6, cursor: "pointer" }} onClick={() => { const a = document.createElement('a'); a.href = '/declaration002.png'; a.download = 'LJC_参加表明カード_ターコイズ.png'; a.click(); }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} />
-              </div>
-              <div style={{ display: "flex", gap: 8 }}>
-                <button onClick={() => { const a = document.createElement('a'); a.href = '/declaration001.png'; a.download = 'LJC_参加表明カード_グレー.png'; a.click(); }} style={{ flex: 1, background: "#111", color: "#fff", border: "none", borderRadius: 8, padding: "10px 0", fontSize: 12, fontWeight: 600, cursor: "pointer" }}>⬇ グレー版</button>
-                <button onClick={() => { const a = document.createElement('a'); a.href = '/declaration002.png'; a.download = 'LJC_参加表明カード_ターコイズ.png'; a.click(); }} style={{ flex: 1, background: "#111", color: "#fff", border: "none", borderRadius: 8, padding: "10px 0", fontSize: 12, fontWeight: 600, cursor: "pointer" }}>⬇ ターコイズ版</button>
               </div>
             </div>
 
@@ -437,7 +401,13 @@ export default function App({ event }) {
         )}
 
         {/* イベント概要 */}
-        {activeTab === "イベント概要" && (
+        {activeTab === "イベント概要" && meta.comingSoonPages?.includes("イベント概要") && (
+          <div style={{ textAlign: "center", padding: "60px 0" }}>
+            <div style={{ fontSize: 18, letterSpacing: 3, color: "#aaa", fontWeight: 600 }}>Coming Soon</div>
+            <div style={{ fontSize: 13, color: "#bbb", marginTop: 12 }}>次回イベントに向けて準備中です</div>
+          </div>
+        )}
+        {activeTab === "イベント概要" && !meta.comingSoonPages?.includes("イベント概要") && (
           <div>
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10, letterSpacing: 1 }}>📌 イベント概要</div>
@@ -478,7 +448,13 @@ export default function App({ event }) {
         )}
 
         {/* スケジュール */}
-        {activeTab === "スケジュール" && (
+        {activeTab === "スケジュール" && meta.comingSoonPages?.includes("スケジュール") && (
+          <div style={{ textAlign: "center", padding: "60px 0" }}>
+            <div style={{ fontSize: 18, letterSpacing: 3, color: "#aaa", fontWeight: 600 }}>Coming Soon</div>
+            <div style={{ fontSize: 13, color: "#bbb", marginTop: 12 }}>次回イベントに向けて準備中です</div>
+          </div>
+        )}
+        {activeTab === "スケジュール" && !meta.comingSoonPages?.includes("スケジュール") && (
           <div>
             <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>当日の流れ</div>
             {schedule && schedule.map((item, i) => (
@@ -610,7 +586,13 @@ export default function App({ event }) {
         )}
 
         {/* 更衣室 */}
-        {activeTab === "更衣室" && (
+        {activeTab === "更衣室" && meta.comingSoonPages?.includes("更衣室") && (
+          <div style={{ textAlign: "center", padding: "60px 0" }}>
+            <div style={{ fontSize: 18, letterSpacing: 3, color: "#aaa", fontWeight: 600 }}>Coming Soon</div>
+            <div style={{ fontSize: 13, color: "#bbb", marginTop: 12 }}>次回イベントに向けて準備中です</div>
+          </div>
+        )}
+        {activeTab === "更衣室" && !meta.comingSoonPages?.includes("更衣室") && (
           <div>
             <div style={{ background: "#fff", border: "2px solid #111", borderRadius: 12, padding: 16, marginBottom: 16, textAlign: "center" }}>
               <div style={{ fontSize: 24, marginBottom: 6 }}>🪪</div>
@@ -647,7 +629,13 @@ export default function App({ event }) {
         )}
 
         {/* アクセス */}
-        {activeTab === "アクセス" && (
+        {activeTab === "アクセス" && meta.comingSoonPages?.includes("アクセス") && (
+          <div style={{ textAlign: "center", padding: "60px 0" }}>
+            <div style={{ fontSize: 18, letterSpacing: 3, color: "#aaa", fontWeight: 600 }}>Coming Soon</div>
+            <div style={{ fontSize: 13, color: "#bbb", marginTop: 12 }}>次回イベントに向けて準備中です</div>
+          </div>
+        )}
+        {activeTab === "アクセス" && !meta.comingSoonPages?.includes("アクセス") && (
           <div>
             <div style={{ fontSize: 13, color: "#888", marginBottom: 16 }}>会場へのアクセス</div>
             <div style={{ background: "#111", color: "#fff", borderRadius: 12, padding: 20, marginBottom: 16, textAlign: "center" }}>
